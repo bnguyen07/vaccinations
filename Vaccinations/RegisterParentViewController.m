@@ -37,6 +37,15 @@
 
 - (IBAction)createPatientUser:(id)sender {
     
+    if (![[_ParentPassword text] isEqualToString: [_ParentReenterPassword text]]) {
+        UIAlertView *passwordNotMatch = [[UIAlertView alloc] initWithTitle:@"Passwords Not Match" message:@"These passwords don't match." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [passwordNotMatch show];
+    } else {
+        
+    
+    
+    }
+    
     
     
 }
