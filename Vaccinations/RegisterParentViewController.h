@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *ParentUsername;
 @property (weak, nonatomic) IBOutlet UITextField *ParentPassword;
 @property (weak, nonatomic) IBOutlet UITextField *ParentReenterPassword;
+- (IBAction)createPatientUser:(id)sender;
 
 @end

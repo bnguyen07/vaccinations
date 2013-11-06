@@ -35,6 +35,11 @@
 
 -(void) getUsernameAndPassword {
     
+    //Brian: Nov 06, 2013
+    //Make the login work
+    //Retrieve patients or physician depend on the user and password
+    //Also return a user type
+    
     NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForLogin];
     [getString appendString:[NSString stringWithFormat:@"?%@=\"%@\"", kuser_id, [_Username text]]];
     [getString appendString:[NSString stringWithFormat:@"&%@=\"%@\"", kpassword, [_Password text]]];
@@ -60,22 +65,37 @@
        
     [_Username resignFirstResponder];
     [_Password resignFirstResponder];
-    [self getUsernameAndPassword];
-    
     
     
     //Brian: Nov 06, 2013
     //Make the login work
     //If user type is 1 => Login to Child List Controller
     //0 => Login to Search View Controller
+
     
+    if ([_Username.text  isEqual: @""] || [_Password.text  isEqual: @""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:@"Please fill all the fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+
+    
+    [self getUsernameAndPassword];
+        
 
     NSLog(@"User type: %@",[[[_users lastObject] objectForKey:@"user_type"] class]);
     
     if ([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"1"]) {
         [self performSegueWithIdentifier:@"login2ChildListController" sender:self];
-    } else {
+    } else if([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"0"]) {
         [self performSegueWithIdentifier:@"login2childsearchtab" sender:self];
+    } else {
+        UIAlertView *invalidLogin = [[UIAlertView alloc]
+                                     initWithTitle:@"Alert!"                                                            message:@"Invalid username / password"
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"                             otherButtonTitles:nil, nil];
+        [invalidLogin show];
+        return;
     }
     
     
@@ -95,21 +115,9 @@
         }
         
         
-        if ([_Username.text  isEqual: [_users[i] objectForKey:@"username"]] && [_Password.text  isEqual: [_users[i] objectForKey:@"password"]]) {
-            [_Username setText:@""]; //Clear the Username and Password when Users log out
-            [_Password setText:@""];
-            [self performSegueWithIdentifier:@"login2childsearchtab" sender:self];
-            return;
-        }
-    }
+            }
     
-    UIAlertView *invalidLogin = [[UIAlertView alloc]
-                                 initWithTitle:@"Alert!"                                                            message:@"Invalid username / password"
-                                    delegate:nil
-                                 cancelButtonTitle:@"OK"                             otherButtonTitles:nil, nil];
-    [invalidLogin show];
-    return;
-    */
+        */
     
 
    
