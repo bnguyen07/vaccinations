@@ -190,6 +190,9 @@
                         <outlet property="RegisterParent" destination="xOV-GP-lLb" id="pWM-70-GfZ"/>
                         <outlet property="Username" destination="ZBh-jE-knM" id="GIU-Iw-PPZ"/>
                         <segue destination="2Dd-xa-RX9" kind="modal" identifier="login2childsearchtab" id="Wis-bP-pWx"/>
+                        <segue destination="s3E-LJ-rg5" kind="popover" identifier="login2ChildListController" popoverAnchorView="dIS-Jk-oLG" id="7Z2-bb-3vE">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1535,7 +1538,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCq-Dd-jkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4322" y="-196"/>
+            <point key="canvasLocation" x="898" y="0.0"/>
         </scene>
         <!--Navigation Controller - Vaccines Due-->
         <scene sceneID="QTb-pq-MHt">
@@ -1801,6 +1804,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="7Z2-bb-3vE"/>
         <segue reference="Q7M-ny-MEu"/>
     </inferredMetricsTieBreakers>
 </document>

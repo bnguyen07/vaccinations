@@ -62,13 +62,22 @@
     [_Password resignFirstResponder];
     [self getUsernameAndPassword];
     
-    NSLog(@"User type: %@",[[_users lastObject] objectForKey:@"user_type"]);
     
     
+    //Brian: Nov 06, 2013
+    //Make the login work
+    //If user type is 1 => Login to Child List Controller
+    //0 => Login to Search View Controller
     
+
+    NSLog(@"User type: %@",[[[_users lastObject] objectForKey:@"user_type"] class]);
     
+    if ([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"1"]) {
+        [self performSegueWithIdentifier:@"login2ChildListController" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"login2childsearchtab" sender:self];
+    }
     
-    [self performSegueWithIdentifier:@"login2childsearchtab" sender:self];
     
     
     //Brian: Oct 20, 2013
