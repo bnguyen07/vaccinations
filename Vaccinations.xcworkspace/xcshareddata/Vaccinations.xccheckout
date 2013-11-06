@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BCA886C7-3578-40EE-B9C9-02FD0C5DFAF6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Vaccinations</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>269EA698-28BB-489E-BDBD-C91F4FE2FE44</key>
+		<string>https://github.com/qcbit/vaccinations/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/Vaccinations.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>269EA698-28BB-489E-BDBD-C91F4FE2FE44</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>269EA698-28BB-489E-BDBD-C91F4FE2FE44</key>
+		<string>https://github.com/qcbit/vaccinations</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/qcbit/vaccinations/trunk/trunk/Vaccinations.xcworkspace</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>269EA698-28BB-489E-BDBD-C91F4FE2FE44</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>269EA698-28BB-489E-BDBD-C91F4FE2FE44</string>
+			<key>IDESourceControlWCCName</key>
+			<string>vaccinations</string>
+		</dict>
+	</array>
+</dict>
+</plist>
