@@ -8,6 +8,10 @@
 
 #import "RegisterParentViewController.h"
 
+#define kPostURL @"http://localhost/postNewPatientUser.php"
+#define kuser_id @"user_id"
+#define kpassword @"password"
+#define kemail @"email"
 @interface RegisterParentViewController ()
 
 @end
@@ -42,8 +46,27 @@
         [passwordNotMatch show];
     } else {
         
-    
-    
+        //Brian: Nov 06, 2013
+        //Create Register Patient User post string
+        
+        NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
+        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kuser_id, [_ParentUsername text]]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kpassword, [_ParentPassword text]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kemail, [_ParentEmail text]]];
+        
+        NSLog(@"%@",postString);
+        
+        [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postString]];
+        [request setHTTPMethod:@"POST"];
+        
+        _postNewPatientUser = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+        
+        NSLog(@"%@", _postNewPatientUser);
+
+                
     }
     
     
