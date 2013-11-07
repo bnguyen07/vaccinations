@@ -31,6 +31,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    _ParentPassword.secureTextEntry = YES;
+    _ParentReenterPassword.secureTextEntry = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,14 +62,36 @@
         
         [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
-        NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postString]];
-        [request setHTTPMethod:@"POST"];
+//        NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postString]];
+//        [request setHTTPMethod:@"POST"];
+//     
+//          _postNewPatientUser = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+//        
+//        NSLog(@"%@", _postNewPatientUser);
+//
         
-        _postNewPatientUser = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+        NSURL *url = [NSURL URLWithString:postString];
+        NSLog(@"This is the GET string for the Login function: %@", url);
         
-        NSLog(@"%@", _postNewPatientUser);
+        NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+        if ([postResult isEqualToString:@"The username you selected has been used. Please select another username."]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail to create Username" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            
+            //Brian: Nov 06, 2013
+            // We need to return back to Login page from here
+            //Subash will take care
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Successfully!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            
+            NSLog(@"Username has been created successfully.");
+        }
 
-                
+        
     }
     
     
