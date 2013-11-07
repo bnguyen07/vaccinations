@@ -1701,7 +1701,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1d-WD-nKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2328" y="3395"/>
+            <point key="canvasLocation" x="2028" y="3299"/>
         </scene>
         <!--Change Clinic View Controller-->
         <scene sceneID="BJt-VE-YWa">
@@ -1753,7 +1753,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3g5-dM-nMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2834" y="3405"/>
+            <point key="canvasLocation" x="2792" y="3315"/>
         </scene>
         <!--Navigation Controller - Search-->
         <scene sceneID="bY6-sv-nxx">

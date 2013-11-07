@@ -11,4 +11,7 @@
 @interface ChangePasswordViewController : UIViewController
 
 - (IBAction)cancelAction:(id)sender;
+
+
+@property (nonatomic, strong) NSMutableArray *physician;
 @end

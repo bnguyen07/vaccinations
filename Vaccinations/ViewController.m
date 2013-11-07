@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "ChangePasswordViewController.h"
+#import "ChangeClinicViewController.h"
 
 //Change localhost to your IP address in order to using Ipad
 #define kGetUrlForLogin @"http://localhost/login.php"
@@ -122,6 +124,37 @@
 
    
 }
+
+
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // Send physician to Physician view
+//    if ([segue.identifier isEqualToString:@"login2childsearchtab"]) {
+//        ChangePasswordViewController* changePasswordView =  segue.destinationViewController;
+//        [changePasswordView setPhysician:_users];
+//                
+//        
+//        ChangeClinicViewController* changeClinicView =  segue.destinationViewController;
+//        [changeClinicView setPhysician:_users];
+//    }
+    
+
+    
+    //Subash will implement codes for this part.
+//    } else if([segue.identifier isEqualToString:@"login2ChildListController"]) {
+//    
+//    
+//    }
+
+    
+    
+
+}
+
+
+
+
 - (IBAction)dismissKeyboard:(id)sender {
     [_Username resignFirstResponder];
     [_Password resignFirstResponder] ;
