@@ -62,14 +62,6 @@
         
         [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
-//        NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postString]];
-//        [request setHTTPMethod:@"POST"];
-//     
-//          _postNewPatientUser = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-//        
-//        NSLog(@"%@", _postNewPatientUser);
-//
-        
         NSURL *url = [NSURL URLWithString:postString];
         NSLog(@"This is the GET string for the Login function: %@", url);
         

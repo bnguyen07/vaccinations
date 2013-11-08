@@ -76,6 +76,12 @@
         NSDate * dateOfBirth=[formatter dateFromString:[childDict objectForKey:@"birthdate"]];
         [_DateOfBirth setDate:dateOfBirth];
         
+        if ([[childDict objectForKey:@"gender"] isEqualToString:@"M"]) {
+            [_Gender setSelectedSegmentIndex:0];
+        } else {
+            [_Gender setSelectedSegmentIndex:1];
+        }        
+        
       _MotherMaidenName.text = [childDict objectForKey:@"mothers_maiden_name"];
         _MotherName.text = [childDict objectForKey:@"mothers_name"];
       _FatherName.text = [childDict objectForKey:@"fathers_name"];
