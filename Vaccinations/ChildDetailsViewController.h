@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface ChildDetailsViewController : UIViewController
+
+
 @property (nonatomic, strong) NSString *recordID;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTF;
 @property (nonatomic, strong) NSMutableDictionary* childDict;
+
+@property (weak, nonatomic) IBOutlet UITextField *patient_id;
+
+
+
 - (IBAction)viewChildRecordsAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *recordNumber;
@@ -29,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *CurrentState;
 @property (weak, nonatomic) IBOutlet UITextField *CurrentZipcode;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *Gender;
+@property (weak, nonatomic) IBOutlet UITextField *middleName;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *DateOfBirth;
 @property (nonatomic, strong) NSMutableArray *patients;

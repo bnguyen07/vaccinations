@@ -65,14 +65,21 @@
     
     //Brian: Temp fix Nov 1
     if (childDict != NULL) {
-      
+
+        _patient_id.text = [childDict objectForKey:@"patient_id"];
       _lastNameTF.text = [childDict objectForKey:@"last_name"];
       _firstNameTF.text = [childDict objectForKey:@"first_name"];
-      _MotherMaidenName.text = [childDict objectForKey:@"mother_maiden_name"];
-        _MotherName.text = [childDict objectForKey:@"mother_name"];
-      _FatherName.text = [childDict objectForKey:@"father_name"];
-      _recordNumber.text = [childDict objectForKey:@"patient_id"];
-      _BirthStreetNumber.text = [childDict objectForKey:@"POB_street_number"];
+        _middleName.text = [childDict objectForKey:@"middle_name"];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-mm-dd"];
+        NSDate * dateOfBirth=[formatter dateFromString:[childDict objectForKey:@"birthdate"]];
+        [_DateOfBirth setDate:dateOfBirth];
+        
+      _MotherMaidenName.text = [childDict objectForKey:@"mothers_maiden_name"];
+        _MotherName.text = [childDict objectForKey:@"mothers_name"];
+      _FatherName.text = [childDict objectForKey:@"fathers_name"];
+        _BirthStreetNumber.text = [childDict objectForKey:@"POB_street_number"];
       _BirthStreetName.text = [childDict objectForKey:@"POB_street_name"];
       _BirthCity.text = [childDict objectForKey:@"POB_city"];
       _BirthState.text = [childDict objectForKey:@"POB_state"];

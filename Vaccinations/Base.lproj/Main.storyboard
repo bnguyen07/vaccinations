@@ -885,6 +885,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="MotherName" destination="q9S-Kg-4lA" id="E9d-9y-yi7"/>
                         <outlet property="firstNameTF" destination="gfi-Ut-6ow" id="UMw-LX-0N5"/>
                         <outlet property="lastNameTF" destination="Wsr-qk-nec" id="ixo-DF-tzh"/>
+                        <outlet property="middleName" destination="wKS-q4-KBw" id="rTi-MX-9aM"/>
+                        <outlet property="patient_id" destination="wlX-9b-bho" id="4zd-8U-v0Q"/>
                         <outlet property="recordNumber" destination="wlX-9b-bho" id="izV-G6-GCK"/>
                         <segue destination="Utv-vP-4it" kind="push" identifier="CD2CRTVC" id="Ach-eM-1B8"/>
                     </connections>
