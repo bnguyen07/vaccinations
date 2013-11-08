@@ -13,7 +13,26 @@
 
 
 //Change localhost to your IP address in order to using Ipad
-#define kGetUrlForPatients @"http://localhost/searchPatients.php"
+#define kChangePatientInfo @"http://localhost/changePatientInfo.php"
+#define kpatient_id @"patient_id"
+#define klastName @"last_name"
+#define kfirstName @"first_name"
+#define kmiddleName @"middle_name"
+#define kbirthdate @"birthdate"
+#define kgender @"gender"
+#define kmother_maiden_name @"mothers_maiden_name"
+#define kmother_name @"mothers_name"
+#define kfather_name @"fathers_name"
+#define kbirth_street_number @"POB_street_number"
+#define kbirth_street_name @"POB_street_name"
+#define kbirth_city @"POB_city"
+#define kbirth_state @"POB_state"
+#define kbirth_zipcode @"POB_zipcode"
+#define kcurrent_street_number @"current_street_number"
+#define kcurrent_street_name @"current_street_name"
+#define kcurrent_city @"current_city"
+#define kcurrent_state @"current_state"
+#define kcurrent_zipcode @"current_zipcode"
 
 
 @interface ChildDetailsViewController ()
@@ -97,7 +116,7 @@
       _CurrentZipcode.text = [childDict objectForKey:@"current_zipcode"];
    } else {
       NSLog(@"ChildDetails: Got Record ID. Retrieving Record");
-      NSURL *url = [NSURL URLWithString:kGetUrlForPatients];
+      NSURL *url = [NSURL URLWithString:kChangePatientInfo];
       NSData *data = [NSData dataWithContentsOfURL:url];
       NSError *error;
       
@@ -173,6 +192,51 @@
 
 - (IBAction)EditAction:(id)sender {
     if ([_EditButton.titleLabel.text isEqualToString:@"Edit"]) {
+        
+        if ([[_firstNameTF text] isEqualToString:@""] || [[_lastNameTF text] isEqualToString:@""] || [[_MotherMaidenName text] isEqualToString:@""]) {
+            UIAlertView *requiredFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Required Fields!" message:@"Please fill all the required fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [requiredFieldsAlert  show];
+        } else {
+            
+            //Brian: Nov 08, 2013
+            //Create Edit Patients post string
+            NSMutableString *postString = [NSMutableString stringWithString:kChangePatientInfo];
+            [postString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, [_patient_id.text capitalizedString]]];
+            
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfirstName, [_firstNameTF.text capitalizedString]]];
+            
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", klastName, [_lastNameTF.text capitalizedString]]];
+            
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmiddleName, [_middleName.text capitalizedString]]];
+            
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"YYYY-MM-DD"];
+            NSString *birthDate = [dateFormat stringFromDate:[_DateOfBirth date]];
+            
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
+            
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [_Gender titleForSegmentAtIndex:[_Gender selectedSegmentIndex]]]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _MotherMaidenName]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _MotherName]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _FatherName]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_number, _BirthStreetNumber]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_name, _BirthStreetName]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_city, _BirthCity]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_state, _BirthState]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_zipcode, _BirthZipcode]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_number, _CurrentStreetNumber]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, _CurrentStreetName]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _CurrentCity]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _CurrentState]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _CurrentZipcode]];
+            
+            NSLog(@"%@",postString);
+            [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                    
+        
+        
+        
         _lastNameTF.enabled = YES;
         _firstNameTF.enabled = YES;
         _recordNumber.enabled = YES;

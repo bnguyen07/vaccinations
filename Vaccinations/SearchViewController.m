@@ -40,9 +40,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Search";
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,20 +108,11 @@
         
         //Brian: Nov 08, 2013
         //Create Search Patients post string
-        
-        
-        
-        
         NSMutableString *postString = [NSMutableString stringWithString:kSearchPatiets];
-        
         
          [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [[_firstName text] capitalizedString]]];
         
-        
-        
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, [[_lastName text] capitalizedString]]];
-        
-       
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, [[_motherMaidenName text] capitalizedString]]];
         
@@ -145,50 +133,6 @@
             return;
         }
         
-
-    
-//    //Brian
-//    [_lastName resignFirstResponder];
-//    [_firstName resignFirstResponder];
-//    [_motherMaidenName resignFirstResponder];
-//    
-//    
-//    [self runUrlRequest];
-    
-//    
-//    for (int i = 0 ; i < _patients.count; i++) {
-//        if ([_lastName.text  isEqual: @""] || [_firstName.text  isEqual: @""] || [_motherMaidenName.text  isEqual: @""]) {
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please fill in required fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//            [alert show];
-//            return;
-//        }
-//        
-//       // NSLog(@"Last name from database: %@", [[_patients objectAtIndex:i] objectForKey:@"last_name"]);
-//        //NSLog(@"Last name from UI: %@", _lastName.text);
-//        //NSLog(@"First name from database: %@", [[_patients objectAtIndex:i] objectForKey:@"first_name"]);
-//        //NSLog(@"First name from UI: %@", _firstName.text);
-//        //NSLog(@"Mothers name from database: %@", [[_patients objectAtIndex:i] objectForKey:@"mother_maiden_name"]);
-//        //NSLog(@"Mothers name from UI: %@", _motherMaidenName.text);
-////        NSLog(@"Last name from UI type : %@", [_lastName.text class]);
-//        if (([_lastName.text caseInsensitiveCompare: [[_patients objectAtIndex:i] objectForKey:@"last_name"]] == NSOrderedSame) &&
-//            ([_firstName.text caseInsensitiveCompare: [[_patients objectAtIndex:i] objectForKey:@"first_name"]] == NSOrderedSame) &&
-//            ([_motherMaidenName.text  caseInsensitiveCompare:  [[_patients objectAtIndex:i] objectForKey:@"mothers_maiden_name"]] == NSOrderedSame))
-//        {
-//            [_selectedPatient addObject:[_patients objectAtIndex:i]];
-//       }
-//    }
-//    
-//    
-//    
-//    //Brian
-//    //Alert no found search
-//    if (_selectedPatient.count == 0) {
-//        UIAlertView * noFoundAlert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:@"Patient does not exist" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//        [noFoundAlert show];
-//        return;
-//    }
-//    
-    
     NSLog(@"This is the selected patients list: %@", _selectedPatient);
     //Subash
     [self performSegueWithIdentifier:@"Search2ChildListVC" sender:self];
