@@ -17,6 +17,8 @@
 @property (nonatomic, retain) ChangePasswordViewController * changePwdVC;
 @property (nonatomic, retain) ChangeClinicViewController * changeClinicVC;
 
+@property (nonatomic, strong) NSMutableArray *physician;
+
 - (IBAction)logoutAction:(id)sender;
 - (IBAction)rescanPressed:(id)sender;
 

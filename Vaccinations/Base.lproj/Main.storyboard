@@ -267,10 +267,10 @@
             </objects>
             <point key="canvasLocation" x="3344" y="-1750"/>
         </scene>
-        <!--Tab Bar Controller - ChildSearchTabBar-->
+        <!--Child Search Tab Bar - ChildSearchTabBar-->
         <scene sceneID="Und-1b-i6h">
             <objects>
-                <tabBarController title="ChildSearchTabBar" definesPresentationContext="YES" id="2Dd-xa-RX9" sceneMemberID="viewController">
+                <tabBarController title="ChildSearchTabBar" definesPresentationContext="YES" id="2Dd-xa-RX9" customClass="ChildSearchTabBar" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="tfc-17-JFv"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="tTE-cO-1jS">
@@ -1701,7 +1701,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1d-WD-nKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="3299"/>
+            <point key="canvasLocation" x="1282" y="3585"/>
         </scene>
         <!--Change Clinic View Controller-->
         <scene sceneID="BJt-VE-YWa">
@@ -1753,7 +1753,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3g5-dM-nMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2792" y="3315"/>
+            <point key="canvasLocation" x="1964" y="3585"/>
         </scene>
         <!--Navigation Controller - Search-->
         <scene sceneID="bY6-sv-nxx">

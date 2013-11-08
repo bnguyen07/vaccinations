@@ -22,6 +22,9 @@
 @property (nonatomic, retain) ChangeClinicViewController * changeClinicVC;
 
 
+@property (nonatomic, strong) NSMutableArray *physician;
+
+
 - (IBAction)photoLibraryButtonPressed:(id)sender;
 - (IBAction)performOcrButtonPressed:(id)sender;
 - (IBAction)logoutAction:(id)sender;

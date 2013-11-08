@@ -56,6 +56,7 @@
 		4A8E51E942ED4DA6BB730E31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF7E7E53EE43E09BF951C0 /* libPods.a */; };
 		A06FDB8518137A3900212BA1 /* ChildDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06FDB8418137A3900212BA1 /* ChildDetailsViewController.m */; };
 		D31E973C1828660100EB6F0C /* RegisterParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31E973B1828660100EB6F0C /* RegisterParentViewController.m */; };
+		D3C8B241182C079D0021267C /* ChildSearchTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C8B240182C079D0021267C /* ChildSearchTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		A06FDB8418137A3900212BA1 /* ChildDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildDetailsViewController.m; sourceTree = "<group>"; };
 		D31E973A1828660100EB6F0C /* RegisterParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterParentViewController.h; sourceTree = "<group>"; };
 		D31E973B1828660100EB6F0C /* RegisterParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterParentViewController.m; sourceTree = "<group>"; };
+		D3C8B23F182C079D0021267C /* ChildSearchTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSearchTabBar.h; sourceTree = "<group>"; };
+		D3C8B240182C079D0021267C /* ChildSearchTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSearchTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +286,8 @@
 				115E02A31813731B00937F3B /* ChildListViewController.m */,
 				A06FDB8318137A3900212BA1 /* ChildDetailsViewController.h */,
 				A06FDB8418137A3900212BA1 /* ChildDetailsViewController.m */,
+				D3C8B23F182C079D0021267C /* ChildSearchTabBar.h */,
+				D3C8B240182C079D0021267C /* ChildSearchTabBar.m */,
 			);
 			name = "Child Search";
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 				110A55251811FFEC00C372E3 /* main.m in Sources */,
 				D31E973C1828660100EB6F0C /* RegisterParentViewController.m in Sources */,
 				112BD0A418172B680041AF00 /* VaccinesDueListVC.m in Sources */,
+				D3C8B241182C079D0021267C /* ChildSearchTabBar.m in Sources */,
 				115E02A41813731B00937F3B /* ChildListViewController.m in Sources */,
 				110A554F1812040F00C372E3 /* MenuViewController.m in Sources */,
 				115E029B18136E4100937F3B /* SearchViewController.m in Sources */,

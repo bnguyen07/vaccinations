@@ -43,6 +43,10 @@
 
 @property (strong, nonatomic)NSURLConnection *postNewRecord;
 
+
+@property (nonatomic, strong) NSMutableArray *physician;
+
+
 - (IBAction)createNewRecord:(id)sender;
 
 

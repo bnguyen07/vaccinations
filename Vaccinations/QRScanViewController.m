@@ -98,6 +98,8 @@
 {
     if (buttonIndex == 0) {
         changePwdVC = (ChangePasswordViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
+        [changePwdVC setPhysician:_physician];
+        
         changePwdVC.view.frame = CGRectMake(184, 312, 400, 400);
         [self.view addSubview:changePwdVC.view];
     }

@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ChangePasswordViewController.h"
-#import "ChangeClinicViewController.h"
+#import "ChildSearchTabBar.h"
 
 //Change localhost to your IP address in order to using Ipad
 #define kGetUrlForLogin @"http://localhost/login.php"
@@ -130,14 +129,11 @@
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // Send physician to Physician view
-//    if ([segue.identifier isEqualToString:@"login2childsearchtab"]) {
-//        ChangePasswordViewController* changePasswordView =  segue.destinationViewController;
-//        [changePasswordView setPhysician:_users];
-//                
-//        
-//        ChangeClinicViewController* changeClinicView =  segue.destinationViewController;
-//        [changeClinicView setPhysician:_users];
-//    }
+    if ([segue.identifier isEqualToString:@"login2childsearchtab"]) {
+        ChildSearchTabBar* tabBarView = segue.destinationViewController;
+        [tabBarView setPhysician:_users];
+        
+    }
     
 
     

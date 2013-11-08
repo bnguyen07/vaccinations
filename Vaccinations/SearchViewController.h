@@ -22,6 +22,8 @@
 @property (nonatomic, retain) ChangeClinicViewController * changeClinicVC;
 
 
+@property (nonatomic, strong) NSMutableArray *physician;
+
 //Brian: search function
 //October 23, 2013
 
