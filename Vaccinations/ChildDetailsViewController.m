@@ -33,6 +33,7 @@
 #define kcurrent_city @"current_city"
 #define kcurrent_state @"current_state"
 #define kcurrent_zipcode @"current_zipcode"
+#define kuser_id @"user_id"
 
 
 @interface ChildDetailsViewController ()
@@ -193,6 +194,29 @@
 - (IBAction)EditAction:(id)sender {
     if ([_EditButton.titleLabel.text isEqualToString:@"Edit"]) {
         
+        _lastNameTF.enabled = YES;
+        _firstNameTF.enabled = YES;
+        _recordNumber.enabled = YES;
+        _MotherMaidenName.enabled = YES;
+        _MotherName.enabled = YES;
+        _FatherName.enabled = YES;
+        _BirthStreetNumber.enabled = YES;
+        _BirthStreetName.enabled = YES;
+        _BirthCity.enabled = YES;
+        _BirthState.enabled = YES;
+        _BirthZipcode.enabled = YES;
+        _CurrentStreetNumber.enabled = YES;
+        _CurrentStreetName.enabled = YES;
+        _CurrentCity.enabled = YES;
+        _CurrentState.enabled = YES;
+        _CurrentZipcode.enabled = YES;
+        _Gender.enabled = YES;
+        _DateOfBirth.enabled = YES;
+        
+        [_EditButton setTitle:@"Save" forState:UIControlStateNormal];
+        
+    }else if([_EditButton.titleLabel.text isEqualToString:@"Save"]) {
+    
         if ([[_firstNameTF text] isEqualToString:@""] || [[_lastNameTF text] isEqualToString:@""] || [[_MotherMaidenName text] isEqualToString:@""]) {
             UIAlertView *requiredFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Required Fields!" message:@"Please fill all the required fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [requiredFieldsAlert  show];
@@ -216,69 +240,72 @@
             
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
             
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [_Gender titleForSegmentAtIndex:[_Gender selectedSegmentIndex]]]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _MotherMaidenName]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _MotherName]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _FatherName]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_number, _BirthStreetNumber]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_name, _BirthStreetName]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_city, _BirthCity]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_state, _BirthState]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_zipcode, _BirthZipcode]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_number, _CurrentStreetNumber]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, _CurrentStreetName]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _CurrentCity]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _CurrentState]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _CurrentZipcode]];
+            NSString *gender = [[NSString alloc] initWithString:[_Gender titleForSegmentAtIndex:[_Gender selectedSegmentIndex]]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [[gender substringToIndex:1] capitalizedString]]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _MotherMaidenName.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _MotherName.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _FatherName.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_number, _BirthStreetNumber.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_name, _BirthStreetName.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_city, _BirthCity.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_state, _BirthState.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_zipcode, _BirthZipcode.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_number, _CurrentStreetNumber.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, _CurrentStreetName.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _CurrentCity.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _CurrentState.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _CurrentZipcode.text]];
             
             NSLog(@"%@",postString);
             [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-                    
+            
+            NSURL *url = [NSURL URLWithString:postString];
+            NSLog(@"This is the GET string for the Edit Patient function: %@", url);
+            
+            NSString *postResult = [[NSString alloc] initWithContentsOfURL:url];
+            
+            if ([postResult isEqualToString:@"Cannot update patient's information. Please contact administration."]) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail to update Patient Information." message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            } else {
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Successfully!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                
+                
+                NSLog(@"Update Paitent information successfully.");
+            }
+            
+            
+            
+            _lastNameTF.enabled = NO;
+            _firstNameTF.enabled = NO;
+            _recordNumber.enabled = NO;
+            _MotherMaidenName.enabled = NO;
+            _MotherName.enabled = NO;
+            _FatherName.enabled = NO;
+            _BirthStreetNumber.enabled = NO;
+            _BirthStreetName.enabled = NO;
+            _BirthCity.enabled = NO;
+            _BirthState.enabled = NO;
+            _BirthZipcode.enabled = NO;
+            _CurrentStreetNumber.enabled = NO;
+            _CurrentStreetName.enabled = NO;
+            _CurrentCity.enabled = NO;
+            _CurrentState.enabled = NO;
+            _CurrentZipcode.enabled = NO;
+            _Gender.enabled = NO;
+            _DateOfBirth.enabled = NO;
+            
+            [_EditButton setTitle:@"Edit" forState:UIControlStateNormal];
+            
+            
+        } //End of if-else
         
-        
-        
-        _lastNameTF.enabled = YES;
-        _firstNameTF.enabled = YES;
-        _recordNumber.enabled = YES;
-        _MotherMaidenName.enabled = YES;
-        _MotherName.enabled = YES;
-        _FatherName.enabled = YES;
-        _BirthStreetNumber.enabled = YES;
-        _BirthStreetName.enabled = YES;
-        _BirthCity.enabled = YES;
-        _BirthState.enabled = YES;
-        _BirthZipcode.enabled = YES;
-        _CurrentStreetNumber.enabled = YES;
-        _CurrentStreetName.enabled = YES;
-        _CurrentCity.enabled = YES;
-        _CurrentState.enabled = YES;
-        _CurrentZipcode.enabled = YES;
-        _Gender.enabled = YES;
-        _DateOfBirth.enabled = YES;
-        
-        [_EditButton setTitle:@"Save" forState:UIControlStateNormal];
-    }
-    else {
-        _lastNameTF.enabled = NO;
-        _firstNameTF.enabled = NO;
-        _recordNumber.enabled = NO;
-        _MotherMaidenName.enabled = NO;
-        _MotherName.enabled = NO;
-        _FatherName.enabled = NO;
-        _BirthStreetNumber.enabled = NO;
-        _BirthStreetName.enabled = NO;
-        _BirthCity.enabled = NO;
-        _BirthState.enabled = NO;
-        _BirthZipcode.enabled = NO;
-        _CurrentStreetNumber.enabled = NO;
-        _CurrentStreetName.enabled = NO;
-        _CurrentCity.enabled = NO;
-        _CurrentState.enabled = NO;
-        _CurrentZipcode.enabled = NO;
-        _Gender.enabled = NO;
-        _DateOfBirth.enabled = NO;
-        
-        [_EditButton setTitle:@"Edit" forState:UIControlStateNormal];
-    }
-}
+    }// End Edit Patient Info
+    
+    
+}// End of File
+
+
 @end
