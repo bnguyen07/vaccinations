@@ -11,11 +11,8 @@
 
 
 //Brian
-//Temp fix Nov 01, 2013
+//Nov 08, 2013
 #define kGetUrlForVaccinations @"http://localhost/searchVaccination.php"
-
-
-
 
 @interface VaccinesDueListVC ()
 
