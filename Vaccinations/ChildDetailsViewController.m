@@ -185,6 +185,7 @@
       [vaccDue setChildName:[NSString stringWithFormat:@"%@ %@",childFName, childLName]];
       [vaccSch setChildName:[NSString stringWithFormat:@"%@ %@",childFName, childLName]];
        [vaccSch setPatientID:[NSString stringWithFormat:@"%@", patientID]];
+       [vaccDue setPatientID:[NSString stringWithFormat:@"%@", patientID]];
       [patHis setChildName:[NSString stringWithFormat:@"%@ %@",childFName, childLName]];
       
    }
