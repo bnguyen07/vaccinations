@@ -242,8 +242,8 @@
             
             NSString *gender = [[NSString alloc] initWithString:[_Gender titleForSegmentAtIndex:[_Gender selectedSegmentIndex]]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [[gender substringToIndex:1] capitalizedString]]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _MotherMaidenName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _MotherName.text]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _MotherMaidenName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _FatherName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_number, _BirthStreetNumber.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_name, _BirthStreetName.text]];
