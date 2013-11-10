@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *patient_id;
 
-
+@property (nonatomic, strong) NSString *physician_id;// Physician sent from Login page
 
 - (IBAction)viewChildRecordsAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTF;

@@ -105,29 +105,6 @@
         return;
     }
     
-    
-    
-    //Brian: Oct 20, 2013
-    //Make the login work
-    /*
-    
-    
-    for (int i = 0 ; i < _users.count; i++) {
-        //Brian: Oct 20, 2013
-        //Require user to input all the fields
-        if ([_Username.text  isEqual: @""] || [_Password.text  isEqual: @""]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:@"Please fill all the fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            return;
-        }
-        
-        
-            }
-    
-        */
-    
-
-   
 }
 
 
@@ -139,8 +116,7 @@
         ChildSearchTabBar* tabBarView = segue.destinationViewController;
         [tabBarView setPhysician:_users];
         
-                  //subash
-            //setting title on the vaccinesdetails navigation controller as the childname
+        //This is how to prepareForSegue for TabBarController. It's diffenent to a normal segue
         UITabBarController* childSearchTabBar =  segue.destinationViewController;
         UINavigationController* QRScanTab = [childSearchTabBar.viewControllers objectAtIndex:0];
         UINavigationController* SearchViewTab = [childSearchTabBar.viewControllers objectAtIndex:1];
@@ -153,10 +129,11 @@
         CreateNewViewController* CreateController = (CreateNewViewController*)[CreateNewTab.viewControllers objectAtIndex:0];
         ScanViewController* ScanController = (ScanViewController*)[ScanViewTab.viewControllers objectAtIndex:0];
         
-        [QRScanController setPhysician:_users];
-        [SearchController setPhysician:_users];
-        [CreateController setPhysician:_users];
-        [ScanController setPhysician:_users];
+        NSString* physician_id = [[NSString alloc] initWithString:[[_users firstObject] objectForKey:@"physician_id"]];
+        [QRScanController setPhysician_id:physician_id];
+        [SearchController setPhysician_id:physician_id];
+        [CreateController setPhysician_id:physician_id];
+        [ScanController setPhysician_id:physician_id];
         
         
     }

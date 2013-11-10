@@ -19,5 +19,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 
+@property (nonatomic, strong) NSString *physician_id;
+
 
 @end

@@ -41,7 +41,7 @@
 	// Do any additional setup after loading the view.
     self.title = @"Search";
     
-     NSLog(@"Physician got from Login page: %@", _physician);
+     NSLog(@"Physician got from Login page: %@", _physician_id);
     
     
     
@@ -97,9 +97,7 @@
         ChildListViewController* childList = (ChildListViewController *)[nav.viewControllers objectAtIndex:0];
         [childList setArrayList:_selectedPatient];
         
-//        //Brian
-//        [childList setArrayList:_selectedPatient];
-        
+        [childList setPhysician_id:_physician_id];//Physician sent from Login page
     }
     
 }

@@ -22,7 +22,7 @@
 @property (nonatomic, retain) ChangeClinicViewController * changeClinicVC;
 
 
-@property (nonatomic, strong) NSMutableArray *physician;
+@property (nonatomic, strong) NSString *physician_id;
 
 
 - (IBAction)photoLibraryButtonPressed:(id)sender;

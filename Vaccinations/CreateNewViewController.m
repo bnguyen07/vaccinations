@@ -89,7 +89,7 @@
     self.birthString = [NSString stringWithFormat:@"%@",[df stringFromDate:birthDate]];
     
     
-     NSLog(@"Physician got from Login page: %@", _physician);
+     NSLog(@"Physician got from Login page: %@", _physician_id);
     
     
 }

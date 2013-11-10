@@ -123,13 +123,11 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    //subash
     if ([segue.identifier isEqualToString:@"CL2CDVC"]) {
         ChildDetailsViewController* childDetails =  (ChildDetailsViewController*) segue.destinationViewController;
         NSIndexPath* indexPath = (NSIndexPath *)sender;
         [childDetails setChildDict:arrayList[indexPath.row]];
+        [childDetails setPhysician_id:_physician_id];
         
     }
 }

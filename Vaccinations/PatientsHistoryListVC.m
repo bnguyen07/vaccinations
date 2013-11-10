@@ -41,11 +41,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //Subash
     self.navigationItem.title = self.childName;
+    NSLog(@"Physician ID in Patient History: %@", _physician_id);
     
-    
-	//Brian
-	//Nov 1, 2013
-    //[self displayDueVaccinations];
     
 }
 

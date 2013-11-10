@@ -177,6 +177,7 @@
       NSString* childFName = [childDict objectForKey:@"first_name"];
       NSString* childLName = [childDict objectForKey:@"last_name"];
        NSString* patientID = [childDict objectForKey:@"patient_id"];
+       
       UITabBarController* tabC =  segue.destinationViewController;
       UINavigationController* nav = [tabC.viewControllers objectAtIndex:0];
       UINavigationController* nav1 = [tabC.viewControllers objectAtIndex:1];
@@ -184,12 +185,16 @@
       VaccinesDueListVC* vaccDue = (VaccinesDueListVC *)[nav.viewControllers objectAtIndex:0];
       VaccineScheduleListVC* vaccSch = (VaccineScheduleListVC *)[nav1.viewControllers objectAtIndex:0];
       PatientsHistoryListVC* patHis = (PatientsHistoryListVC *)[nav2.viewControllers objectAtIndex:0];
+       
       [vaccDue setChildName:[NSString stringWithFormat:@"%@ %@",childFName, childLName]];
       [vaccSch setChildName:[NSString stringWithFormat:@"%@ %@",childFName, childLName]];
        [vaccSch setPatientID:[NSString stringWithFormat:@"%@", patientID]];
        [vaccDue setPatientID:[NSString stringWithFormat:@"%@", patientID]];
       [patHis setChildName:[NSString stringWithFormat:@"%@ %@",childFName, childLName]];
-      
+       
+       [vaccDue setPhysician_id:_physician_id];
+       [vaccSch setPhysician_id:_physician_id];
+       [patHis setPhysician_id:_physician_id];
    }
 }
 

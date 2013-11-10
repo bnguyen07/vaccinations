@@ -56,7 +56,8 @@ const int BPPCOLORIMG = 24;
    }
     
     
-     NSLog(@"Physician got from Login page: %@", _physician);
+     NSLog(@"Physician got from Login page: %@", _physician_id);
+    
     
     
     

@@ -24,7 +24,7 @@
 @property(nonatomic, strong) NSString* selectedVaccineMainLabel;
 @property(nonatomic, strong) NSString* selectedVaccineSubLabel;
 
-
+@property (nonatomic, strong) NSString *physician_id;
 
 
 

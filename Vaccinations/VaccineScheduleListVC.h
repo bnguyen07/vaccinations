@@ -36,5 +36,6 @@
 @property(nonatomic, strong) NSMutableArray * vaccines;
 @property(nonatomic, strong) NSMutableArray * returnDates;
 
+@property (nonatomic, strong) NSString *physician_id;
 
 @end

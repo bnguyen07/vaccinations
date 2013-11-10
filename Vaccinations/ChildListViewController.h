@@ -10,4 +10,11 @@
 
 @interface ChildListViewController : UITableViewController
 @property(nonatomic, retain) NSMutableArray* arrayList;
+
+@property (nonatomic, strong) NSString *physician_id;
+
+
+
+
+
 @end
