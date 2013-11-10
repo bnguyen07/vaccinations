@@ -142,7 +142,7 @@
         [patients removeLastObject];
         NSLog(@"Users are: %@", patients);
         [childList setArrayList:patients];
-}
+    }
     
 
 }

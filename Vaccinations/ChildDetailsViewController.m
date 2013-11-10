@@ -263,6 +263,7 @@
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _CurrentCity.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _CurrentState.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _CurrentZipcode.text]];
+             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kuser_id, [childDict objectForKey:@"user_id"]]];
             
             NSLog(@"%@",postString);
             [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
