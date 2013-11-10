@@ -50,6 +50,10 @@
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No camera detected on this device" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
       [alert show];
    }
+    
+    
+    NSLog(@"Physician got from Login page: %@", _physician);
+    
 
 }
 

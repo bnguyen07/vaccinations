@@ -40,6 +40,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Search";
+    
+     NSLog(@"Physician got from Login page: %@", _physician);
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

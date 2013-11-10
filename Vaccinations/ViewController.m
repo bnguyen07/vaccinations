@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 #import "ChildSearchTabBar.h"
+#import "QRScanViewController.h"
+#import "SearchViewController.h"
+#import "CreateNewViewController.h"
+#import "ScanViewController.h"
+
+
 
 //Change localhost to your IP address in order to using Ipad
 #define kGetUrlForLogin @"http://localhost/login.php"
@@ -132,6 +138,26 @@
     if ([segue.identifier isEqualToString:@"login2childsearchtab"]) {
         ChildSearchTabBar* tabBarView = segue.destinationViewController;
         [tabBarView setPhysician:_users];
+        
+                  //subash
+            //setting title on the vaccinesdetails navigation controller as the childname
+        UITabBarController* childSearchTabBar =  segue.destinationViewController;
+        UINavigationController* QRScanTab = [childSearchTabBar.viewControllers objectAtIndex:0];
+        UINavigationController* SearchViewTab = [childSearchTabBar.viewControllers objectAtIndex:1];
+        UINavigationController* CreateNewTab = [childSearchTabBar.viewControllers objectAtIndex:2];
+        UINavigationController* ScanViewTab = [childSearchTabBar.viewControllers objectAtIndex:3];
+        
+        
+        QRScanViewController* QRScanController = (QRScanViewController*)[QRScanTab.viewControllers objectAtIndex:0];
+        SearchViewController* SearchController = (SearchViewController*)[SearchViewTab.viewControllers objectAtIndex:0];
+        CreateNewViewController* CreateController = (CreateNewViewController*)[CreateNewTab.viewControllers objectAtIndex:0];
+        ScanViewController* ScanController = (ScanViewController*)[ScanViewTab.viewControllers objectAtIndex:0];
+        
+        [QRScanController setPhysician:_users];
+        [SearchController setPhysician:_users];
+        [CreateController setPhysician:_users];
+        [ScanController setPhysician:_users];
+        
         
     }
     

@@ -21,4 +21,11 @@
 
 @property (nonatomic, strong) NSMutableArray *vaccinesDue;
 
+@property(nonatomic, strong) NSString* selectedVaccineMainLabel;
+@property(nonatomic, strong) NSString* selectedVaccineSubLabel;
+
+
+
+
+
 @end

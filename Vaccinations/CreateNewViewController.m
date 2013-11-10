@@ -87,7 +87,9 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	df.dateStyle = NSDateFormatterMediumStyle;
     self.birthString = [NSString stringWithFormat:@"%@",[df stringFromDate:birthDate]];
-        
+    
+    
+     NSLog(@"Physician got from Login page: %@", _physician);
     
     
 }

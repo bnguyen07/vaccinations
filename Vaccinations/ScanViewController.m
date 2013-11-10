@@ -54,6 +54,12 @@ const int BPPCOLORIMG = 24;
       [alert show];
       // remove camera and done button
    }
+    
+    
+     NSLog(@"Physician got from Login page: %@", _physician);
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
