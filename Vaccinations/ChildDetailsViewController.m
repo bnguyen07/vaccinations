@@ -270,7 +270,7 @@
             NSURL *url = [NSURL URLWithString:postString];
             NSLog(@"This is the GET string for the Edit Patient function: %@", url);
             
-            NSString *postResult = [[NSString alloc] initWithContentsOfURL:url];
+            NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
             
             if ([postResult isEqualToString:@"Cannot update patient's information. Please contact administration."]) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail to update Patient Information." message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

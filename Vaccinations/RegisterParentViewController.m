@@ -70,6 +70,7 @@
         if ([postResult isEqualToString:@"The username you selected has been used. Please select another username."]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail to create Username" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
+            return;
         } else {
             
             //Brian: Nov 06, 2013
@@ -78,7 +79,7 @@
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Successfully!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
-            
+            return;
             
             NSLog(@"Username has been created successfully.");
         }

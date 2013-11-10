@@ -26,6 +26,6 @@
 
 @property (nonatomic, strong) NSString *physician_id;
 
-
+@property (nonatomic, strong) NSString *dateTakenAsString;
 
 @end
