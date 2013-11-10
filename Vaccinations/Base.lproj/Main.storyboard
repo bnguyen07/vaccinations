@@ -1453,6 +1453,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="statePOB" destination="lxe-jb-Q1g" id="FwM-BX-T8b"/>
                         <outlet property="streetNamePOB" destination="xmh-Bn-D0m" id="mNc-Df-5A6"/>
                         <outlet property="streetNumberPOB" destination="3FH-4j-NFX" id="wwb-kV-yvr"/>
+                        <outlet property="user_id" destination="GSL-0M-hSe" id="TjX-u8-zFg"/>
                         <outlet property="zipcodePOB" destination="s8j-Ih-dlf" id="xK2-4j-jhb"/>
                     </connections>
                 </viewController>

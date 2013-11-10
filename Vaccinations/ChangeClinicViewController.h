@@ -11,6 +11,6 @@
 @interface ChangeClinicViewController : UIViewController
 - (IBAction)cancelAction:(id)sender;
 
-@property (nonatomic, strong) NSMutableArray *physician;
+@property (nonatomic, strong) NSString *physician;
 
 @end

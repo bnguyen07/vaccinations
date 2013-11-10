@@ -25,11 +25,11 @@
 
 #define kgender  @"gender"
 
-#define kmother_maiden_name @"mother_maiden_name"
+#define kmother_maiden_name @"mothers_maiden_name"
 
-#define kmother_name  @"mother_name"
+#define kmother_name  @"mothers_name"
 
-#define kfather_name @"father_name"
+#define kfather_name @"fathers_name"
 
 #define kPOB_street_number @"POB_street_number"
 
@@ -54,6 +54,8 @@
 #define kcurrent_zipcode  @"current_zipcode"
 
 #define kcurrent_country  @"current_country"
+
+#define kuser_id @"user_id"
 
 @interface CreateNewViewController ()
 
@@ -139,17 +141,29 @@
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _currentCity.text]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _currentState.text]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _currentZipcode.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kuser_id, _user_id.text]];
         
+        [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
+        NSURL *url = [NSURL URLWithString:postString];
+        NSLog(@"This is the GET string for the Create New Patient function: %@", url);
         
-
-        UIAlertView *successfulAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"New patient record is successfully created" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [successfulAlert show];
-        return;
-
-    
+        NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+        if ([postResult isEqualToString:@"Cannot create new patient record. Please check your connection or firewall."]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail to create new Patient record" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            return;
+        } else {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Successfully!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            return;
+            
+            NSLog(@"New patient record has been created successfully.");
+        }
+        
     }
-    
     
     
     NSLog(@"Call the post method");

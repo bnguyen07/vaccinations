@@ -33,6 +33,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *currentCity;
 @property (weak, nonatomic) IBOutlet UITextField *currentState;
 @property (weak, nonatomic) IBOutlet UITextField *currentZipcode;
+@property (weak, nonatomic) IBOutlet UITextField *user_id;
+
+
+
 
 @property (nonatomic, retain) NSString* birthString;
 @property (nonatomic, retain) NSString* genderString;
