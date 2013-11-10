@@ -12,6 +12,7 @@
 #import "SearchViewController.h"
 #import "CreateNewViewController.h"
 #import "ScanViewController.h"
+#import "ChildListViewController.h"
 
 
 
@@ -97,10 +98,7 @@
     } else if([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"0"]) {
         [self performSegueWithIdentifier:@"login2childsearchtab" sender:self];
     } else {
-        UIAlertView *invalidLogin = [[UIAlertView alloc]
-                                     initWithTitle:@"Alert!"                                                            message:@"Invalid username / password"
-                                     delegate:nil
-                                     cancelButtonTitle:@"OK"                             otherButtonTitles:nil, nil];
+        UIAlertView *invalidLogin = [[UIAlertView alloc] initWithTitle:@"Alert!"                                           message:@"Invalid username / password" delegate:nil cancelButtonTitle:@"OK"                             otherButtonTitles:nil, nil];
         [invalidLogin show];
         return;
     }
@@ -135,18 +133,16 @@
         [CreateController setPhysician_id:physician_id];
         [ScanController setPhysician_id:physician_id];
         
+    } else if([segue.identifier isEqualToString:@"login2ChildListController"]) {
         
-    }
-    
-
-    
-    //Subash will implement codes for this part.
-//    } else if([segue.identifier isEqualToString:@"login2ChildListController"]) {
-//    
-//    
-//    }
-
-    
+        UINavigationController* nav =  segue.destinationViewController;
+        ChildListViewController* childList = (ChildListViewController *)[nav.viewControllers objectAtIndex:0];
+        NSMutableArray *patients = [[NSMutableArray alloc] initWithArray:_users];
+         NSLog(@"Users are type: %@", patients.class);
+        [patients removeLastObject];
+        NSLog(@"Users are: %@", patients);
+        [childList setArrayList:patients];
+}
     
 
 }
