@@ -12,8 +12,14 @@
 
 //Brian
 //Nov 08, 2013
-#define kGetUrlForVaccinations @"http://localhost/list_vaccine_not_taken.php"
+#define kGetUrlForVaccinesNotTaken @"http://localhost/list_vaccine_not_taken.php"
+#define kGetUrlForCreateNewVaccination @"http://localhost/postNewVaccination.php"
+
+#define kvaccination_id @"vaccination_id"
 #define kpatient_id @"patient_id"
+#define kvaccine_id @"vaccine_id"
+#define kphysician_id @"physician_id"
+#define kdate_taken @"date_taken"
 
 @interface VaccinesDueListVC ()
 
@@ -45,11 +51,20 @@
     //Brian: Nov 09, 2013
     //Make sure that the patientID is right
     NSLog(@"Patient ID is: %@", _patientID );
+    NSLog(@"Physician ID in Vaccines Due: %@", _physician_id);
+    
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    _dateTakenAsString = [dateFormat stringFromDate:[NSDate date]];
+    NSLog(@"Current date is: %@", _dateTakenAsString);
+    
     
     self.navigationItem.title = self.childName;
+    
+    _selectedVaccineMainLabel = [[NSString alloc] init];
+    _selectedVaccineSubLabel = [[NSString alloc] init];
 
-    //Brian
-	//Nov 1, 2013
     [self runUrlRequest];
 
 }
@@ -59,7 +74,7 @@
 // Fix Nov 09, 2013
 -(void) runUrlRequest {
     
-    NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForVaccinations];
+    NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForVaccinesNotTaken];
     [getString appendString:[NSString stringWithFormat:@"?%@=\"%@\"", kpatient_id, _patientID]];
     
     NSLog(@"This is the GET string for the Login function: %@", getString);
@@ -108,7 +123,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    //Subash
+    //Brian
+    //Fix Nov 09, 2013
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
@@ -116,9 +133,6 @@
     UILabel* label1 = (UILabel *)[cell viewWithTag:100];  //    Main Label
     UILabel* label2 = (UILabel *)[cell viewWithTag:101];  //    Sub Label
     
-
-    //Brian
-    //Fix Nov 09, 2013
     label1.text = [[_vaccinesDue objectAtIndex:indexPath.row] objectForKey:@"vaccine_id"];
     //[label1 setTextColor:[UIColor redColor]];
     label2.text = [[_vaccinesDue objectAtIndex:indexPath.row] objectForKey:@"vaccine_name"];
@@ -126,56 +140,89 @@
     
     return cell;
 }
+
+
+
+
  //Subash
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark-green.png"]];
-    
-    if (cell.accessoryView == nil) {
-        cell.accessoryView = checkmark;
-    }
-    else {
-        cell.accessoryView = nil;
-    }
-    */
-    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UILabel* label1 = (UILabel *)[cell viewWithTag:100];
     UILabel* label2 = (UILabel *)[cell viewWithTag:101];
     
-    NSDate* curDate = [NSDate date];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-	df.dateStyle = NSDateFormatterMediumStyle;
-    NSString* dateString = [NSString stringWithFormat:@"%@",[df stringFromDate:curDate]];
+    _selectedVaccineMainLabel = label1.text;
+    _selectedVaccineSubLabel = label2.text;
     
     NSString* alertString;
-    alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@",label1.text, label2.text, dateString];
+    alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
     
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
     [alert show];
-    
+    return;
+   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0)
+    
+    if (buttonIndex == 1)
     {
+        NSLog(@"NO");
+    } else {
         NSLog(@"YES");
+        
+        //Brian: Nov 09, 2013
+        // To generate the random vaccination id
+        NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        int lengthOfString = 7;
+        
+        NSMutableString *randomString = [NSMutableString stringWithCapacity: lengthOfString];
+        
+        for (int i=0; i<lengthOfString; i++) {
+            [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+        }
+        
+        NSLog(@"Random String is: %@", randomString);
+        // return randomString with length of 7
+        
+        
+        //Create Edit post string
+        NSMutableString *postString = [NSMutableString stringWithString:kGetUrlForCreateNewVaccination];
+        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kvaccination_id, randomString]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kpatient_id, _patientID]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kvaccine_id, _selectedVaccineMainLabel]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kphysician_id, _physician_id]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kdate_taken, _dateTakenAsString]];
+        
+        NSLog(@"%@",postString);
+        [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        NSURL *url = [NSURL URLWithString:postString];
+        NSLog(@"This is the GET string for the Edit Patient function: %@", url);
+        
+        NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+        if ([postResult isEqualToString:@"Cannot create new vaccination. Please check your connection or firewall."]) {
+            UIAlertView *failAlert = [[UIAlertView alloc] initWithTitle:@"Fail to record the vaccination." message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [failAlert show];
+        } else {
+            
+            UIAlertView *successfulAlert = [[UIAlertView alloc] initWithTitle:@"Successfully!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [successfulAlert show];
+            NSLog(@"Create new Vaccination successfully.");
+        }
+        
         
         //write the code to update vaccionations due database
         //run url request
         
         [_myTableView reloadData];
+    
         
-    }
-    else
-    {
-        NSLog(@"NO");
-    }
-}
+    }// End of if-else
+}//End of method
 
 /*
 // Override to support conditional editing of the table view.
