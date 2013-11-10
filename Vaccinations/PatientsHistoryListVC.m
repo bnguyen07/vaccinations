@@ -11,8 +11,8 @@
 
 //Brian
 //Temp fix Nov 01, 2013
-#define kGetUrlForVaccinations @"http://localhost/searchVaccination.php"
-
+#define kGetUrlForVaccinesTaken @"http://localhost/list_vaccine_taken.php"
+#define kpatient_id @"patient_id"
 
 
 @interface PatientsHistoryListVC ()
@@ -43,32 +43,39 @@
     self.navigationItem.title = self.childName;
     NSLog(@"Physician ID in Patient History: %@", _physician_id);
     
+    [self runUrlRequest];
+    
     
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [self runUrlRequest];
-}
-
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [self runUrlRequest];
+//}
+//
 
 //Brian
 // Temp Fix Nov 01, 2013
 -(void) runUrlRequest {
-    //Brian
-    //Temp fix Nov 01, 2013
-    NSURL *url = [NSURL URLWithString:kGetUrlForVaccinations];
+    
+    NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForVaccinesTaken];
+    [getString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, _patientID]];
+    
+    [getString setString:[getString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURL *url = [NSURL URLWithString:getString];
+    NSLog(@"This is URL from patient history: %@", url);
     NSData *data = [NSData dataWithContentsOfURL:url];
     NSError *error;
-    _vaccinations = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    NSLog(@"Call from runUrlRequest %@", _vaccinations);
+    if (data) {
+        _vaccinesTaken = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        NSLog(@"Vaccines taken: %@", _vaccinesTaken);
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"data is nil. Check your connction or firewall." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
     
-    [_myTableView reloadData];
 }
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning
@@ -89,7 +96,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_vaccinations count];
+    return [_vaccinesTaken count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,37 +106,57 @@
     
     // Configure the cell...
     
-    UILabel* label1 = (UILabel *)[cell viewWithTag:102];
-    UILabel* label2 = (UILabel *)[cell viewWithTag:103];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        NSLog(@"Inside nil cell: ");
+    }
     
-    //Brian
-    //Temp fix Novv 01, 2013
-    NSString* vaccineID = [_vaccinations[indexPath.row] objectForKey:@"vaccine_id"];
-    NSString* dateTaken = [_vaccinations[indexPath.row] objectForKey:@"date_taken"];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    UILabel* label1 = (UILabel *)[cell viewWithTag:102];  //    Main Label
+    UILabel* label2 = (UILabel *)[cell viewWithTag:103];  //    Sub Label
     
-    label1.text = vaccineID;
-    label2.text = dateTaken;
+    NSLog(@"vaccine id: %@", [[_vaccinesTaken objectAtIndex:indexPath.row] objectForKey:@"vaccine_id"]);
+    
+    label1.text = [[_vaccinesTaken objectAtIndex:indexPath.row] objectForKey:@"vaccine_id"];
+    //[label1 setTextColor:[UIColor redColor]];
+    label2.text = [[_vaccinesTaken objectAtIndex:indexPath.row] objectForKey:@"date_taken"];
+    //[label2 setTextColor:[UIColor redColor]];
     
     return cell;
 }
+
+
+
+
+
 //Subash
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark-green.png"]];
-    
-    if (cell.accessoryView == nil) {
-        cell.accessoryView = checkmark;
-    }
-    else {
-        cell.accessoryView = nil;
-    }
-    
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    UILabel* label1 = (UILabel *)[cell viewWithTag:100];
+//    UILabel* label2 = (UILabel *)[cell viewWithTag:101];
+//    
+//    _selectedVaccineMainLabel = label1.text;
+//    _selectedVaccineSubLabel = label2.text;
+//    
+//    NSString* alertString;
+//    alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
+//    
+//    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+//    [alert show];
+//    return;
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//
+//    
+//}
+
+
+
+
+
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

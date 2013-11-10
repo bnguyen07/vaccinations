@@ -41,6 +41,8 @@
 
 #define kPOB_zipcode  @"POB_zipcode"
 
+#define kPOB_country  @"POB_country"
+
 #define kcurrent_street_number  @"current_street_number"
 
 #define kcurrent_street_name @"current_street_name"
@@ -49,7 +51,9 @@
 
 #define kcurrent_state @"current_state"
 
-#define kcurrent_zipcode  @"current_zipcode "
+#define kcurrent_zipcode  @"current_zipcode"
+
+#define kcurrent_country  @"current_country"
 
 @interface CreateNewViewController ()
 
@@ -57,9 +61,7 @@
 
 @implementation CreateNewViewController
 
-@synthesize changePwdVC;
-@synthesize changeClinicVC;
-@synthesize birthString, genderString;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,18 +78,7 @@
 	// Do any additional setup after loading the view.
     self.title = @"Create New";
     
-    if (_gender.selectedSegmentIndex == 0) {
-        genderString = @"M";
-    }
-    else {
-        genderString = @"F";
-    }
-    
-    NSDate* birthDate = _dateOfBirth.date;
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-	df.dateStyle = NSDateFormatterMediumStyle;
-    self.birthString = [NSString stringWithFormat:@"%@",[df stringFromDate:birthDate]];
-    
+    _genderString = [[NSString alloc] initWithString:[_gender titleForSegmentAtIndex:[_gender selectedSegmentIndex]]];
     
      NSLog(@"Physician got from Login page: %@", _physician_id);
     
@@ -100,55 +91,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-//Brian: create s string connection for post
--(void) postNewRecord:(NSString*) patientID withFirstName:(NSString*) firstName
-         withLastName:(NSString*) lastName withMiddleName:(NSString*) middleName
-        withBirthDate:(NSString*) birthdate withGender:(NSString*) gender withMotherMaidenName:(NSString*) motherMaidenName
-       withMotherName:(NSString*) motherName withFatherName:(NSString*) fatherName
-withBirthStreetNumber:(NSString*) birthStreetNumber withBirthStreetName:(NSString*) birthStreetName
-        withBirthCity:(NSString*) birthCity withBirthState:(NSString*) birthState
-     withBirthZipcode:(NSString*) birthZipcode withCurrentStreetNumber:(NSString*) currentStreetNumber
-withCurrentStreetName:(NSString*) currentStreetName withCurrentCity:(NSString*) currentCity
-     withCurrentState:(NSString*) currentState withCurrentZipcode:(NSString*) currentZipcode {
-    
-    
-    NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
-    [postString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, patientID]];
-    
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfirst_name, firstName]];
-    
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, lastName]];
-    
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmiddle_name, middleName]];
-    
-    //Convert date to string
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthdate]];
-    
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, gender]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, motherMaidenName]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, motherName]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, fatherName]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_number, birthStreetNumber]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_name, birthStreetName]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_city, birthCity]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_state, birthState]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_zipcode, birthZipcode]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_number, currentStreetNumber]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, currentStreetName]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, currentCity]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, currentState]];
-    [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, currentZipcode]];
-    
-    NSLog(@"%@",postString);
-    [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postString]];
-    [request setHTTPMethod:@"POST"];
-    
-    _postNewRecord = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-    
-    NSLog(@"%@", _postNewRecord);
-    
-}
+
+
 
 
 //Brian: call the URL to post the data
@@ -160,9 +104,43 @@ withCurrentStreetName:(NSString*) currentStreetName withCurrentCity:(NSString*) 
         return;
     } else {
         
-        [self postNewRecord:_recordID.text withFirstName:_firstName.text withLastName:_lastName.text withMiddleName:_middleName.text withBirthDate:self.birthString withGender:genderString withMotherMaidenName:_motherMaidenName.text withMotherName:_motherName.text withFatherName:_fatherName.text withBirthStreetNumber:_streetNumberPOB.text withBirthStreetName:_streetNamePOB.text withBirthCity:_cityPOB.text withBirthState:_statePOB.text withBirthZipcode:_zipcodePOB.text withCurrentStreetNumber:_currentStreetNumber.text withCurrentStreetName:_currentStreetName.text withCurrentCity:_currentCity.text withCurrentState:_currentState.text withCurrentZipcode:_currentZipcode.text];
+        NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
+        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, _recordID.text]];
         
-    
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfirst_name, _firstName.text]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, _lastName.text]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmiddle_name, _middleName.text]];
+        
+        //Convert date to string
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        NSString *birthDate = [dateFormat stringFromDate:[_dateOfBirth date]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
+        
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [[_genderString substringToIndex:1] capitalizedString]]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _motherName.text]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _motherMaidenName.text]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _fatherName.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_number, _streetNumberPOB.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_name, _streetNamePOB.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_city, _cityPOB.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_state, _statePOB.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_zipcode, _zipcodePOB.text]];
+        
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_number, _currentStreetNumber.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, _currentStreetName.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _currentCity.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _currentState.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _currentZipcode.text]];
+        
+        
         
 
         UIAlertView *successfulAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"New patient record is successfully created" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -210,16 +188,6 @@ withCurrentStreetName:(NSString*) currentStreetName withCurrentCity:(NSString*) 
     self.birthString = [NSString stringWithFormat:@"%@",[df stringFromDate:birthDate]];
 }
 
-- (IBAction)segmentGenderAction:(id)sender {
-    UISegmentedControl* seg = (UISegmentedControl*)sender;
-    
-    if (seg.selectedSegmentIndex == 0) {
-        genderString = @"M";
-    }
-    else {
-        genderString = @"F";
-    }
-}
 
 
 
@@ -244,14 +212,14 @@ withCurrentStreetName:(NSString*) currentStreetName withCurrentCity:(NSString*) 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        changePwdVC = (ChangePasswordViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
-        changePwdVC.view.frame = CGRectMake(184, 312, 400, 400);
-        [self.view addSubview:changePwdVC.view];
+        _changePwdVC = (ChangePasswordViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
+        _changePwdVC.view.frame = CGRectMake(184, 312, 400, 400);
+        [self.view addSubview:_changePwdVC.view];
     }
     else if (buttonIndex == 1) {
-        changeClinicVC = (ChangeClinicViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangeClinicViewController"];
-        changeClinicVC.view.frame = CGRectMake(184, 312, 400, 400);
-        [self.view addSubview:changeClinicVC.view];
+        _changeClinicVC = (ChangeClinicViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangeClinicViewController"];
+        _changeClinicVC.view.frame = CGRectMake(184, 312, 400, 400);
+        [self.view addSubview:_changeClinicVC.view];
         
     }
     else if (buttonIndex == 2) {

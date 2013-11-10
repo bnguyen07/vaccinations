@@ -53,9 +53,6 @@
 - (IBAction)dimissKeyboard:(id)sender;
 
 
-- (IBAction)datePickerAction:(id)sender;
-
-- (IBAction)segmentGenderAction:(id)sender;
 
 
 

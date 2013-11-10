@@ -13,8 +13,8 @@
 
 
 //Brian
-//Temp Fix Nov 01, 2013
-@property(nonatomic, strong) NSMutableArray * vaccinations;
+//Fix Nov 10, 2013
+@property(nonatomic, strong) NSMutableArray * vaccinesTaken;
 @property(nonatomic, strong) NSString* patientID;
 
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;

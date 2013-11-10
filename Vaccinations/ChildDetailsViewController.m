@@ -243,7 +243,7 @@
             
             
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"YYYY-MM-DD"];
+            [dateFormat setDateFormat:@"yyyy-MM-dd"];
             NSString *birthDate = [dateFormat stringFromDate:[_DateOfBirth date]];
             
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
