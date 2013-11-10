@@ -82,10 +82,6 @@
 }
 
 
-
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -103,26 +99,29 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _vaccinations.count;
+    return _vaccinesDue.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
     //Subash
-    UILabel* label1 = (UILabel *)[cell viewWithTag:100];
-    UILabel* label2 = (UILabel *)[cell viewWithTag:101];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
+    UILabel* label1 = (UILabel *)[cell viewWithTag:100];  //    Main Label
+    UILabel* label2 = (UILabel *)[cell viewWithTag:101];  //    Sub Label
     
-//    label1.text = @"Main Label";
-//    label2.text = @"Sub Label";
+
     //Brian
-    //Temp fix Nov 01 , 2013
-    label1.text = [[_vaccinations objectAtIndex:indexPath.row] objectForKey:@"vaccine_id"];
+    //Fix Nov 09, 2013
+    label1.text = [[_vaccinesDue objectAtIndex:indexPath.row] objectForKey:@"vaccine_id"];
     //[label1 setTextColor:[UIColor redColor]];
-    label2.text = [[_vaccinations objectAtIndex:indexPath.row] objectForKey:@"vaccination_id"];
+    label2.text = [[_vaccinesDue objectAtIndex:indexPath.row] objectForKey:@"vaccine_name"];
     //[label2 setTextColor:[UIColor redColor]];
     
     return cell;
