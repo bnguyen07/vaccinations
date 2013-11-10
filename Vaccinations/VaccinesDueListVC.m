@@ -59,34 +59,27 @@
 // Fix Nov 09, 2013
 -(void) runUrlRequest {
     
-    NSMutableString *postString = [NSMutableString stringWithString:kGetUrlForVaccinations];
-    [postString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, _patientID]];
-    NSLog(@"%@",postString);
+    NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForVaccinations];
+    [getString appendString:[NSString stringWithFormat:@"?%@=\"%@\"", kpatient_id, _patientID]];
     
-    [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"This is the GET string for the Login function: %@", getString);
+    [getString setString:[getString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    NSURL *url = [NSURL URLWithString:postString];
+    NSURL *url = [NSURL URLWithString:getString];
     NSLog(@"This is the GET string for the Login function: %@", url);
     
-    NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    
-    if ([postResult isEqualToString:@"The username you selected has been used. Please select another username."]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail to create Username" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSError *error;
+    if (data) {
+        _vaccinesDue = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        NSLog(@"%@", _vaccinesDue);
     } else {
-        
-        //Brian: Nov 06, 2013
-        // We need to return back to Login page from here
-        //Subash will take care
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Successfully!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"data is nil. Check the connection. Turn off firewall." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        
-        
-        NSLog(@"Username has been created successfully.");
     }
-
-    }
+    
+    
+}
 
 
 

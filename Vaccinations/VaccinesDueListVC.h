@@ -15,10 +15,10 @@
 
 
 //Brian
-//Temp Fix Nov 01, 2013
+//Fix Nov 09, 2013
 @property(nonatomic, strong) NSMutableArray * vaccinations;
 @property(nonatomic, strong) NSString* patientID;
 
-
+@property (nonatomic, strong) NSMutableArray *vaccinesDue;
 
 @end
