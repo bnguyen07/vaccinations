@@ -13,6 +13,7 @@
 
 
 //Change localhost to your IP address in order to using Ipad
+//Brian Nov 09, 2013
 #define kChangePatientInfo @"http://localhost/changePatientInfo.php"
 #define kpatient_id @"patient_id"
 #define klastName @"last_name"
@@ -83,7 +84,7 @@
     
     //if ([[self recordID] isEqualToString:NULL]) {
     
-    //Brian: Temp fix Nov 1
+    //Brian: Fix Nov 09, 2013
     if (childDict != NULL) {
 
         _patient_id.text = [childDict objectForKey:@"patient_id"];
@@ -115,6 +116,7 @@
       _CurrentCity.text = [childDict objectForKey:@"current_city"];
       _CurrentState.text = [childDict objectForKey:@"current_state"];
       _CurrentZipcode.text = [childDict objectForKey:@"current_zipcode"];
+        
    } else {
       NSLog(@"ChildDetails: Got Record ID. Retrieving Record");
       NSURL *url = [NSURL URLWithString:kChangePatientInfo];
