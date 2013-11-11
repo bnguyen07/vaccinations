@@ -49,6 +49,7 @@
 
 
 @property (nonatomic, strong) NSString *physician_id;
+@property (nonatomic, strong) NSString *physician_user_id;
 
 
 - (IBAction)createNewRecord:(id)sender;

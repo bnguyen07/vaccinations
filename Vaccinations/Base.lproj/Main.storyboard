@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHP-9Y-9e5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="1895"/>
+            <point key="canvasLocation" x="1068" y="2663"/>
         </scene>
         <!--Forgot View Controller-->
         <scene sceneID="fyH-5R-T1A">
@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EN2-8H-tTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="1918"/>
+            <point key="canvasLocation" x="1058" y="1518"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -260,14 +260,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="DB2-Az-SGr" id="dfB-0Z-20t"/>
-                        <segue destination="LPU-rK-E0G" kind="popover" identifier="QR2CD" popoverAnchorView="Rr0-IK-fIL" id="Q7M-ny-MEu">
+                        <segue destination="4Qg-4O-sJD" kind="popover" identifier="QR2CD" popoverAnchorView="Rr0-IK-fIL" id="Cu1-oR-UGB">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLf-bV-Bcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3594" y="-1528"/>
+            <point key="canvasLocation" x="3236" y="-846"/>
         </scene>
         <!--Child Search Tab Bar - ChildSearchTabBar-->
         <scene sceneID="Und-1b-i6h">
@@ -289,7 +289,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATA-Kp-irC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="668"/>
+            <point key="canvasLocation" x="1058" y="388"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="adW-pd-Txp">
@@ -488,7 +488,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpI-r8-zcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3334" y="-420"/>
+            <point key="canvasLocation" x="3214" y="292"/>
         </scene>
         <!--Child List View Controller - Search Results-->
         <scene sceneID="dbZ-my-vJ2">
@@ -500,7 +500,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="oGV-Iu-NFL">
-                                <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oGV-Iu-NFL" id="RF6-bV-VDr">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -520,7 +520,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd9-nF-cV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4812" y="-32"/>
+            <point key="canvasLocation" x="4488" y="-86"/>
         </scene>
         <!--Child Details View Controller - Child Details-->
         <scene sceneID="EP4-qk-P1I">
@@ -895,7 +895,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytm-sS-xVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5962" y="-403"/>
+            <point key="canvasLocation" x="5418" y="-75"/>
         </scene>
         <!--Vaccines Due ListVC-->
         <scene sceneID="R7A-mu-fJh">
@@ -944,7 +944,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klh-Aw-BgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7992" y="-1758"/>
+            <point key="canvasLocation" x="8664" y="-1310"/>
         </scene>
         <!--Tab Bar Controller - ChildRecordsTabBar-->
         <scene sceneID="wgk-na-xOT">
@@ -966,7 +966,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Les-52-JDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7011" y="-403"/>
+            <point key="canvasLocation" x="6379" y="-75"/>
         </scene>
         <!--Patients History ListVC-->
         <scene sceneID="Ds8-DG-VU7">
@@ -1015,7 +1015,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UoC-rV-68q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8966" y="-403"/>
+            <point key="canvasLocation" x="8654" y="109"/>
         </scene>
         <!--Vaccine Schedule ListVC-->
         <scene sceneID="8XB-aA-O5d">
@@ -1061,7 +1061,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y6q-do-qpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8966" y="953"/>
+            <point key="canvasLocation" x="8670" y="1433"/>
         </scene>
         <!--Create New View Controller-->
         <scene sceneID="Aje-eZ-42w">
@@ -1461,7 +1461,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oz0-in-ffi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3326" y="850"/>
+            <point key="canvasLocation" x="3214" y="1482"/>
         </scene>
         <!--Scan View Controller-->
         <scene sceneID="MB4-gw-ZST">
@@ -1545,7 +1545,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xx0-Ek-AMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3326" y="2088"/>
+            <point key="canvasLocation" x="3206" y="2680"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wtX-s6-0zV">
@@ -1582,7 +1582,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lC4-ro-2mF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7018" y="-1758"/>
+            <point key="canvasLocation" x="7642" y="-1294"/>
         </scene>
         <!--Navigation Controller - Patient History-->
         <scene sceneID="5Wq-HO-YU7">
@@ -1601,7 +1601,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2S-qe-hoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7992" y="-403"/>
+            <point key="canvasLocation" x="7584" y="93"/>
         </scene>
         <!--Navigation Controller - Vaccination Schedule-->
         <scene sceneID="M0g-xy-vW1">
@@ -1620,7 +1620,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePA-ao-Ubu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7992" y="953"/>
+            <point key="canvasLocation" x="7560" y="1401"/>
         </scene>
         <!--Navigation Controller - QR Scan-->
         <scene sceneID="f5j-rh-Ok8">
@@ -1639,7 +1639,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4b-9y-mcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2352" y="-1750"/>
+            <point key="canvasLocation" x="2096" y="-862"/>
         </scene>
         <!--Navigation Controller - Scan-->
         <scene sceneID="1NR-jG-LGt">
@@ -1658,7 +1658,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuq-OH-4Me" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2352" y="2088"/>
+            <point key="canvasLocation" x="2072" y="2680"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="eX9-ks-WJr">
@@ -1697,6 +1697,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" red="0.21901137430000001" green="0.74885722229999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="changePassword:" destination="3H7-Gw-1ny" eventType="touchUpInside" id="iq9-KE-yDd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efF-AY-2Se">
                                 <rect key="frame" x="176" y="316" width="48" height="30"/>
@@ -1713,10 +1716,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="Password_Current" destination="dYe-k7-gdq" id="8tc-j5-BG8"/>
+                        <outlet property="Password_New" destination="gFW-iw-lSU" id="jMn-sN-ZVJ"/>
+                        <outlet property="Reenter_NewPassword" destination="MKi-0M-Ios" id="RWO-HJ-xnm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1d-WD-nKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="3585"/>
+            <point key="canvasLocation" x="5410" y="2305"/>
         </scene>
         <!--Change Clinic View Controller-->
         <scene sceneID="BJt-VE-YWa">
@@ -1749,6 +1757,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" red="0.21901137430000001" green="0.74885722229999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeClinic:" destination="opT-sW-a6f" eventType="touchUpInside" id="Q54-PB-88W"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyX-xY-eVq">
                                 <rect key="frame" x="176" y="287" width="48" height="30"/>
@@ -1765,10 +1776,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="clinic_new" destination="p2J-jJ-H2G" id="PzQ-RL-jdx"/>
+                        <outlet property="reenterNew_Clinic" destination="CzO-WD-Lxp" id="f8A-Kv-dnf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3g5-dM-nMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964" y="3585"/>
+            <point key="canvasLocation" x="6076" y="2289"/>
         </scene>
         <!--Navigation Controller - Search-->
         <scene sceneID="bY6-sv-nxx">
@@ -1787,7 +1802,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr4-TJ-70u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360" y="-420"/>
+            <point key="canvasLocation" x="2096" y="292"/>
         </scene>
         <!--Navigation Controller - Create New-->
         <scene sceneID="Ec3-rO-jZQ">
@@ -1806,7 +1821,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFI-KJ-dOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2352" y="850"/>
+            <point key="canvasLocation" x="2088" y="1482"/>
         </scene>
     </scenes>
     <resources>
@@ -1830,7 +1845,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7Z2-bb-3vE"/>
-        <segue reference="N6D-Vm-4OL"/>
+        <segue reference="Cu1-oR-UGB"/>
+        <segue reference="Ylc-o4-kyU"/>
     </inferredMetricsTieBreakers>
 </document>

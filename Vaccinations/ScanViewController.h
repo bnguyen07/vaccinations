@@ -23,6 +23,7 @@
 
 
 @property (nonatomic, strong) NSString *physician_id;
+@property (nonatomic, strong) NSString *user_id;
 
 
 - (IBAction)photoLibraryButtonPressed:(id)sender;

@@ -18,6 +18,8 @@
 @property (nonatomic, retain) ChangeClinicViewController * changeClinicVC;
 
 @property (nonatomic, strong) NSString *physician_id;
+@property (nonatomic, strong) NSString *user_id;
+
 
 - (IBAction)logoutAction:(id)sender;
 - (IBAction)rescanPressed:(id)sender;

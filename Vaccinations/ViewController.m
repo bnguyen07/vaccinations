@@ -128,12 +128,20 @@
         ScanViewController* ScanController = (ScanViewController*)[ScanViewTab.viewControllers objectAtIndex:0];
         
         NSString* physician_id = [[NSString alloc] initWithString:[[_users firstObject] objectForKey:@"physician_id"]];
+        NSString* user_id = [[NSString alloc] initWithString:[[_users lastObject] objectForKey:@"user_id"]];
         
         NSLog(@"Physician from Login: %@", physician_id);
         [QRScanController setPhysician_id:physician_id];
         [SearchController setPhysician_id:physician_id];
         [CreateController setPhysician_id:physician_id];
         [ScanController setPhysician_id:physician_id];
+        
+        [QRScanController setUser_id:user_id];
+        [SearchController setUser_id:user_id];
+        [CreateController setPhysician_user_id:user_id];
+        [ScanController setUser_id:user_id];
+                
+        
         
     } else if([segue.identifier isEqualToString:@"login2ChildListController"]) {
         

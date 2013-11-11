@@ -90,15 +90,18 @@ const int BPPCOLORIMG = 24;
 {
     if (buttonIndex == 0) {
         changePwdVC = (ChangePasswordViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
+        [changePwdVC setPhysician:_physician_id];
+        [changePwdVC setUser_id:_user_id];
         changePwdVC.view.frame = CGRectMake(184, 312, 400, 400);
         [self.view addSubview:changePwdVC.view];
-        [changePwdVC setPhysician:_physician_id];
-    }
+           }
     else if (buttonIndex == 1) {
         changeClinicVC = (ChangeClinicViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangeClinicViewController"];
+        [changeClinicVC setPhysician:_physician_id];
+         [changeClinicVC setUser_id:_user_id];
         changeClinicVC.view.frame = CGRectMake(184, 312, 400, 400);
         [self.view addSubview:changeClinicVC.view];
-        [changeClinicVC setPhysician:_physician_id];
+    
         
     }
     else if (buttonIndex == 2) {

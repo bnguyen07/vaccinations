@@ -12,5 +12,12 @@
 - (IBAction)cancelAction:(id)sender;
 
 @property (nonatomic, strong) NSString *physician;
+@property (nonatomic, strong) NSString *user_id;
+
+
+
+- (IBAction)changeClinic:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *clinic_new;
+@property (weak, nonatomic) IBOutlet UITextField *reenterNew_Clinic;
 
 @end
