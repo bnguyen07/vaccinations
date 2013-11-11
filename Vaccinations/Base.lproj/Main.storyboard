@@ -239,7 +239,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rr0-IK-fIL">
-                                <rect key="frame" x="659" y="506" width="52" height="30"/>
+                                <rect key="frame" x="358" y="866" width="52" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Rescan">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -260,12 +260,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="DB2-Az-SGr" id="dfB-0Z-20t"/>
-                        <segue destination="LPU-rK-E0G" kind="push" identifier="QR2CD" id="Q7M-ny-MEu"/>
+                        <segue destination="LPU-rK-E0G" kind="popover" identifier="QR2CD" popoverAnchorView="Rr0-IK-fIL" id="Q7M-ny-MEu">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLf-bV-Bcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3344" y="-1750"/>
+            <point key="canvasLocation" x="3594" y="-1528"/>
         </scene>
         <!--Child Search Tab Bar - ChildSearchTabBar-->
         <scene sceneID="Und-1b-i6h">
@@ -529,7 +531,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cX5-68-Wrl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Ij-fQ-fqF">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVW-Kd-MDJ">

@@ -116,68 +116,13 @@
       _CurrentCity.text = [childDict objectForKey:@"current_city"];
       _CurrentState.text = [childDict objectForKey:@"current_state"];
       _CurrentZipcode.text = [childDict objectForKey:@"current_zipcode"];
-        
-   } else {
-      NSLog(@"ChildDetails: Got Record ID. Retrieving Record");
-      NSURL *url = [NSURL URLWithString:kChangePatientInfo];
-      NSData *data = [NSData dataWithContentsOfURL:url];
-      NSError *error;
-      
-      if (data) {
-         self.patients = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-         NSLog(@"patients: %@", [self patients]);
-         if (self.patients == NULL) {
-            NSLog(@"Check the searchPatients.php file for correct DB");
-         }
-         
-         for (int i = 0 ; i < [self.patients count]; i++) {
-            if ([[self recordID] isEqual: [[self.patients objectAtIndex:i] objectForKey:@"patient_id"]]) {
-               NSLog(@"Record found. Loading fields");
-                
-                _recordNumber.text = [[self.patients objectAtIndex:i] objectForKey:@"patient_id"];
-               _lastNameTF.text = [[self.patients objectAtIndex:i] objectForKey:@"last_name"];
-               _firstNameTF.text = [[self.patients objectAtIndex:i]objectForKey:@"first_name"];
-                _middleName.text = [[self.patients objectAtIndex:i] objectForKey:@"middle_name"];
-                
-                
-                NSDateFormatter *formatterFromQR = [[NSDateFormatter alloc] init];
-                [formatterFromQR setDateFormat:@"yyyy-mm-dd"];
-                NSDate * dateOfBirthFromQR =[formatterFromQR dateFromString:[[self.patients objectAtIndex:i] objectForKey:@"birthdate"]];
-                [_DateOfBirth setDate:dateOfBirthFromQR];
-                
-                if ([[[self.patients objectAtIndex:i] objectForKey:@"gender"] isEqualToString:@"M"]) {
-                    [_Gender setSelectedSegmentIndex:0];
-                } else {
-                    [_Gender setSelectedSegmentIndex:1];
-                }
-                
-                
-                _MotherName.text = [[self.patients objectAtIndex:i] objectForKey:@"mothers_name"];
-               _MotherMaidenName.text = [[self.patients objectAtIndex:i] objectForKey:@"mothers_maiden_name"];
-               _FatherName.text = [[self.patients objectAtIndex:i]objectForKey:@"fathers_name"];
-                
-               _BirthStreetNumber.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_street_number"];
-               _BirthStreetName.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_street_name"];
-               _BirthCity.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_city"];
-               _BirthState.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_state"];
-               _BirthZipcode.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_zipcode"];
-               _CurrentStreetNumber.text = [[self.patients objectAtIndex:i] objectForKey:@"current_street_number"];
-               _CurrentStreetName.text = [[self.patients objectAtIndex:i] objectForKey:@"current_street_name"];
-               _CurrentCity.text = [[self.patients objectAtIndex:i] objectForKey:@"current_city"];
-               _CurrentState.text = [[self.patients objectAtIndex:i] objectForKey:@"current_state"];
-               _CurrentZipcode.text = [[self.patients objectAtIndex:i] objectForKey:@"current_zipcode"];
-               
-                
-                
-               [self viewWillAppear:YES];
-            } // end if
-         } // end for
-      } else {
+    } else {
          NSLog(@"ChildDetails: data is nil.");
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"data is nil. Check the IP address of the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
          [alert show];
-      } // end if..else data
    } // end else
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -212,6 +157,7 @@
        [vaccSch setPatientID:[NSString stringWithFormat:@"%@", patientID]];
        [vaccDue setPatientID:[NSString stringWithFormat:@"%@", patientID]];
       [patHis setChildName:[NSString stringWithFormat:@"%@ %@",childFName, childLName]];
+       [patHis setPatientID:[NSString stringWithFormat:@"%@", patientID]];
        
        [vaccDue setPhysician_id:_physician_id];
        [vaccSch setPhysician_id:_physician_id];
