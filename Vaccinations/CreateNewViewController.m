@@ -11,7 +11,7 @@
 //Brian : create new record function
 // October 23, 2013
 //Change localhost to your IP address in order to using Ipad
-#define kPostURL @"http://localhost/postNewRecord.php"
+#define kPostURL @"http://192.168.1.72/postNewRecord.php"
 
 #define kpatient_id @"patient_id"
 

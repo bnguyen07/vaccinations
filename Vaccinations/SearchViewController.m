@@ -11,7 +11,7 @@
 
 
 //Change localhost to your IP address in order to using Ipad
-#define kSearchPatiets @"http://localhost/searchPatients.php"
+#define kSearchPatiets @"http://192.168.1.72/searchPatients.php"
 #define klast_name @"last_name"
 #define kfirst_name @"first_name"
 #define kmother_maiden_name @"mothers_maiden_name"

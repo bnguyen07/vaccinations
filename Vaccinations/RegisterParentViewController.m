@@ -8,7 +8,7 @@
 
 #import "RegisterParentViewController.h"
 
-#define kPostURL @"http://localhost/postNewPatientUser.php"
+#define kPostURL @"http://192.168.1.72/postNewPatientUser.php"
 #define kuser_id @"user_id"
 #define kpassword @"password"
 #define kemail @"email"

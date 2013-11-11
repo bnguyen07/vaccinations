@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *middleName;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *DateOfBirth;
+
 @property (nonatomic, strong) NSMutableArray *patients;
 
 @property (weak, nonatomic) IBOutlet UIButton *EditButton;

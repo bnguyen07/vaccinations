@@ -12,8 +12,8 @@
 
 //Brian
 //Nov 08, 2013
-#define kGetUrlForVaccinesNotTaken @"http://localhost/list_vaccine_not_taken.php"
-#define kGetUrlForCreateNewVaccination @"http://localhost/postNewVaccination.php"
+#define kGetUrlForVaccinesNotTaken @"http://192.168.1.72/list_vaccine_not_taken.php"
+#define kGetUrlForCreateNewVaccination @"http://192.168.1.72/postNewVaccination.php"
 
 #define kvaccination_id @"vaccination_id"
 #define kpatient_id @"patient_id"

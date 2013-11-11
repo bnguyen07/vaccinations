@@ -14,7 +14,7 @@
 
 //Change localhost to your IP address in order to using Ipad
 //Brian Nov 09, 2013
-#define kChangePatientInfo @"http://localhost/changePatientInfo.php"
+#define kChangePatientInfo @"http://192.168.1.72/changePatientInfo.php"
 #define kpatient_id @"patient_id"
 #define klastName @"last_name"
 #define kfirstName @"first_name"
@@ -133,11 +133,29 @@
          for (int i = 0 ; i < [self.patients count]; i++) {
             if ([[self recordID] isEqual: [[self.patients objectAtIndex:i] objectForKey:@"patient_id"]]) {
                NSLog(@"Record found. Loading fields");
+                
+                _recordNumber.text = [[self.patients objectAtIndex:i] objectForKey:@"patient_id"];
                _lastNameTF.text = [[self.patients objectAtIndex:i] objectForKey:@"last_name"];
                _firstNameTF.text = [[self.patients objectAtIndex:i]objectForKey:@"first_name"];
-               _MotherMaidenName.text = [[self.patients objectAtIndex:i] objectForKey:@"mothers_name"];
+                _middleName.text = [[self.patients objectAtIndex:i] objectForKey:@"middle_name"];
+                
+                
+                NSDateFormatter *formatterFromQR = [[NSDateFormatter alloc] init];
+                [formatterFromQR setDateFormat:@"yyyy-mm-dd"];
+                NSDate * dateOfBirthFromQR =[formatterFromQR dateFromString:[[self.patients objectAtIndex:i] objectForKey:@"birthdate"]];
+                [_DateOfBirth setDate:dateOfBirthFromQR];
+                
+                if ([[[self.patients objectAtIndex:i] objectForKey:@"gender"] isEqualToString:@"M"]) {
+                    [_Gender setSelectedSegmentIndex:0];
+                } else {
+                    [_Gender setSelectedSegmentIndex:1];
+                }
+                
+                
+                _MotherName.text = [[self.patients objectAtIndex:i] objectForKey:@"mothers_name"];
+               _MotherMaidenName.text = [[self.patients objectAtIndex:i] objectForKey:@"mothers_maiden_name"];
                _FatherName.text = [[self.patients objectAtIndex:i]objectForKey:@"fathers_name"];
-               _recordNumber.text = [[self.patients objectAtIndex:i] objectForKey:@"patient_id"];
+                
                _BirthStreetNumber.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_street_number"];
                _BirthStreetName.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_street_name"];
                _BirthCity.text = [[self.patients objectAtIndex:i] objectForKey:@"birth_city"];
@@ -148,6 +166,9 @@
                _CurrentCity.text = [[self.patients objectAtIndex:i] objectForKey:@"current_city"];
                _CurrentState.text = [[self.patients objectAtIndex:i] objectForKey:@"current_state"];
                _CurrentZipcode.text = [[self.patients objectAtIndex:i] objectForKey:@"current_zipcode"];
+               
+                
+                
                [self viewWillAppear:YES];
             } // end if
          } // end for

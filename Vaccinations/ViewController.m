@@ -17,7 +17,7 @@
 
 
 //Change localhost to your IP address in order to using Ipad
-#define kGetUrlForLogin @"http://localhost/login.php"
+#define kGetUrlForLogin @"http://192.168.1.72/login.php"
 #define kuser_id @"user_id"
 #define kpassword @"password"
 

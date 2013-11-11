@@ -13,6 +13,11 @@
 #import "QRScanViewController.h"
 #import "ChildDetailsViewController.h"
 
+
+#define kSearchPatientByID @"http://192.168.1.72/searchPatientByID.php"
+#define kpatient_id @"patient_id"
+
+
 @interface QRScanViewController ()
 @property ZXCapture *capture;
 @property (strong, nonatomic) NSString *scannedResult;
@@ -161,9 +166,43 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
    if ([segue.identifier isEqualToString:@"QR2CD"]) {
       ChildDetailsViewController *cd = [segue destinationViewController];
-      [cd setRecordID:[NSString stringWithFormat:@"%@", self.scannedResult]];
+       
+       
+       if ([self.scannedResult isEqualToString:@""]) {
+           UIAlertView *requiredFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Cannot read barcode" message:@"Please re-scan the barcode." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+           [requiredFieldsAlert  show];
+       } else {
+           
+           //Brian: Nov 08, 2013
+           //Create Search Patients post string
+           NSMutableString *postString = [NSMutableString stringWithString:kSearchPatientByID];
+           
+           [postString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, self.scannedResult]];
+           
+           [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+           
+           NSURL *url = [NSURL URLWithString:postString];
+           NSLog(@"This is the GET string for the Search Patient By ID function: %@", url);
+           
+           
+           NSError *error;
+           NSData *data = [NSData dataWithContentsOfURL:url];
+           NSMutableArray *selectedPatient = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+           
+           
+           if (selectedPatient.count == 0) {
+               UIAlertView * noFoundAlert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:@"Patient does not exist" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+               [noFoundAlert show];
+               return;
+           }
+           
+           
+           NSMutableDictionary* childDict =[[NSMutableDictionary alloc] initWithDictionary:[selectedPatient objectAtIndex:0]];
+
+        [cd setChildDict:childDict];
    }
 
+   }
 }
 
 

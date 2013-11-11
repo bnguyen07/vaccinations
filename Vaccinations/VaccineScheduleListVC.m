@@ -10,7 +10,7 @@
 
 //Brian
 //Nov 01, 2013
-#define kGetUrlForVaccinations @"http://localhost/searchVaccination.php/"
+#define kGetUrlForVaccinations @"http://192.168.1.72/searchVaccination.php/"
 #define kpatient_id @"patient_id"
 
 
