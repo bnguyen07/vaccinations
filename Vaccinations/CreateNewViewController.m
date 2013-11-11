@@ -229,11 +229,13 @@
         _changePwdVC = (ChangePasswordViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
         _changePwdVC.view.frame = CGRectMake(184, 312, 400, 400);
         [self.view addSubview:_changePwdVC.view];
+        [_changePwdVC setPhysician:_physician_id];
     }
     else if (buttonIndex == 1) {
         _changeClinicVC = (ChangeClinicViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangeClinicViewController"];
         _changeClinicVC.view.frame = CGRectMake(184, 312, 400, 400);
         [self.view addSubview:_changeClinicVC.view];
+         [_changeClinicVC setPhysician:_physician_id];
         
     }
     else if (buttonIndex == 2) {

@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    NSLog(@"Inside Change Clinic, physician ID: %@", _physician);
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -92,11 +92,13 @@ const int BPPCOLORIMG = 24;
         changePwdVC = (ChangePasswordViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
         changePwdVC.view.frame = CGRectMake(184, 312, 400, 400);
         [self.view addSubview:changePwdVC.view];
+        [changePwdVC setPhysician:_physician_id];
     }
     else if (buttonIndex == 1) {
         changeClinicVC = (ChangeClinicViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ChangeClinicViewController"];
         changeClinicVC.view.frame = CGRectMake(184, 312, 400, 400);
         [self.view addSubview:changeClinicVC.view];
+        [changeClinicVC setPhysician:_physician_id];
         
     }
     else if (buttonIndex == 2) {

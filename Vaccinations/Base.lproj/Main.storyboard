@@ -520,7 +520,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd9-nF-cV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5244" y="-408"/>
+            <point key="canvasLocation" x="4812" y="-32"/>
         </scene>
         <!--Child Details View Controller - Child Details-->
         <scene sceneID="EP4-qk-P1I">
@@ -531,7 +531,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cX5-68-Wrl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Ij-fQ-fqF">
-                        <rect key="frame" x="0.0" y="64" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVW-Kd-MDJ">
@@ -895,7 +895,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytm-sS-xVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6130" y="-408"/>
+            <point key="canvasLocation" x="5962" y="-403"/>
         </scene>
         <!--Vaccines Due ListVC-->
         <scene sceneID="R7A-mu-fJh">
@@ -1831,6 +1831,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7Z2-bb-3vE"/>
-        <segue reference="Q7M-ny-MEu"/>
+        <segue reference="N6D-Vm-4OL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -128,6 +128,8 @@
         ScanViewController* ScanController = (ScanViewController*)[ScanViewTab.viewControllers objectAtIndex:0];
         
         NSString* physician_id = [[NSString alloc] initWithString:[[_users firstObject] objectForKey:@"physician_id"]];
+        
+        NSLog(@"Physician from Login: %@", physician_id);
         [QRScanController setPhysician_id:physician_id];
         [SearchController setPhysician_id:physician_id];
         [CreateController setPhysician_id:physician_id];
