@@ -260,7 +260,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="DB2-Az-SGr" id="dfB-0Z-20t"/>
-                        <segue destination="4Qg-4O-sJD" kind="popover" identifier="QR2CD" popoverAnchorView="Rr0-IK-fIL" id="Cu1-oR-UGB">
+                        <segue destination="s3E-LJ-rg5" kind="popover" identifier="QR2CD" popoverAnchorView="Rr0-IK-fIL" id="Vry-yG-4lZ">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
@@ -488,7 +488,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpI-r8-zcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3214" y="292"/>
+            <point key="canvasLocation" x="3928" y="196"/>
         </scene>
         <!--Child List View Controller - Search Results-->
         <scene sceneID="dbZ-my-vJ2">
@@ -500,7 +500,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="oGV-Iu-NFL">
-                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oGV-Iu-NFL" id="RF6-bV-VDr">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -520,7 +520,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd9-nF-cV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4488" y="-86"/>
+            <point key="canvasLocation" x="6764" y="80"/>
         </scene>
         <!--Child Details View Controller - Child Details-->
         <scene sceneID="EP4-qk-P1I">
@@ -895,7 +895,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytm-sS-xVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5418" y="-75"/>
+            <point key="canvasLocation" x="7602" y="109"/>
         </scene>
         <!--Vaccines Due ListVC-->
         <scene sceneID="R7A-mu-fJh">
@@ -966,7 +966,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Les-52-JDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6379" y="-75"/>
+            <point key="canvasLocation" x="8467" y="281"/>
         </scene>
         <!--Patients History ListVC-->
         <scene sceneID="Ds8-DG-VU7">
@@ -1563,7 +1563,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCq-Dd-jkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1058" y="-756"/>
+            <point key="canvasLocation" x="5754" y="312"/>
         </scene>
         <!--Navigation Controller - Vaccines Due-->
         <scene sceneID="QTb-pq-MHt">
@@ -1601,7 +1601,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2S-qe-hoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7584" y="93"/>
+            <point key="canvasLocation" x="8696" y="169"/>
         </scene>
         <!--Navigation Controller - Vaccination Schedule-->
         <scene sceneID="M0g-xy-vW1">
@@ -1845,7 +1845,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Cu1-oR-UGB"/>
-        <segue reference="Ylc-o4-kyU"/>
+        <segue reference="Vry-yG-4lZ"/>
     </inferredMetricsTieBreakers>
 </document>

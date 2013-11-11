@@ -12,6 +12,7 @@
 #import <ZXResult.h>
 #import "QRScanViewController.h"
 #import "ChildDetailsViewController.h"
+#import "ChildListViewController.h"
 
 
 #define kSearchPatientByID @"http://192.168.1.72/searchPatientByID.php"
@@ -167,16 +168,20 @@
 - (void)captureSize:(ZXCapture*)capture width:(NSNumber*)width height:(NSNumber*)height {
 }
 
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
    if ([segue.identifier isEqualToString:@"QR2CD"]) {
-      ChildDetailsViewController *cd = [segue destinationViewController];
+     
+       UINavigationController* nav =  segue.destinationViewController;
+       ChildListViewController* childList = (ChildListViewController *)[nav.viewControllers objectAtIndex:0];
        
        
-       if ([self.scannedResult isEqualToString:@""]) {
-           UIAlertView *requiredFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Cannot read barcode" message:@"Please re-scan the barcode." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-           [requiredFieldsAlert  show];
-       } else {
-           
+       
+//       if ([self.scannedResult isEqualToString:@""]) {
+//           UIAlertView *requiredFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Cannot read barcode" message:@"Please re-scan the barcode." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//           [requiredFieldsAlert  show];
+//       } else {
+       
            //Brian: Nov 08, 2013
            //Create Search Patients post string
            NSMutableString *postString = [NSMutableString stringWithString:kSearchPatientByID];
@@ -200,13 +205,12 @@
                return;
            }
            
+           [childList setArrayList:selectedPatient];
            
-           NSMutableDictionary* childDict =[[NSMutableDictionary alloc] initWithDictionary:[selectedPatient objectAtIndex:0]];
-
-        [cd setChildDict:childDict];
+           [childList setPhysician_id:_physician_id];//Physician sent from Login page
    }
 
-   }
+
 }
 
 

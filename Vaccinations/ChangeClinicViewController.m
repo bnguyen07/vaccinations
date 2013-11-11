@@ -82,7 +82,7 @@
         NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         
         if ([postResult isEqualToString:@"Cannot update your clinic! Please check your inputs."]) {
-            UIAlertView *failAlert = [[UIAlertView alloc] initWithTitle:@"Fail to create Username" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *failAlert = [[UIAlertView alloc] initWithTitle:@"Fail to change your clinic." message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [failAlert show];
             return;
         } else {
