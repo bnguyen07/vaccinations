@@ -52,8 +52,8 @@ NSString *kGetUrlForLogin;
     //Also return a user type
     
     NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForLogin];
-    [getString appendString:[NSString stringWithFormat:@"?%@=\"%@\"", kuser_id, [_Username text]]];
-    [getString appendString:[NSString stringWithFormat:@"&%@=\"%@\"", kpassword, [_Password text]]];
+    [getString appendString:[NSString stringWithFormat:@"?%@=%@", kuser_id, [_Username text]]];
+    [getString appendString:[NSString stringWithFormat:@"&%@=%@", kpassword, [_Password text]]];
     NSLog(@"This is the GET string for the Login function: %@", getString);
     [getString setString:[getString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 

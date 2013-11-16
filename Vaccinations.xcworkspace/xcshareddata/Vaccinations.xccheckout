@@ -14,7 +14,7 @@
 		<string>https://github.com/heoiu87/vaccinations/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Vaccinations.xcworkspace</string>
+	<string>trunk/Vaccinations.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>52ACF620-3889-4E55-A6CF-9496B2B3417B</key>
