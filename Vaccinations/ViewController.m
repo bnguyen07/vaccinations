@@ -35,7 +35,7 @@ NSString *kGetUrlForLogin;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _users = [[NSMutableArray alloc] initWithObjects: nil];
-    kGetUrlForLogin = @"http://localhost/login.php";
+    kGetUrlForLogin = [[NSString alloc] initWithFormat:@"http://%@/login.php", gServerIp];
 }
 
 - (void)didReceiveMemoryWarning
