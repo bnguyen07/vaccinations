@@ -7,10 +7,12 @@
 //
 
 #import "VaccineScheduleListVC.h"
+#import "AppDelegate.h"
 
 //Brian
 //Nov 01, 2013
-#define kGetUrlForVaccinations @"http://192.168.1.72/searchVaccination.php/"
+//#define kGetUrlForVaccinations @"http://192.168.1.72/searchVaccination.php/"
+NSString *kGetUrlForVaccinations;
 #define kpatient_id @"patient_id"
 
 
@@ -33,7 +35,8 @@
 {
     [super viewDidLoad];
     NSLog(@"Physician ID in Vaccine Schedule: %@", _physician_id);
-
+   kGetUrlForVaccinations = [[NSString alloc] initWithFormat:@"http://%@/searchVaccinations.php", gServerIp];
+   NSLog(@"kGetUrlForVaccinations: %@", kGetUrlForVaccinations);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

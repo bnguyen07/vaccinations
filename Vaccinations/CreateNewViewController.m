@@ -7,11 +7,13 @@
 //
 
 #import "CreateNewViewController.h"
+#import "AppDelegate.h"
 
 //Brian : create new record function
 // October 23, 2013
 //Change localhost to your IP address in order to using Ipad
-#define kPostURL @"http://192.168.1.72/postNewRecord.php"
+//#define kPostURL @"http://192.168.1.72/postNewRecord.php"
+NSString *kPostURL;
 
 #define kpatient_id @"patient_id"
 
@@ -79,7 +81,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Create New";
-    
+   kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewRecord.php", gServerIp];
+   NSLog(@"kPostURL: %@", kPostURL);
     _genderString = [[NSString alloc] initWithString:[_gender titleForSegmentAtIndex:[_gender selectedSegmentIndex]]];
     
      NSLog(@"Physician got from Login page: %@", _physician_id);

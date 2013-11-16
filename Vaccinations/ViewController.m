@@ -13,11 +13,14 @@
 #import "CreateNewViewController.h"
 #import "ScanViewController.h"
 #import "ChildListViewController.h"
+#import "SettingsViewController.h"
+#import "AppDelegate.h"
 
 
 
 //Change localhost to your IP address in order to using Ipad
-#define kGetUrlForLogin @"http://192.168.1.72/login.php"
+//#define kGetUrlForLogin @"http://192.168.1.72/login.php"
+NSString *kGetUrlForLogin;
 #define kuser_id @"user_id"
 #define kpassword @"password"
 
@@ -32,7 +35,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _users = [[NSMutableArray alloc] initWithObjects: nil];
-    
+    kGetUrlForLogin = @"http://localhost/login.php";
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,12 +160,29 @@
 
 }
 
+-(IBAction)saveSettings:(UIStoryboardSegue*)segue{
+   NSLog(@"serverIp = %@", gServerIp);
+   if ([gServerIp isEqualToString:@""]) {
+      url = @"http://localhost";
+   } else {
+      url = [[NSString alloc] initWithFormat:@"http://%@", gServerIp ];
+   }
+   NSLog(@"url = %@", url);
+   kGetUrlForLogin = [[NSString alloc] initWithFormat:@"%@/login.php", url];
+   NSLog(@"kGetUrlForLogin = %@", kGetUrlForLogin);
+}
 
+-(IBAction)cancel:(UIStoryboardSegue*)sender{
+   
+}
 
 
 - (IBAction)dismissKeyboard:(id)sender {
     [_Username resignFirstResponder];
     [_Password resignFirstResponder] ;
     
+}
+
+- (IBAction)systemPreferenceBtn:(id)sender {
 }
 @end

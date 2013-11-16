@@ -7,11 +7,13 @@
 //
 
 #import "PatientsHistoryListVC.h"
+#import "AppDelegate.h"
 
 
 //Brian
 //Temp fix Nov 01, 2013
-#define kGetUrlForVaccinesTaken @"http://192.168.1.72/list_vaccine_taken.php"
+//#define kGetUrlForVaccinesTaken @"http://192.168.1.72/list_vaccine_taken.php"
+NSString *kGetUrlForVaccinesTaken;
 #define kpatient_id @"patient_id"
 
 
@@ -42,10 +44,9 @@
     //Subash
     self.navigationItem.title = self.childName;
     NSLog(@"Physician ID in Patient History: %@", _physician_id);
-    
+   kGetUrlForVaccinesTaken = [[NSString alloc] initWithFormat:@"http://%@/list_vaccine_taken.php", gServerIp];
+   NSLog(@"kGetUrlForVaccinesTaken: %@", kGetUrlForVaccinesTaken);
     [self runUrlRequest];
-    
-    
 }
 
 //-(void)viewWillAppear:(BOOL)animated

@@ -7,8 +7,10 @@
 //
 
 #import "RegisterParentViewController.h"
+#import "AppDelegate.h"
 
-#define kPostURL @"http://192.168.1.72/postNewPatientUser.php"
+//#define kPostURL @"http://192.168.1.72/postNewPatientUser.php"
+NSString *kPostURL;
 #define kuser_id @"user_id"
 #define kpassword @"password"
 #define kemail @"email"
@@ -33,7 +35,8 @@
 	// Do any additional setup after loading the view.
     _ParentPassword.secureTextEntry = YES;
     _ParentReenterPassword.secureTextEntry = YES;
-    
+   kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewPatientUser.php", gServerIp];
+   NSLog(@"kPostURL: %@", kPostURL);
 }
 
 - (void)didReceiveMemoryWarning

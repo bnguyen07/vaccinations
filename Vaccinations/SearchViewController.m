@@ -8,10 +8,12 @@
 
 #import "SearchViewController.h"
 #import "ChildListViewController.h"
+#import "AppDelegate.h"
 
 
 //Change localhost to your IP address in order to using Ipad
-#define kSearchPatiets @"http://192.168.1.72/searchPatients.php"
+//#define kSearchPatiets @"http://192.168.1.72/searchPatients.php"
+NSString *kSearchPatients;
 #define klast_name @"last_name"
 #define kfirst_name @"first_name"
 #define kmother_maiden_name @"mothers_maiden_name"
@@ -42,9 +44,8 @@
     self.title = @"Search";
     
      NSLog(@"Physician got from Login page: %@", _physician_id);
-    
-    
-    
+   kSearchPatients = [[NSString alloc] initWithFormat:@"http://%@/searchPatients.php", gServerIp];
+   NSLog(@"kSearchPatients: %@", kSearchPatients);
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,7 +118,7 @@
         
         //Brian: Nov 08, 2013
         //Create Search Patients post string
-        NSMutableString *postString = [NSMutableString stringWithString:kSearchPatiets];
+        NSMutableString *postString = [NSMutableString stringWithString:kSearchPatients];
         
          [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [[_firstName text] capitalizedString]]];
         

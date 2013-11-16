@@ -7,13 +7,16 @@
 //
 
 #import "VaccinesDueListVC.h"
+#import "AppDelegate.h"
 
 
 
 //Brian
 //Nov 08, 2013
-#define kGetUrlForVaccinesNotTaken @"http://192.168.1.72/list_vaccine_not_taken.php"
-#define kGetUrlForCreateNewVaccination @"http://192.168.1.72/postNewVaccination.php"
+//#define kGetUrlForVaccinesNotTaken @"http://192.168.1.72/list_vaccine_not_taken.php"
+//#define kGetUrlForCreateNewVaccination @"http://192.168.1.72/postNewVaccination.php"
+NSString *kGetUrlForVaccinesNotTaken;
+NSString *kGetUrlForCreateNewVaccination;
 
 #define kvaccination_id @"vaccination_id"
 #define kpatient_id @"patient_id"
@@ -52,8 +55,11 @@
     //Make sure that the patientID is right
     NSLog(@"Patient ID is: %@", _patientID );
     NSLog(@"Physician ID in Vaccines Due: %@", _physician_id);
-    
-    
+   kGetUrlForCreateNewVaccination = [[NSString alloc] initWithFormat:@"http://%@/postNewVaccination.php", gServerIp];
+   kGetUrlForVaccinesNotTaken = [[NSString alloc] initWithFormat:@"http://%@/list_vaccine_not_taken.php", gServerIp];
+   NSLog(@"kGetUrlForCreateNewVaccination: %@", kGetUrlForCreateNewVaccination);
+   NSLog(@"kGetUrlForVaccinesNotTaken: %@", kGetUrlForVaccinesNotTaken);
+   
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     _dateTakenAsString = [dateFormat stringFromDate:[NSDate date]];

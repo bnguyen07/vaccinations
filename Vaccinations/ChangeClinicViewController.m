@@ -7,9 +7,11 @@
 //
 
 #import "ChangeClinicViewController.h"
+#import "AppDelegate.h"
 
 
-#define kGetUrlToChangeClinic @"http://192.168.1.72/changePhysicianClinic.php"
+//#define kGetUrlToChangeClinic @"http://192.168.1.72/changePhysicianClinic.php"
+NSString *kGetUrlToChangeClinic;
 
 #define kclinic @"clinic"
 #define kphysician_id @"physician_id"
@@ -42,8 +44,8 @@
 	// Do any additional setup after loading the view.
     
     NSLog(@"Inside Change Clinic, physician ID: %@", physician);
-    
-    
+   kGetUrlToChangeClinic = [[NSString alloc] initWithFormat:@"http://%@/changePhysicianClinic.php", gServerIp];
+   NSLog(@"kGetUrlToChangeClinic: %@", kGetUrlToChangeClinic);
 }
 
 - (void)didReceiveMemoryWarning

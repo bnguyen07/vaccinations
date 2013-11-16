@@ -10,11 +10,13 @@
 #import "VaccinesDueListVC.h"
 #import "VaccineScheduleListVC.h"
 #import "PatientsHistoryListVC.h"
+#import "AppDelegate.h"
 
 
 //Change localhost to your IP address in order to using Ipad
 //Brian Nov 09, 2013
-#define kChangePatientInfo @"http://192.168.1.72/changePatientInfo.php"
+//#define kChangePatientInfo @"http://192.168.1.72/changePatientInfo.php"
+NSString *kChangePatientInfo;
 #define kpatient_id @"patient_id"
 #define klastName @"last_name"
 #define kfirstName @"first_name"
@@ -59,8 +61,9 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
-    
-    
+   kChangePatientInfo = [[NSString alloc] initWithFormat:@"http://%@/changePatientInfo.php", gServerIp];
+   NSLog(@"kChangePatientInfo: %@", kChangePatientInfo);
+   
    NSLog(@"ChildDetails Record ID: %@", [self recordID]);
    
     _lastNameTF.enabled = NO;

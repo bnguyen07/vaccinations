@@ -7,8 +7,10 @@
 //
 
 #import "ChangePasswordViewController.h"
+#import "AppDelegate.h"
 
-#define kGetUrlToChangePassword @"http://192.168.1.72/changePhysicianPassword.php"
+//#define kGetUrlToChangePassword @"http://192.168.1.72/changePhysicianPassword.php"
+NSString *kGetUrlToChangePassword;
 
 #define kuser_id @"user_id"
 
@@ -47,8 +49,8 @@
 	// Do any additional setup after loading the view.
     
     NSLog(@"Inside Change Password, physician ID: %@", physician);
-    
-    
+   kGetUrlToChangePassword = [[NSString alloc] initWithFormat:@"http://%@/changePhysicianPassword.php", gServerIp];
+   NSLog(@"kGetUrlToChangePassword: %@", kGetUrlToChangePassword);
 }
 
 - (void)didReceiveMemoryWarning

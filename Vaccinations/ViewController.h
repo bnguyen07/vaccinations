@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *url;
+
+
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *Username;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
@@ -17,5 +20,6 @@
 - (IBAction)dismissKeyboard:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *RegisterParent;
+- (IBAction)systemPreferenceBtn:(id)sender;
 
 @end

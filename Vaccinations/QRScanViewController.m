@@ -13,9 +13,11 @@
 #import "QRScanViewController.h"
 #import "ChildDetailsViewController.h"
 #import "ChildListViewController.h"
+#import "AppDelegate.h"
 
 
-#define kSearchPatientByID @"http://192.168.1.72/searchPatientByID.php"
+//#define kSearchPatientByID @"http://192.168.1.72/searchPatientByID.php"
+NSString *kSearchPatientByID;
 #define kpatient_id @"patient_id"
 
 
@@ -37,8 +39,6 @@
    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
    if (self) {
       // Custom initialization
-      
-      
    }
    return self;
 }
@@ -47,7 +47,8 @@
 {
    [super viewDidLoad];
 	// Do any additional setup after loading the view.
-   
+   kSearchPatientByID = [[NSString alloc] initWithFormat:@"http://%@/searchPatientByID.php", gServerIp];
+   NSLog(@"kSearchPatientByID: %@", kSearchPatientByID);
    self.title = @"QR Scan";
    self.gotResult = NO;
    

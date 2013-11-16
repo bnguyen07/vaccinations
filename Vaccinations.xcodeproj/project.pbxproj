@@ -54,6 +54,8 @@
 		11C3BAF71815EE6600F25C2A /* navbutton-vaccinesdue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C3BAEE1815EE6600F25C2A /* navbutton-vaccinesdue.png */; };
 		11C3BAF81815EE6600F25C2A /* white.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11C3BAEF1815EE6600F25C2A /* white.jpg */; };
 		4A8E51E942ED4DA6BB730E31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF7E7E53EE43E09BF951C0 /* libPods.a */; };
+		7E7E3D02183666AA00D870D2 /* system_preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E3D01183666AA00D870D2 /* system_preferences.png */; };
+		7E7E3D051836ED9400D870D2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E3D041836ED9400D870D2 /* SettingsViewController.m */; };
 		A06FDB8518137A3900212BA1 /* ChildDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06FDB8418137A3900212BA1 /* ChildDetailsViewController.m */; };
 		D31E973C1828660100EB6F0C /* RegisterParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31E973B1828660100EB6F0C /* RegisterParentViewController.m */; };
 		D3C8B241182C079D0021267C /* ChildSearchTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C8B240182C079D0021267C /* ChildSearchTabBar.m */; };
@@ -134,6 +136,9 @@
 		11C3BAEE1815EE6600F25C2A /* navbutton-vaccinesdue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbutton-vaccinesdue.png"; sourceTree = "<group>"; };
 		11C3BAEF1815EE6600F25C2A /* white.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white.jpg; sourceTree = "<group>"; };
 		6604A4F47389415587BE3DAE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7E7E3D01183666AA00D870D2 /* system_preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = system_preferences.png; sourceTree = "<group>"; };
+		7E7E3D031836ED9400D870D2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		7E7E3D041836ED9400D870D2 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		99DF7E7E53EE43E09BF951C0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A06FDB8318137A3900212BA1 /* ChildDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildDetailsViewController.h; sourceTree = "<group>"; };
 		A06FDB8418137A3900212BA1 /* ChildDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildDetailsViewController.m; sourceTree = "<group>"; };
@@ -214,6 +219,8 @@
 				110A55271811FFEC00C372E3 /* AppDelegate.h */,
 				110A55281811FFEC00C372E3 /* AppDelegate.m */,
 				110A552A1811FFEC00C372E3 /* Main.storyboard */,
+				7E7E3D031836ED9400D870D2 /* SettingsViewController.h */,
+				7E7E3D041836ED9400D870D2 /* SettingsViewController.m */,
 				110A55301811FFEC00C372E3 /* Images.xcassets */,
 				110A551F1811FFEC00C372E3 /* Supporting Files */,
 			);
@@ -295,6 +302,7 @@
 		1160AD5D1812EEF0004C9D96 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7E7E3D01183666AA00D870D2 /* system_preferences.png */,
 				113E435F1815FCAA00D803C6 /* Logo.png */,
 				11C3BAE61815EE6600F25C2A /* navkeys */,
 				1160AD5E1812EEF0004C9D96 /* bottombar-lightblue.png */,
@@ -430,6 +438,7 @@
 			files = (
 				1160AD721812EEF0004C9D96 /* button-search.png in Resources */,
 				11C3BAF51815EE6600F25C2A /* navbutton-search.png in Resources */,
+				7E7E3D02183666AA00D870D2 /* system_preferences.png in Resources */,
 				1160AD741812EEF0004C9D96 /* contentbox.png in Resources */,
 				1160AD751812EEF0004C9D96 /* labelbar-green.png in Resources */,
 				113E43601815FCAA00D803C6 /* Logo.png in Resources */,
@@ -512,6 +521,7 @@
 				115E029418136A5400937F3B /* ForgotViewController.m in Sources */,
 				110A55251811FFEC00C372E3 /* main.m in Sources */,
 				D31E973C1828660100EB6F0C /* RegisterParentViewController.m in Sources */,
+				7E7E3D051836ED9400D870D2 /* SettingsViewController.m in Sources */,
 				112BD0A418172B680041AF00 /* VaccinesDueListVC.m in Sources */,
 				D3C8B241182C079D0021267C /* ChildSearchTabBar.m in Sources */,
 				115E02A41813731B00937F3B /* ChildListViewController.m in Sources */,

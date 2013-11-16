@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NSString *gServerIp; // Global variable
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
