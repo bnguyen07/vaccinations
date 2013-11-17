@@ -84,9 +84,7 @@ NSString *kChangePatientInfo;
     _CurrentZipcode.enabled = NO;
     _Gender.enabled = NO;
     _DateOfBirth.enabled = NO;
-    
-    //if ([[self recordID] isEqualToString:NULL]) {
-    
+        
     //Brian: Fix Nov 09, 2013
     if (childDict != NULL) {
 
@@ -215,7 +213,35 @@ NSString *kChangePatientInfo;
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"yyyy-MM-dd"];
             NSString *birthDate = [dateFormat stringFromDate:[_DateOfBirth date]];
-            
+           NSDate *now = [NSDate date]; // Get the current date
+           NSCalendar *calendar = [NSCalendar currentCalendar];
+           NSDateComponents *dateComponents = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
+           NSInteger currentYear=[dateComponents year];
+
+           NSDateComponents *dateCompFromDatePicker = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[_DateOfBirth date]];
+           NSInteger yearFromDatePicker=[dateCompFromDatePicker year];
+           if (yearFromDatePicker > currentYear) {
+              UIAlertView *dateAlert = [[UIAlertView alloc] initWithTitle:@"Date Error" message:@"Birth year is in the future!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dateAlert show];
+              return;
+           }
+           
+           NSInteger currentMonth=[dateComponents month];
+           NSInteger monthFromDatePicker=[dateCompFromDatePicker month];
+           if (monthFromDatePicker > currentMonth) {
+              UIAlertView *dateAlert = [[UIAlertView alloc] initWithTitle:@"Date Error" message:@"Birth month is in the future!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dateAlert show];
+              return;
+           } else if (monthFromDatePicker == currentMonth){
+              NSInteger dayFromDatePicker=[dateCompFromDatePicker day];
+              NSInteger currentDay=[dateComponents day];
+              if (dayFromDatePicker > currentDay) {
+                 UIAlertView *dateAlert = [[UIAlertView alloc] initWithTitle:@"Date Error" message:@"Birth day is in the future!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                 [dateAlert show];
+                 return;
+              }
+           }
+           
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
             
             NSString *gender = [[NSString alloc] initWithString:[_Gender titleForSegmentAtIndex:[_Gender selectedSegmentIndex]]];
