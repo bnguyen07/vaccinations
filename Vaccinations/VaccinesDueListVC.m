@@ -163,17 +163,17 @@ NSString *kGetUrlForCreateNewVaccination;
     NSString* alertString;
     alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
     
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     [alert show];
-    return;
    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   return;
 }
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    if (buttonIndex == 1)
+    if (buttonIndex == 0)
     {
         NSLog(@"NO");
     } else {
@@ -215,16 +215,16 @@ NSString *kGetUrlForCreateNewVaccination;
             [failAlert show];
         } else {
             
-            UIAlertView *successfulAlert = [[UIAlertView alloc] initWithTitle:@"Successfully!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *successfulAlert = [[UIAlertView alloc] initWithTitle:@"Successful!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [successfulAlert show];
-            NSLog(@"Create new Vaccination successfully.");
+            NSLog(@"Create new Vaccination successful.");
         }
         
         
         //write the code to update vaccionations due database
         //run url request
         
-        [_myTableView reloadData];
+        //[_myTableView reloadData];
     
         
     }// End of if-else
