@@ -24,7 +24,9 @@ NSString *kGetUrlForCreateNewVaccination;
 #define kphysician_id @"physician_id"
 #define kdate_taken @"date_taken"
 
-@interface VaccinesDueListVC ()
+@interface VaccinesDueListVC (){
+   BOOL confirm;
+}
 
 @end
 
@@ -44,13 +46,13 @@ NSString *kGetUrlForCreateNewVaccination;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+   confirm = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-   
+
     //Brian: Nov 09, 2013
     //Make sure that the patientID is right
     NSLog(@"Patient ID is: %@", _patientID );
@@ -92,7 +94,7 @@ NSString *kGetUrlForCreateNewVaccination;
     NSData *data = [NSData dataWithContentsOfURL:url];
     NSError *error;
     if (data) {
-        _vaccinesDue = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        _vaccinesDue = [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error]mutableCopy];
         NSLog(@"%@", _vaccinesDue);
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"data is nil. Check the connection. Turn off firewall." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -120,7 +122,7 @@ NSString *kGetUrlForCreateNewVaccination;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _vaccinesDue.count;
+    return [_vaccinesDue count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,23 +164,33 @@ NSString *kGetUrlForCreateNewVaccination;
     
     NSString* alertString;
     alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
-    
+   
+
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     [alert show];
    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+   
+   if (confirm) {
+      confirm = NO;
+      // Delete from underlying data source first!
+      [self.vaccinesDue removeObjectAtIndex:indexPath.row];
+      [tableView beginUpdates];
+      [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+      [tableView endUpdates];
+      [tableView reloadData];
+   }
    return;
 }
-
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0)
     {
-        NSLog(@"NO");
+        NSLog(@"NO or OK");
     } else {
         NSLog(@"YES");
-        
+
         //Brian: Nov 09, 2013
         // To generate the random vaccination id
         NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -218,9 +230,9 @@ NSString *kGetUrlForCreateNewVaccination;
             UIAlertView *successfulAlert = [[UIAlertView alloc] initWithTitle:@"Successful!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [successfulAlert show];
             NSLog(@"Create new Vaccination successful.");
+           confirm = YES;
         }
-        
-        
+       
         //write the code to update vaccionations due database
         //run url request
         
