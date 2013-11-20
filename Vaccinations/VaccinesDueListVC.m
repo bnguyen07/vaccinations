@@ -161,24 +161,26 @@ NSString *kGetUrlForCreateNewVaccination;
     
     _selectedVaccineMainLabel = label1.text;
     _selectedVaccineSubLabel = label2.text;
-    
-    NSString* alertString;
-    alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
+   
+   if (superUser) {
+      NSString* alertString;
+      alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
    
 
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    [alert show];
+      UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+      [alert show];
    
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+      [tableView deselectRowAtIndexPath:indexPath animated:NO];
    
-   if (confirm) {
-      confirm = NO;
-      // Delete from underlying data source first!
-      [self.vaccinesDue removeObjectAtIndex:indexPath.row];
-      [tableView beginUpdates];
-      [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-      [tableView endUpdates];
-      [tableView reloadData];
+      if (confirm) {
+         confirm = NO;
+         // Delete from underlying data source first!
+         [self.vaccinesDue removeObjectAtIndex:indexPath.row];
+         [tableView beginUpdates];
+         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         [tableView endUpdates];
+         [tableView reloadData];
+      }
    }
    return;
 }
