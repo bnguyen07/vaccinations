@@ -94,8 +94,16 @@ NSString *kGetUrlForLogin;
     [self getUsernameAndPassword];
         
 
-    NSLog(@"User type: %@",[[[_users lastObject] objectForKey:@"user_type"] class]);
-    
+//    NSLog(@"User type: %@",[[[_users lastObject] objectForKey:@"user_type"] class]);
+   NSString *userType = [[_users lastObject] objectForKey:@"user_type"];
+   NSLog(@"User type: %@",userType);
+   if ([userType isEqualToString:@"0"]) {
+      superUser = YES;
+      NSLog(@"super user");
+   } else {
+      NSLog(@"user");
+   }
+ 
     if ([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"1"]) {
         [self performSegueWithIdentifier:@"login2ChildListController" sender:self];
     } else if([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"0"]) {

@@ -51,8 +51,8 @@ NSString *kGetUrlForCreateNewVaccination;
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   
     //Brian: Nov 09, 2013
     //Make sure that the patientID is right
     NSLog(@"Patient ID is: %@", _patientID );

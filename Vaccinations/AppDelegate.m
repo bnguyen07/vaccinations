@@ -15,6 +15,7 @@
 {
     // Override point for customization after application launch.
    gServerIp = @"cougaranger.com";
+   superUser = NO;
     return YES;
 }
 							

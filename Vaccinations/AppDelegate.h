@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 NSString *gServerIp; // Global variable
+BOOL superUser;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

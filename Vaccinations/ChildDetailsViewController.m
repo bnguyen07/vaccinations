@@ -84,7 +84,10 @@ NSString *kChangePatientInfo;
     _CurrentZipcode.enabled = NO;
     _Gender.enabled = NO;
     _DateOfBirth.enabled = NO;
-        
+   
+   if (!superUser) {
+      self.EditButton.hidden = YES;
+   }
     //Brian: Fix Nov 09, 2013
     if (childDict != NULL) {
 
