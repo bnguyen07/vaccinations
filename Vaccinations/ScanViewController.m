@@ -53,6 +53,7 @@ const int BPPCOLORIMG = 24;
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No camera detected on this device" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
       [alert show];
       // remove camera and done button
+      _takePhotoButton.enabled = NO;
    }
     
     
