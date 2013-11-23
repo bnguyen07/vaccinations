@@ -56,6 +56,7 @@
 
 
 - (IBAction)dimissKeyboard:(id)sender;
+- (IBAction)changeGender:(id)sender;
 
 
 

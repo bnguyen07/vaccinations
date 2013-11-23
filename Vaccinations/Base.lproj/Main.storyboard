@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Register Parent View Controller-->
@@ -1291,7 +1291,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <segment title="Female"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentGenderAction:" destination="GRV-dK-hwe" eventType="valueChanged" id="5Aq-wI-miS"/>
+                                    <action selector="changeGender:" destination="GRV-dK-hwe" eventType="valueChanged" id="rcP-9T-jjT"/>
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8j-Ih-dlf">
@@ -1899,10 +1899,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="button-login.png" width="260" height="60"/>
         <image name="button-search.png" width="260" height="60"/>
         <image name="labelbar-green.png" width="310" height="32"/>
-        <image name="labelbar-green.png" width="310" height="32"/>
-        <image name="labelbar-green.png" width="310" height="32"/>
-        <image name="logo-large.png" width="669" height="133"/>
-        <image name="logo-large.png" width="669" height="133"/>
         <image name="logo-large.png" width="669" height="133"/>
         <image name="navbutton-createnew.png" width="30" height="30"/>
         <image name="navbutton-patienthistory.png" width="30" height="30"/>
@@ -1913,8 +1909,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="navbutton-vaccinesdue.png" width="61" height="30"/>
         <image name="system_preferences.png" width="128" height="128"/>
         <image name="white.jpg" width="1278" height="990"/>
-        <image name="white.jpg" width="1278" height="990"/>
-        <image name="white.jpg" width="1278" height="990"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
@@ -1922,6 +1916,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Vry-yG-4lZ"/>
+        <segue reference="7Z2-bb-3vE"/>
     </inferredMetricsTieBreakers>
 </document>

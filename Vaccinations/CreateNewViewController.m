@@ -198,6 +198,14 @@ NSString *kPostURL;
     
 }
 
+- (IBAction)changeGender:(id)sender {
+   if(self.gender.selectedSegmentIndex == 0){
+		self.genderString = @"M";
+	} else {
+      self.genderString = @"F";
+	}
+}
+
 - (IBAction)datePickerAction:(id)sender {
     NSDate* birthDate = ((UIDatePicker*)sender).date;
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
