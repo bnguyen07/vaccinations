@@ -83,9 +83,7 @@ NSString *kPostURL;
     self.title = @"Create New";
    kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewRecord.php", gServerIp];
    NSLog(@"kPostURL: %@", kPostURL);
-    _genderString = [[NSString alloc] initWithString:[_gender titleForSegmentAtIndex:[_gender selectedSegmentIndex]]];
-    
-     NSLog(@"Physician got from Login page: %@", _physician_id);
+   NSLog(@"Physician got from Login page: %@", _physician_id);
     
     
 }
@@ -125,6 +123,7 @@ NSString *kPostURL;
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
         
+         _genderString = [[NSString alloc] initWithString:[_gender titleForSegmentAtIndex:[_gender selectedSegmentIndex]]];
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [[_genderString substringToIndex:1] capitalizedString]]];
         
