@@ -53,9 +53,15 @@
 		11C3BAF61815EE6600F25C2A /* navbutton-vaccineschedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C3BAED1815EE6600F25C2A /* navbutton-vaccineschedule.png */; };
 		11C3BAF71815EE6600F25C2A /* navbutton-vaccinesdue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C3BAEE1815EE6600F25C2A /* navbutton-vaccinesdue.png */; };
 		11C3BAF81815EE6600F25C2A /* white.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11C3BAEF1815EE6600F25C2A /* white.jpg */; };
-		11D4C5D018426BAE0096748D /* change password.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5CD18426BAE0096748D /* change password.png */; };
-		11D4C5D118426BAE0096748D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5CE18426BAE0096748D /* close.png */; };
-		11D4C5D218426BAE0096748D /* change clinic.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5CF18426BAE0096748D /* change clinic.png */; };
+		11D4C5DB18426E970096748D /* change clinic.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D318426E970096748D /* change clinic.png */; };
+		11D4C5DC18426E970096748D /* change password.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D418426E970096748D /* change password.png */; };
+		11D4C5DD18426E970096748D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D518426E970096748D /* close.png */; };
+		11D4C5DE18426E970096748D /* Forgotpassword.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D618426E970096748D /* Forgotpassword.png */; };
+		11D4C5DF18426E970096748D /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D718426E970096748D /* register.png */; };
+		11D4C5E018426E970096748D /* view vaccinations.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D818426E970096748D /* view vaccinations.png */; };
+		11D4C5E118426E970096748D /* rescan.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D918426E970096748D /* rescan.png */; };
+		11D4C5E218426E970096748D /* create new.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5DA18426E970096748D /* create new.png */; };
+		11D4C5E4184270720096748D /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5E3184270720096748D /* submit.png */; };
 		4A8E51E942ED4DA6BB730E31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF7E7E53EE43E09BF951C0 /* libPods.a */; };
 		7E7E3D02183666AA00D870D2 /* system_preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E3D01183666AA00D870D2 /* system_preferences.png */; };
 		7E7E3D051836ED9400D870D2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E3D041836ED9400D870D2 /* SettingsViewController.m */; };
@@ -138,9 +144,15 @@
 		11C3BAED1815EE6600F25C2A /* navbutton-vaccineschedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbutton-vaccineschedule.png"; sourceTree = "<group>"; };
 		11C3BAEE1815EE6600F25C2A /* navbutton-vaccinesdue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbutton-vaccinesdue.png"; sourceTree = "<group>"; };
 		11C3BAEF1815EE6600F25C2A /* white.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white.jpg; sourceTree = "<group>"; };
-		11D4C5CD18426BAE0096748D /* change password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "change password.png"; path = "../../../../change password.png"; sourceTree = "<group>"; };
-		11D4C5CE18426BAE0096748D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = ../../../../close.png; sourceTree = "<group>"; };
-		11D4C5CF18426BAE0096748D /* change clinic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "change clinic.png"; path = "../../../../change clinic.png"; sourceTree = "<group>"; };
+		11D4C5D318426E970096748D /* change clinic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "change clinic.png"; sourceTree = "<group>"; };
+		11D4C5D418426E970096748D /* change password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "change password.png"; sourceTree = "<group>"; };
+		11D4C5D518426E970096748D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		11D4C5D618426E970096748D /* Forgotpassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forgotpassword.png; sourceTree = "<group>"; };
+		11D4C5D718426E970096748D /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
+		11D4C5D818426E970096748D /* view vaccinations.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view vaccinations.png"; sourceTree = "<group>"; };
+		11D4C5D918426E970096748D /* rescan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rescan.png; sourceTree = "<group>"; };
+		11D4C5DA18426E970096748D /* create new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create new.png"; sourceTree = "<group>"; };
+		11D4C5E3184270720096748D /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		6604A4F47389415587BE3DAE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7E7E3D01183666AA00D870D2 /* system_preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = system_preferences.png; sourceTree = "<group>"; };
 		7E7E3D031836ED9400D870D2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -308,6 +320,15 @@
 		1160AD5D1812EEF0004C9D96 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				11D4C5E3184270720096748D /* submit.png */,
+				11D4C5D318426E970096748D /* change clinic.png */,
+				11D4C5D418426E970096748D /* change password.png */,
+				11D4C5D518426E970096748D /* close.png */,
+				11D4C5D618426E970096748D /* Forgotpassword.png */,
+				11D4C5D718426E970096748D /* register.png */,
+				11D4C5D818426E970096748D /* view vaccinations.png */,
+				11D4C5D918426E970096748D /* rescan.png */,
+				11D4C5DA18426E970096748D /* create new.png */,
 				7E7E3D01183666AA00D870D2 /* system_preferences.png */,
 				113E435F1815FCAA00D803C6 /* Logo.png */,
 				11C3BAE61815EE6600F25C2A /* navkeys */,
@@ -338,9 +359,6 @@
 		11C3BAE61815EE6600F25C2A /* navkeys */ = {
 			isa = PBXGroup;
 			children = (
-				11D4C5CD18426BAE0096748D /* change password.png */,
-				11D4C5CE18426BAE0096748D /* close.png */,
-				11D4C5CF18426BAE0096748D /* change clinic.png */,
 				11C3BAE71815EE6600F25C2A /* navbutton-createnew.png */,
 				11C3BAE81815EE6600F25C2A /* navbutton-patienthistory.png */,
 				11C3BAE91815EE6600F25C2A /* navbutton-scancode.png */,
@@ -445,30 +463,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D4C5E018426E970096748D /* view vaccinations.png in Resources */,
+				11D4C5DF18426E970096748D /* register.png in Resources */,
 				1160AD721812EEF0004C9D96 /* button-search.png in Resources */,
 				11C3BAF51815EE6600F25C2A /* navbutton-search.png in Resources */,
 				7E7E3D02183666AA00D870D2 /* system_preferences.png in Resources */,
 				1160AD741812EEF0004C9D96 /* contentbox.png in Resources */,
+				11D4C5DC18426E970096748D /* change password.png in Resources */,
 				1160AD751812EEF0004C9D96 /* labelbar-green.png in Resources */,
 				113E43601815FCAA00D803C6 /* Logo.png in Resources */,
+				11D4C5E118426E970096748D /* rescan.png in Resources */,
 				1160AD701812EEF0004C9D96 /* box-unchecked.png in Resources */,
-				11D4C5D018426BAE0096748D /* change password.png in Resources */,
 				11C3BAF81815EE6600F25C2A /* white.jpg in Resources */,
 				11C3BAF01815EE6600F25C2A /* navbutton-createnew.png in Resources */,
 				11C3BAF31815EE6600F25C2A /* navbutton-scannew.png in Resources */,
 				1160AD771812EEF0004C9D96 /* logo-small.png in Resources */,
 				11C3BAF11815EE6600F25C2A /* navbutton-patienthistory.png in Resources */,
-				11D4C5D118426BAE0096748D /* close.png in Resources */,
+				11D4C5DB18426E970096748D /* change clinic.png in Resources */,
+				11D4C5E4184270720096748D /* submit.png in Resources */,
 				1160AD711812EEF0004C9D96 /* button-login.png in Resources */,
 				110A55311811FFEC00C372E3 /* Images.xcassets in Resources */,
-				11D4C5D218426BAE0096748D /* change clinic.png in Resources */,
 				1160AD6F1812EEF0004C9D96 /* bottombar-lightblue.png in Resources */,
 				11C3BAF71815EE6600F25C2A /* navbutton-vaccinesdue.png in Resources */,
 				11C3BAF41815EE6600F25C2A /* navbutton-scanrecord.png in Resources */,
 				1160AD761812EEF0004C9D96 /* logo-large.png in Resources */,
+				11D4C5DD18426E970096748D /* close.png in Resources */,
+				11D4C5E218426E970096748D /* create new.png in Resources */,
 				11C3BAF21815EE6600F25C2A /* navbutton-scancode.png in Resources */,
 				1160AD731812EEF0004C9D96 /* checkmark-green.png in Resources */,
 				11C3BAF61815EE6600F25C2A /* navbutton-vaccineschedule.png in Resources */,
+				11D4C5DE18426E970096748D /* Forgotpassword.png in Resources */,
 				110A55231811FFEC00C372E3 /* InfoPlist.strings in Resources */,
 				110A552C1811FFEC00C372E3 /* Main.storyboard in Resources */,
 			);
