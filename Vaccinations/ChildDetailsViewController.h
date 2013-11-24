@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTF;
 @property (nonatomic, strong) NSMutableDictionary* childDict;
 
+@property (nonatomic, strong) NSMutableDictionary* childDetails;
+
 @property (weak, nonatomic) IBOutlet UITextField *patient_id;
 
 @property (nonatomic, strong) NSString *physician_id;// Physician sent from Login page

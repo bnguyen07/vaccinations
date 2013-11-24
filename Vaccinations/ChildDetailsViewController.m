@@ -17,6 +17,9 @@
 //Brian Nov 09, 2013
 //#define kChangePatientInfo @"http://192.168.1.72/changePatientInfo.php"
 NSString *kChangePatientInfo;
+
+NSString *kGetPatientDetails;
+
 #define kpatient_id @"patient_id"
 #define klastName @"last_name"
 #define kfirstName @"first_name"
@@ -61,10 +64,38 @@ NSString *kChangePatientInfo;
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
-   kChangePatientInfo = [[NSString alloc] initWithFormat:@"http://%@/changePatientInfo.php", gServerIp];
-   NSLog(@"kChangePatientInfo: %@", kChangePatientInfo);
-   
-   NSLog(@"ChildDetails Record ID: %@", [self recordID]);
+    kChangePatientInfo = [[NSString alloc] initWithFormat:@"http://%@/changePatientInfo.php", gServerIp];
+    NSLog(@"kChangePatientInfo: %@", kChangePatientInfo);
+    NSLog(@"ChildDetails Record ID: %@", [self recordID]);
+    
+    
+    //Nov 24, 2013 : Refresh the patient details from database
+     kGetPatientDetails = [[NSString alloc] initWithFormat:@"http://%@/getPatientDetails.php", gServerIp];
+    NSMutableString *getString = [NSMutableString stringWithString:kGetPatientDetails];
+    [getString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, [childDict objectForKey:@"patient_id"]]];
+    
+    NSLog(@"This is the GET string for the Get patient details: %@", getString);
+    [getString setString:[getString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURL *getPatientDetailsUrl = [NSURL URLWithString:getString];
+    
+    NSData *patientDetails = [NSData dataWithContentsOfURL:getPatientDetailsUrl];
+    NSError *error;
+    if (patientDetails) {
+        _childDetails = [[NSJSONSerialization JSONObjectWithData:patientDetails options:kNilOptions error:&error] objectAtIndex:0];
+        NSLog(@"%@", _childDetails);
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Cannot connect to databse. Please check your connection or firewall." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    // Instead of use the data sent from Child List View.
+    // Now we get the data from database to make sure it's fresh as new
+    
+    NSLog(@"These are patient details just CREATED: %@", _childDetails);
+    NSLog(@"These are patient class just CREATED: %@", [_childDetails class]);
+    NSLog(@"These are patient patient_id just CREATED: %@", [_childDetails objectForKey:@"patient_id"]);
+    
+    
    
     _lastNameTF.enabled = NO;
     _firstNameTF.enabled = NO;
