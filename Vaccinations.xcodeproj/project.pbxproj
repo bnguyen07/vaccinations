@@ -62,6 +62,7 @@
 		11D4C5E118426E970096748D /* rescan.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5D918426E970096748D /* rescan.png */; };
 		11D4C5E218426E970096748D /* create new.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5DA18426E970096748D /* create new.png */; };
 		11D4C5E4184270720096748D /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5E3184270720096748D /* submit.png */; };
+		11D4C5E6184271FA0096748D /* contact Admin.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D4C5E5184271FA0096748D /* contact Admin.png */; };
 		4A8E51E942ED4DA6BB730E31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF7E7E53EE43E09BF951C0 /* libPods.a */; };
 		7E7E3D02183666AA00D870D2 /* system_preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E3D01183666AA00D870D2 /* system_preferences.png */; };
 		7E7E3D051836ED9400D870D2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E3D041836ED9400D870D2 /* SettingsViewController.m */; };
@@ -153,6 +154,7 @@
 		11D4C5D918426E970096748D /* rescan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rescan.png; sourceTree = "<group>"; };
 		11D4C5DA18426E970096748D /* create new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create new.png"; sourceTree = "<group>"; };
 		11D4C5E3184270720096748D /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
+		11D4C5E5184271FA0096748D /* contact Admin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact Admin.png"; sourceTree = "<group>"; };
 		6604A4F47389415587BE3DAE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7E7E3D01183666AA00D870D2 /* system_preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = system_preferences.png; sourceTree = "<group>"; };
 		7E7E3D031836ED9400D870D2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		1160AD5D1812EEF0004C9D96 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				11D4C5E5184271FA0096748D /* contact Admin.png */,
 				11D4C5E3184270720096748D /* submit.png */,
 				11D4C5D318426E970096748D /* change clinic.png */,
 				11D4C5D418426E970096748D /* change password.png */,
@@ -463,6 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D4C5E6184271FA0096748D /* contact Admin.png in Resources */,
 				11D4C5E018426E970096748D /* view vaccinations.png in Resources */,
 				11D4C5DF18426E970096748D /* register.png in Resources */,
 				1160AD721812EEF0004C9D96 /* button-search.png in Resources */,

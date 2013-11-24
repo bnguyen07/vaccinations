@@ -149,9 +149,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcJ-rY-bz4">
-                                <rect key="frame" x="120" y="379" width="151" height="30"/>
+                                <rect key="frame" x="120" y="375" width="150" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Contact Administrator">
+                                <state key="normal" backgroundImage="contact Admin.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -159,7 +159,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="600"/>
                     <connections>
@@ -1902,6 +1902,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="change clinic.png" width="150" height="40"/>
         <image name="change password.png" width="150" height="40"/>
         <image name="close.png" width="150" height="40"/>
+        <image name="contact Admin.png" width="150" height="40"/>
         <image name="create new.png" width="260" height="60"/>
         <image name="labelbar-green.png" width="310" height="32"/>
         <image name="logo-large.png" width="669" height="133"/>
