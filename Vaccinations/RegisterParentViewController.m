@@ -85,12 +85,14 @@ NSString *kPostURL;
             return;
             
             NSLog(@"Username has been created successfully.");
-        }
-
+           
+        } // End if-else
         
-    }
+        
+        
+    }// End if-else
     
-    
-    
-}
+}//end of method createPatientUser
+
+
 @end
