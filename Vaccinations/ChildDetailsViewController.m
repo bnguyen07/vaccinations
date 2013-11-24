@@ -97,7 +97,7 @@ NSString *kChangePatientInfo;
         _middleName.text = [childDict objectForKey:@"middle_name"];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-mm-dd"];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
         NSDate * dateOfBirth=[formatter dateFromString:[childDict objectForKey:@"birthdate"]];
         [_DateOfBirth setDate:dateOfBirth];
         
