@@ -122,35 +122,35 @@ NSString *kGetPatientDetails;
     //Brian: Fix Nov 09, 2013
     if (childDict != NULL) {
 
-        _patient_id.text = [childDict objectForKey:@"patient_id"];
-      _lastNameTF.text = [childDict objectForKey:@"last_name"];
-      _firstNameTF.text = [childDict objectForKey:@"first_name"];
-        _middleName.text = [childDict objectForKey:@"middle_name"];
+        _patient_id.text = [_childDetails objectForKey:@"patient_id"];
+      _lastNameTF.text = [_childDetails objectForKey:@"last_name"];
+      _firstNameTF.text = [_childDetails objectForKey:@"first_name"];
+        _middleName.text = [_childDetails objectForKey:@"middle_name"];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd"];
-        NSDate * dateOfBirth=[formatter dateFromString:[childDict objectForKey:@"birthdate"]];
+        NSDate * dateOfBirth=[formatter dateFromString:[_childDetails objectForKey:@"birthdate"]];
         [_DateOfBirth setDate:dateOfBirth];
         
-        if ([[childDict objectForKey:@"gender"] isEqualToString:@"M"]) {
+        if ([[_childDetails objectForKey:@"gender"] isEqualToString:@"M"]) {
             [_Gender setSelectedSegmentIndex:0];
         } else {
             [_Gender setSelectedSegmentIndex:1];
         }        
         
-      _MotherMaidenName.text = [childDict objectForKey:@"mothers_maiden_name"];
-        _MotherName.text = [childDict objectForKey:@"mothers_name"];
-      _FatherName.text = [childDict objectForKey:@"fathers_name"];
-        _BirthStreetNumber.text = [childDict objectForKey:@"POB_street_number"];
-      _BirthStreetName.text = [childDict objectForKey:@"POB_street_name"];
-      _BirthCity.text = [childDict objectForKey:@"POB_city"];
-      _BirthState.text = [childDict objectForKey:@"POB_state"];
-      _BirthZipcode.text = [childDict objectForKey:@"POB_zipcode"];
-      _CurrentStreetNumber.text = [childDict objectForKey:@"current_street_number"];
-      _CurrentStreetName.text = [childDict objectForKey:@"current_street_name"];
-      _CurrentCity.text = [childDict objectForKey:@"current_city"];
-      _CurrentState.text = [childDict objectForKey:@"current_state"];
-      _CurrentZipcode.text = [childDict objectForKey:@"current_zipcode"];
+      _MotherMaidenName.text = [_childDetails objectForKey:@"mothers_maiden_name"];
+        _MotherName.text = [_childDetails objectForKey:@"mothers_name"];
+      _FatherName.text = [_childDetails objectForKey:@"fathers_name"];
+        _BirthStreetNumber.text = [_childDetails objectForKey:@"POB_street_number"];
+      _BirthStreetName.text = [_childDetails objectForKey:@"POB_street_name"];
+      _BirthCity.text = [_childDetails objectForKey:@"POB_city"];
+      _BirthState.text = [_childDetails objectForKey:@"POB_state"];
+      _BirthZipcode.text = [_childDetails objectForKey:@"POB_zipcode"];
+      _CurrentStreetNumber.text = [_childDetails objectForKey:@"current_street_number"];
+      _CurrentStreetName.text = [_childDetails objectForKey:@"current_street_name"];
+      _CurrentCity.text = [_childDetails objectForKey:@"current_city"];
+      _CurrentState.text = [_childDetails objectForKey:@"current_state"];
+      _CurrentZipcode.text = [_childDetails objectForKey:@"current_zipcode"];
     } else {
          NSLog(@"ChildDetails: data is nil.");
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"data is nil. Check the IP address of the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -175,9 +175,9 @@ NSString *kGetPatientDetails;
    //subash
    //setting title on the vaccinesdetails navigation controller as the childname
    if ([segue.identifier isEqualToString:@"CD2CRTVC"]) {
-      NSString* childFName = [childDict objectForKey:@"first_name"];
-      NSString* childLName = [childDict objectForKey:@"last_name"];
-       NSString* patientID = [childDict objectForKey:@"patient_id"];
+      NSString* childFName = [_childDetails objectForKey:@"first_name"];
+      NSString* childLName = [_childDetails objectForKey:@"last_name"];
+       NSString* patientID = [_childDetails objectForKey:@"patient_id"];
        
       UITabBarController* tabC =  segue.destinationViewController;
       UINavigationController* nav = [tabC.viewControllers objectAtIndex:0];
