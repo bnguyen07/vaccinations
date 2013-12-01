@@ -66,7 +66,7 @@ NSString *kPostURL;
         [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         NSURL *url = [NSURL URLWithString:postString];
-        NSLog(@"This is the GET string for the Login function: %@", url);
+        NSLog(@"This is the post string from register new parent username: %@", url);
         
         NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         

@@ -73,36 +73,33 @@ NSString *kGetUrlForLogin;
 
 
 - (IBAction)Login:(id)sender {
-       
     [_Username resignFirstResponder];
     [_Password resignFirstResponder];
     
-    
-    //Brian: Nov 06, 2013
-    //Make the login work
     //If user type is 1 => Login to Child List Controller
-    //0 => Login to Search View Controller
-
+    //If user type is 0 => Login to Search View Controller
     
     if ([_Username.text  isEqual: @""] || [_Password.text  isEqual: @""]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:@"Please fill all the fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:@"Please fill in all the fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
 
     
-    [self getUsernameAndPassword];
-        
-
-//    NSLog(@"User type: %@",[[[_users lastObject] objectForKey:@"user_type"] class]);
-   NSString *userType = [[_users lastObject] objectForKey:@"user_type"];
+    [self getUsernameAndPassword]; // Connect to the database
+    
+    
+    // For Debug purpose
+    NSString *userType = [[_users lastObject] objectForKey:@"user_type"];
    NSLog(@"User type: %@",userType);
    if ([userType isEqualToString:@"0"]) {
       superUser = YES;
       NSLog(@"super user");
    } else {
       NSLog(@"user");
-   }
+   } // Could be removed later
+    
+    
  
     if ([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"1"]) {
         [self performSegueWithIdentifier:@"login2ChildListController" sender:self];
@@ -164,6 +161,9 @@ NSString *kGetUrlForLogin;
         NSLog(@"Users are: %@", patients);
         [childList setArrayList:patients];
     }
+    
+    [_Username setText:@""];
+    [_Password setText:@""];
     
 
 }

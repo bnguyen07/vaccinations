@@ -83,7 +83,7 @@ NSString *kGetUrlForCreateNewVaccination;
 -(void) runUrlRequest {
     
     NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForVaccinesNotTaken];
-    [getString appendString:[NSString stringWithFormat:@"?%@=\"%@\"", kpatient_id, _patientID]];
+    [getString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, _patientID]];
     
     NSLog(@"This is the GET string for the Login function: %@", getString);
     [getString setString:[getString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -220,7 +220,7 @@ NSString *kGetUrlForCreateNewVaccination;
         [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         NSURL *url = [NSURL URLWithString:postString];
-        NSLog(@"This is the GET string for the Edit Patient function: %@", url);
+        NSLog(@"This is the POST string for creating new Vaccination: %@", url);
         
         NSString *postResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         
