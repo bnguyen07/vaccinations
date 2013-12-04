@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterParentViewController : UIViewController
+@interface RegisterParentViewController : UIViewController <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *ParentUsername;
 @property (weak, nonatomic) IBOutlet UITextField *ParentPassword;
 @property (weak, nonatomic) IBOutlet UITextField *ParentReenterPassword;
@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *ParentEmail;
 
 @property (strong, nonatomic)NSURLConnection *postNewPatientUser;
+@property (strong, nonatomic) UIPopoverController *popoverController;
 
 @end

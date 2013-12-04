@@ -12,6 +12,8 @@
 @interface ForgotViewController : UIViewController <MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (strong, nonatomic) UIPopoverController *popoverController;
+
 - (IBAction)contactAdminAction:(id)sender;
 
 @end

@@ -19,6 +19,7 @@ NSString *kPostURL;
 @end
 
 @implementation RegisterParentViewController
+@synthesize popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -94,5 +95,8 @@ NSString *kPostURL;
     
 }//end of method createPatientUser
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [self.popoverController dismissPopoverAnimated:NO];
+}
 
 @end

@@ -22,4 +22,8 @@ static NSString *url;
 @property (weak, nonatomic) IBOutlet UIButton *RegisterParent;
 - (IBAction)systemPreferenceBtn:(id)sender;
 
+@property (strong, nonatomic) UIPopoverController *popoverControllerForgotPwd;
+@property (strong, nonatomic) UIPopoverController *popoverControllerRegister;
+- (IBAction)registerBtnAction:(id)sender;
+
 @end

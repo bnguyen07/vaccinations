@@ -240,4 +240,22 @@ NSString *kPostURL;
     }
 }
 
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ((textField == _currentStreetNumber) ||  (textField == _currentStreetName) ||  (textField == _currentCity) ||  (textField == _currentState) ||  (textField == _currentZipcode)) {
+        CGRect frame = self.view.frame;
+        frame.origin.y -= 100;
+        self.view.frame = frame;
+    }
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if ((textField == _currentStreetNumber) ||  (textField == _currentStreetName) ||  (textField == _currentCity) ||  (textField == _currentState) ||  (textField == _currentZipcode)) {
+        CGRect frame = self.view.frame;
+        frame.origin.y += 100;
+        self.view.frame = frame;
+    }
+}
+
 @end

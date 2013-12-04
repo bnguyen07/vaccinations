@@ -10,7 +10,7 @@
 #import "ChangePasswordViewController.h"
 #import "ChangeClinicViewController.h"
 
-@interface CreateNewViewController : UIViewController <UIActionSheetDelegate>
+@interface CreateNewViewController : UIViewController <UIActionSheetDelegate, UITextFieldDelegate>
 - (IBAction)logoutAction:(id)sender;
 
 //Brian October 23, 2013

@@ -165,13 +165,15 @@ NSString *kGetUrlForCreateNewVaccination;
    if (superUser) {
       NSString* alertString;
       alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
-   
+      
+       _deletedRow = indexPath.row;
 
       UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Give Vaccination?" message:alertString delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
       [alert show];
    
       [tableView deselectRowAtIndexPath:indexPath animated:NO];
-   
+      
+      /*
       if (confirm) {
          confirm = NO;
          // Delete from underlying data source first!
@@ -181,6 +183,7 @@ NSString *kGetUrlForCreateNewVaccination;
          [tableView endUpdates];
          [tableView reloadData];
       }
+       */
    }
    return;
 }
@@ -232,7 +235,11 @@ NSString *kGetUrlForCreateNewVaccination;
             UIAlertView *successfulAlert = [[UIAlertView alloc] initWithTitle:@"Successful!" message:postResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [successfulAlert show];
             NSLog(@"Create new Vaccination successful.");
-           confirm = YES;
+            
+           //confirm = YES;
+           
+           [self.vaccinesDue removeObjectAtIndex:_deletedRow];
+           [_myTableView reloadData]; 
         }
        
         //write the code to update vaccionations due database

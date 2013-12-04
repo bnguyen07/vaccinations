@@ -49,10 +49,16 @@ NSString *kGetUrlForVaccinesTaken;
     [self runUrlRequest];
 }
 
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [self runUrlRequest];
-//}
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.title = self.childName;
+    NSLog(@"Physician ID in Patient History: %@", _physician_id);
+    kGetUrlForVaccinesTaken = [[NSString alloc] initWithFormat:@"http://%@/list_vaccine_taken.php", gServerIp];
+    NSLog(@"kGetUrlForVaccinesTaken: %@", kGetUrlForVaccinesTaken);
+    [self runUrlRequest];
+    [_myTableView reloadData];
+    
+}
 //
 
 //Brian

@@ -15,8 +15,8 @@
 #import "ChildListViewController.h"
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
-
-
+#import "ForgotViewController.h"
+#import "RegisterParentViewController.h"
 
 //Change localhost to your IP address in order to using Ipad
 //#define kGetUrlForLogin @"http://192.168.1.72/login.php"
@@ -161,6 +161,17 @@ NSString *kGetUrlForLogin;
         NSLog(@"Users are: %@", patients);
         [childList setArrayList:patients];
     }
+    else if([segue.identifier isEqualToString:@"login2forgotpassword"]) {
+        _popoverControllerForgotPwd = [(UIStoryboardPopoverSegue *)segue popoverController];
+        ForgotViewController* forgotVC = segue.destinationViewController;
+        forgotVC.popoverController = _popoverControllerForgotPwd;
+        
+    }
+    else if([segue.identifier isEqualToString:@"login2register"]) {
+        _popoverControllerRegister = [(UIStoryboardPopoverSegue *)segue popoverController];
+        RegisterParentViewController* registerVC = segue.destinationViewController;
+        registerVC.popoverController = _popoverControllerRegister;
+    }
     
     [_Username setText:@""];
     [_Password setText:@""];
@@ -192,5 +203,8 @@ NSString *kGetUrlForLogin;
 }
 
 - (IBAction)systemPreferenceBtn:(id)sender {
+}
+- (IBAction)registerBtnAction:(id)sender {
+    [self performSegueWithIdentifier:@"login2register" sender:self];
 }
 @end

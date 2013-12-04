@@ -9,11 +9,11 @@
 #import "ForgotViewController.h"
 
 @interface ForgotViewController ()
-
+    
 @end
 
 @implementation ForgotViewController
-@synthesize emailTextField, phoneTextField;
+@synthesize emailTextField, phoneTextField, popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +44,8 @@
     [controller setSubject:@"Forgot password help"];
     [controller setMessageBody:[NSString stringWithFormat:@"Email-id: %@\n Phone#: %@",emailTextField.text, phoneTextField.text] isHTML:NO];
     if (controller) [self presentViewController:controller animated:YES completion:nil];
+    
+    
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
@@ -54,7 +56,10 @@
         NSLog(@"Mail successfully sent!");
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.popoverController dismissPopoverAnimated:NO];
 }
+
+
 
 
 

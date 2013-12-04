@@ -27,5 +27,6 @@
 @property (nonatomic, strong) NSString *physician_id;
 
 @property (nonatomic, strong) NSString *dateTakenAsString;
+@property (nonatomic, assign) int deletedRow;
 
 @end
