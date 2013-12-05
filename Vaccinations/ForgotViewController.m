@@ -40,7 +40,7 @@
 - (IBAction)contactAdminAction:(id)sender {
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
-    [controller setToRecipients:[NSArray arrayWithObjects:@"subash_raju007@yahoo.com", nil]];
+    [controller setToRecipients:[NSArray arrayWithObjects:@"service_vaccinations_team6@yahoo.com", nil]];
     [controller setSubject:@"Forgot password help"];
     [controller setMessageBody:[NSString stringWithFormat:@"Email-id: %@\n Phone#: %@",emailTextField.text, phoneTextField.text] isHTML:NO];
     if (controller) [self presentViewController:controller animated:YES completion:nil];
