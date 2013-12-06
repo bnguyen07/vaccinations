@@ -252,6 +252,7 @@ NSString *kGetPatientDetails;
            NSDateComponents *dateComponents = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
            NSInteger currentYear=[dateComponents year];
 
+           // Checking year is not in the future
            NSDateComponents *dateCompFromDatePicker = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[_DateOfBirth date]];
            NSInteger yearFromDatePicker=[dateCompFromDatePicker year];
            if (yearFromDatePicker > currentYear) {
@@ -260,6 +261,7 @@ NSString *kGetPatientDetails;
               return;
            }
            
+           // Check month is not in future
            NSInteger currentMonth=[dateComponents month];
            NSInteger monthFromDatePicker=[dateCompFromDatePicker month];
            if (monthFromDatePicker > currentMonth) {
@@ -267,6 +269,7 @@ NSString *kGetPatientDetails;
               [dateAlert show];
               return;
            } else if (monthFromDatePicker == currentMonth){
+              // Check day is not in future
               NSInteger dayFromDatePicker=[dateCompFromDatePicker day];
               NSInteger currentDay=[dateComponents day];
               if (dayFromDatePicker > currentDay) {
@@ -285,6 +288,7 @@ NSString *kGetPatientDetails;
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _FatherName.text]];
            
            
+           // Check zip code of birth address
            NSError *error;
            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[a-z]"
                                                                                   options:NSRegularExpressionCaseInsensitive
@@ -301,6 +305,7 @@ NSString *kGetPatientDetails;
            
            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_zipcode, _BirthZipcode.text]];
            
+           // Check street number of birth
            numberOfMatches = [regex numberOfMatchesInString:_BirthStreetNumber.text
                                                     options:0
                                                       range:NSMakeRange(0, [_BirthStreetNumber.text length])];
@@ -315,6 +320,7 @@ NSString *kGetPatientDetails;
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_city, _BirthCity.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_state, _BirthState.text]];
            
+           // Check street number of current
            numberOfMatches = [regex numberOfMatchesInString:_CurrentStreetNumber.text
                                                     options:0
                                                       range:NSMakeRange(0, [_CurrentStreetNumber.text length])];
@@ -329,6 +335,7 @@ NSString *kGetPatientDetails;
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _CurrentCity.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _CurrentState.text]];
            
+           // Check zip code of current address
            numberOfMatches = [regex numberOfMatchesInString:_CurrentZipcode.text
                                                     options:0
                                                       range:NSMakeRange(0, [_CurrentZipcode.text length])];
