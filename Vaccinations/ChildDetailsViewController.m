@@ -283,15 +283,61 @@ NSString *kGetPatientDetails;
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _MotherName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _MotherMaidenName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _FatherName.text]];
+           
+           
+           NSError *error;
+           NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[a-z]"
+                                                                                  options:NSRegularExpressionCaseInsensitive
+                                                                                    error:&error];
+           NSUInteger numberOfMatches = [regex numberOfMatchesInString:_BirthZipcode.text
+                                                               options:0
+                                                                 range:NSMakeRange(0, [_BirthZipcode.text length])];
+           UIAlertView *dataErrorAlert;
+           if (numberOfMatches) {
+              dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check birth zip code" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dataErrorAlert show];
+              return;
+           }
+           
+           [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_zipcode, _BirthZipcode.text]];
+           
+           numberOfMatches = [regex numberOfMatchesInString:_BirthStreetNumber.text
+                                                    options:0
+                                                      range:NSMakeRange(0, [_BirthStreetNumber.text length])];
+           if (numberOfMatches) {
+              dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check birth street number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dataErrorAlert show];
+              return;
+           }
+           
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_number, _BirthStreetNumber.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_street_name, _BirthStreetName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_city, _BirthCity.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_state, _BirthState.text]];
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_zipcode, _BirthZipcode.text]];
+           
+           numberOfMatches = [regex numberOfMatchesInString:_CurrentStreetNumber.text
+                                                    options:0
+                                                      range:NSMakeRange(0, [_CurrentStreetNumber.text length])];
+           if (numberOfMatches) {
+              dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check current street number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dataErrorAlert show];
+              return;
+           }
+           
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_number, _CurrentStreetNumber.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, _CurrentStreetName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _CurrentCity.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _CurrentState.text]];
+           
+           numberOfMatches = [regex numberOfMatchesInString:_CurrentZipcode.text
+                                                    options:0
+                                                      range:NSMakeRange(0, [_CurrentZipcode.text length])];
+           if (numberOfMatches) {
+              dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check current zip code" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dataErrorAlert show];
+              return;
+           }
+
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _CurrentZipcode.text]];
              [postString appendString:[NSString stringWithFormat:@"&%@=%@", kuser_id, [childDict objectForKey:@"user_id"]]];
             
