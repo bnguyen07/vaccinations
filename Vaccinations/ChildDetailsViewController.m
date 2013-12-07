@@ -290,14 +290,21 @@ NSString *kGetPatientDetails;
            
            // Check zip code of birth address
            NSError *error;
-           NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\D"
+           NSRegularExpression *alpha = [NSRegularExpression regularExpressionWithPattern:@"\\D"
                                                                                   options:NSRegularExpressionCaseInsensitive
                                                                                     error:&error];
-           NSUInteger numberOfMatches = [regex numberOfMatchesInString:_BirthZipcode.text
-                                                               options:0
-                                                                 range:NSMakeRange(0, [_BirthZipcode.text length])];
+           NSRegularExpression *digits = [NSRegularExpression regularExpressionWithPattern:@"\\d"
+                                                                                   options:0 error:&error];
+           NSUInteger numberOfMatches = [alpha numberOfMatchesInString:_BirthZipcode.text options:0 range:NSMakeRange(0, [_BirthZipcode.text length])];
            UIAlertView *dataErrorAlert;
            if (numberOfMatches) {
+              dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check birth zip code" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dataErrorAlert show];
+              return;
+           }
+           
+           numberOfMatches = [digits numberOfMatchesInString:_BirthZipcode.text options:0 range:NSMakeRange(0, [_BirthZipcode.text length])];
+           if (numberOfMatches < 5){
               dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check birth zip code" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
               [dataErrorAlert show];
               return;
@@ -306,7 +313,7 @@ NSString *kGetPatientDetails;
            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_zipcode, _BirthZipcode.text]];
            
            // Check street number of birth
-           numberOfMatches = [regex numberOfMatchesInString:_BirthStreetNumber.text
+           numberOfMatches = [alpha numberOfMatchesInString:_BirthStreetNumber.text
                                                     options:0
                                                       range:NSMakeRange(0, [_BirthStreetNumber.text length])];
            if (numberOfMatches) {
@@ -321,7 +328,7 @@ NSString *kGetPatientDetails;
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirth_state, _BirthState.text]];
            
            // Check street number of current
-           numberOfMatches = [regex numberOfMatchesInString:_CurrentStreetNumber.text
+           numberOfMatches = [alpha numberOfMatchesInString:_CurrentStreetNumber.text
                                                     options:0
                                                       range:NSMakeRange(0, [_CurrentStreetNumber.text length])];
            if (numberOfMatches) {
@@ -336,10 +343,17 @@ NSString *kGetPatientDetails;
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _CurrentState.text]];
            
            // Check zip code of current address
-           numberOfMatches = [regex numberOfMatchesInString:_CurrentZipcode.text
+           numberOfMatches = [alpha numberOfMatchesInString:_CurrentZipcode.text
                                                     options:0
                                                       range:NSMakeRange(0, [_CurrentZipcode.text length])];
            if (numberOfMatches) {
+              dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check current zip code" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+              [dataErrorAlert show];
+              return;
+           }
+           
+           numberOfMatches = [digits numberOfMatchesInString:_CurrentZipcode.text options:0 range:NSMakeRange(0, [_CurrentZipcode.text length])];
+           if (numberOfMatches < 5){
               dataErrorAlert = [[UIAlertView alloc] initWithTitle:@"Input error" message:@"Check current zip code" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
               [dataErrorAlert show];
               return;
