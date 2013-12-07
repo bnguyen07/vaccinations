@@ -290,7 +290,7 @@ NSString *kGetPatientDetails;
            
            // Check zip code of birth address
            NSError *error;
-           NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[a-z]"
+           NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\D"
                                                                                   options:NSRegularExpressionCaseInsensitive
                                                                                     error:&error];
            NSUInteger numberOfMatches = [regex numberOfMatchesInString:_BirthZipcode.text
