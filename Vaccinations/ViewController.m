@@ -93,7 +93,7 @@ NSString *kGetUrlForLogin;
     NSString *userType = [[_users lastObject] objectForKey:@"user_type"];
    NSLog(@"User type: %@",userType);
    if ([userType isEqualToString:@"0"]) {
-      superUser = YES;
+      //superUser = YES;
       NSLog(@"super user");
    } else {
       NSLog(@"user");
@@ -102,8 +102,10 @@ NSString *kGetUrlForLogin;
     
  
     if ([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"1"]) {
+        superUser = NO;
         [self performSegueWithIdentifier:@"login2ChildListController" sender:self];
     } else if([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"0"]) {
+        superUser = YES;
         [self performSegueWithIdentifier:@"login2childsearchtab" sender:self];
     } else {
         UIAlertView *invalidLogin = [[UIAlertView alloc] initWithTitle:@"Alert!"                                           message:@"Invalid username / password" delegate:nil cancelButtonTitle:@"OK"                             otherButtonTitles:nil, nil];
@@ -137,6 +139,7 @@ NSString *kGetUrlForLogin;
         
         NSString* physician_id = [[NSString alloc] initWithString:[[_users firstObject] objectForKey:@"physician_id"]];
         NSString* user_id = [[NSString alloc] initWithString:[[_users lastObject] objectForKey:@"user_id"]];
+        clinicName = [[NSString alloc] initWithString:[[_users firstObject] objectForKey:@"clinic"]];
         
         NSLog(@"Physician from Login: %@", physician_id);
         [QRScanController setPhysician_id:physician_id];
@@ -205,6 +208,6 @@ NSString *kGetUrlForLogin;
 - (IBAction)systemPreferenceBtn:(id)sender {
 }
 - (IBAction)registerBtnAction:(id)sender {
-    [self performSegueWithIdentifier:@"login2register" sender:self];
+    //[self performSegueWithIdentifier:@"login2register" sender:self];
 }
 @end

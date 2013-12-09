@@ -164,7 +164,7 @@ NSString *kGetUrlForCreateNewVaccination;
    
    if (superUser) {
       NSString* alertString;
-      alertString = [NSString stringWithFormat:@"%@\n %@\n Given date: %@", _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
+      alertString = [NSString stringWithFormat:@"Clinic: %@\n %@\n %@\n Given date: %@", clinicName, _selectedVaccineMainLabel, _selectedVaccineSubLabel, _dateTakenAsString];
       
        _deletedRow = indexPath.row;
 

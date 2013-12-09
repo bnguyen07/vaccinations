@@ -10,6 +10,7 @@
 
 NSString *gServerIp; // Global variable
 BOOL superUser;
+NSString* clinicName;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
