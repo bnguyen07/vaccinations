@@ -57,7 +57,7 @@ NSString *kPostURL;
 {
     [super viewDidLoad];
     self.title = @"Create New";
-    kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewRecord.php", gServerIp];
+    kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewRecord_new.php", gServerIp];
     NSLog(@"kPostURL: %@", kPostURL); //For Debugging
     NSLog(@"Physician got from Login page: %@", _physician_id); // For Debugging
 }
@@ -77,16 +77,14 @@ NSString *kPostURL;
 //Brian: call the URL to post the data
 - (IBAction)createNewRecord:(id)sender {
     
-    if ([_recordID.text  isEqual: @""] || [_lastName.text  isEqual: @""] || [_firstName.text  isEqual: @""] || [_motherMaidenName.text  isEqual: @""]) {
+    if ([_lastName.text  isEqual: @""] || [_firstName.text  isEqual: @""] || [_motherMaidenName.text  isEqual: @""]) {
         UIAlertView *requiredFieldsNotFilledAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please fill in required fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [requiredFieldsNotFilledAlert show];
         return;
     } else {
         
         NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
-        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, _recordID.text]];
-        
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfirst_name, _firstName.text]];
+        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, _firstName.text]];
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, _lastName.text]];
         
