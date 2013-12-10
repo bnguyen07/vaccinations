@@ -22,8 +22,8 @@
 @property (nonatomic, strong) NSString *physician_id;// Physician sent from Login page
 
 - (IBAction)viewChildRecordsAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTF;
-@property (weak, nonatomic) IBOutlet UITextField *recordNumber;
+@property (weak, nonatomic) IBOutlet UITextField *FirstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *RecordNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *MotherMaidenName;
 @property (weak, nonatomic) IBOutlet UITextField *MotherName;
 @property (weak, nonatomic) IBOutlet UITextField *FatherName;
@@ -37,7 +37,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *CurrentCity;
 @property (weak, nonatomic) IBOutlet UITextField *CurrentState;
 @property (weak, nonatomic) IBOutlet UITextField *CurrentZipcode;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *Gender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *GenderSegmentedButton;
 @property (weak, nonatomic) IBOutlet UITextField *middleName;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *DateOfBirth;
