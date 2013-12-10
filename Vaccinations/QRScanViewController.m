@@ -67,6 +67,7 @@ NSString *kSearchPatientByID;
 - (void)viewWillAppear:(BOOL)animated {
    [super viewWillAppear:animated];
    
+    // Create capture instance only if it is nil 
     if (self.capture == nil) {
         self.capture = [[ZXCapture alloc] init];
         self.capture.delegate = self;
