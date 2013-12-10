@@ -118,6 +118,7 @@ NSString *kPostURL;
 #pragma mark - Validation
 
 #define REGEX_USERNAME @"^[A-Za-z0-9]*$"
+#define REGEX_EMAIL @"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"
 
 /*
  * Validate fields
@@ -132,6 +133,20 @@ NSString *kPostURL;
             return NO;
         }
     }
+    
+    
+    NSArray *listRegexEmails = @[_EmailTextField];
+    
+    for (UITextField *email in listRegexEmails) {
+        if (![self validateField:email withRegex:REGEX_EMAIL]) {
+            [self showMessage:[NSString stringWithFormat:@"Email is not valid!"]];
+            return NO;
+        }
+    }
+
+    
+    
+    
     
     return YES;
 }
