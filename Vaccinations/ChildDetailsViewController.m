@@ -561,25 +561,4 @@ NSString *kGetPatientDetails;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @end

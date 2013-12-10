@@ -9,7 +9,7 @@
 #import "RegisterParentViewController.h"
 #import "AppDelegate.h"
 
-//#define kPostURL @"http://192.168.1.72/postNewPatientUser.php"
+
 NSString *kPostURL;
 #define kuser_id @"user_id"
 #define kpassword @"password"
@@ -48,12 +48,25 @@ NSString *kPostURL;
 
 - (IBAction)createPatientUser:(id)sender {
     
-    if (![[_ParentPassword text] isEqualToString: [_ParentReenterPassword text]]) {
-        UIAlertView *passwordNotMatch = [[UIAlertView alloc] initWithTitle:@"Passwords Not Match" message:@"These passwords don't match." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [passwordNotMatch show];
+    if([[_ParentUsername text] isEqualToString:@"" ] ||[[_ParentPassword text] isEqualToString:@""] || [[_ParentEmail text] isEqualToString:@""]){
+        UIAlertView *requiredFieldsMissingAlert = [[UIAlertView alloc] initWithTitle:@"Required fields missing" message:@"Please fill in all the required fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [requiredFieldsMissingAlert show];
+        return;
+    
+    } else if (![[_ParentPassword text] isEqualToString: [_ParentReenterPassword text]]) {
+        UIAlertView *passwordsNotMatch = [[UIAlertView alloc] initWithTitle:@"Passwords Not Match" message:@"These passwords don't match." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [passwordsNotMatch show];
+        return;
     } else {
         
+        // Dec 10, 2013
+        // Validate fields
+        if (![self validateFields]) {
+            return;
+        }
+        
         //Brian: Nov 06, 2013
+        //When inputs are OK, we try to connect to the database
         //Create Register Patient User post string
         
         NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
@@ -62,7 +75,7 @@ NSString *kPostURL;
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kpassword, [_ParentPassword text]]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kemail, [_ParentEmail text]]];
         
-        NSLog(@"%@",postString);
+        NSLog(@"%@",postString); // For debugging
         
         [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -85,7 +98,7 @@ NSString *kPostURL;
             [alert show];
             return;
             
-            NSLog(@"Username has been created successfully.");
+            NSLog(@"Username has been created successfully."); // For debugging
            
         } // End if-else
         
@@ -95,8 +108,60 @@ NSString *kPostURL;
     
 }//end of method createPatientUser
 
+
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     [self.popoverController dismissPopoverAnimated:NO];
 }
+
+
+
+#pragma mark - Validation
+
+#define REGEX_USERNAME @"^[A-Za-z0-9]*$"
+
+/*
+ * Validate fields
+ */
+- (BOOL)validateFields {
+    
+    NSArray *listRegexUsernames = @[_ParentUsername];
+    
+    for (UITextField *username in listRegexUsernames) {
+        if (![self validateField:username withRegex:REGEX_USERNAME]) {
+            [self showMessage:[NSString stringWithFormat:@"Field are not valid! Letters & Numbers only!"]];
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)validateField:(UITextField*)field withRegex:(NSString*)regex {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isValid = [predicate evaluateWithObject:field.text];
+    if (!isValid) {
+        invalidField = field;
+        return NO;
+    }
+    return YES;
+}
+
+- (void)showMessage:(NSString*)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    alert.tag = 11;
+    [alert show];
+}
+
+
+
+
+
+
 
 @end

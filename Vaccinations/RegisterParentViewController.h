@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface RegisterParentViewController : UIViewController <UIAlertViewDelegate>
+{
+    __weak UITextField *invalidField;
+}
+
+
 @property (weak, nonatomic) IBOutlet UITextField *ParentUsername;
 @property (weak, nonatomic) IBOutlet UITextField *ParentPassword;
 @property (weak, nonatomic) IBOutlet UITextField *ParentReenterPassword;
