@@ -78,10 +78,15 @@ NSString *kPostURL;
 - (IBAction)createNewRecord:(id)sender {
     
     if ([_lastName.text  isEqual: @""] || [_firstName.text  isEqual: @""] || [_motherMaidenName.text  isEqual: @""]) {
-        UIAlertView *requiredFieldsNotFilledAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please fill in required fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *requiredFieldsNotFilledAlert = [[UIAlertView alloc] initWithTitle:@"Required fields missing." message:@"Please fill in all the required fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [requiredFieldsNotFilledAlert show];
         return;
     } else {
+        
+        if (![self validateFields]) { // ADD - 12/07/13
+            return;
+        }
+
         
         NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
         [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [_firstName.text capitalizedString]]];
@@ -276,5 +281,122 @@ NSString *kPostURL;
         self.view.frame = frame;
     }
 }
+
+
+
+
+
+#pragma mark - Validation
+
+#define REGEX_NAME @"^[A-Za-z'\\s]*$"
+#define REGEX_ADDRESS @"^[A-Za-z0-9'/#-,\\s]*$"
+#define REGEX_CITY @"^[A-Za-z'\\s]*$"
+#define REGEX_STATE @"^[A-Za-z\\s]*$"
+#define REGEX_ZIPCODE @"^\\d{5}$"
+
+
+/*
+ * Validate fields
+ */
+
+-(BOOL)validateFields {
+    
+    // Name Regex
+    NSArray *listRegexName = @[_lastName, _middleName, _firstName, _motherMaidenName, _motherName, _fatherName];
+    for (UITextField *name in listRegexName) {
+        if (![self validateField:name withRegex:REGEX_NAME]) {
+            [self showMessage:[NSString stringWithFormat:@"Names are not valid! \nLetters, Space, and/or Single Quote only!"]];
+            return NO;
+        }
+    }
+    
+    
+    // Address Regex
+    NSArray *listRegexAddress = @[_streetNumberPOB, _streetNamePOB, _currentStreetNumber, _currentStreetName];
+    for (UITextField *address in listRegexAddress) {
+        if (![self validateField:address withRegex:REGEX_ADDRESS]) {
+            [self showMessage:[NSString stringWithFormat:@"Street number or street names are not valid! \nLetters, Numbers, Space, Dash, Forward Slash, #, and/or Single Quote only!"]];
+            return NO;
+        }
+    }
+    
+    
+    
+    // City Regex
+    NSArray *listRegexCities = @[_cityPOB, _currentCity];
+    for (UITextField *city in listRegexCities) {
+        if( city.text.length > 0 ){
+            if (![self validateField:city withRegex:REGEX_CITY]) {
+                [self showMessage:[NSString stringWithFormat:@"Cities are not valid! \nLetters and/or Space only!"]];
+                return NO;
+            }
+        }
+    }
+    
+    
+    
+    // State Regex
+    NSArray *listRegexStates = @[_statePOB, _currentState];
+    for (UITextField *state in listRegexStates) {
+        if (![self validateField:state withRegex:REGEX_STATE]) {
+            [self showMessage:[NSString stringWithFormat:@"States are not valid! \nLetters, Space, and/or Single Quote only!"]];
+            return NO;
+        }
+    }
+    
+    
+    
+    // Zipcode Regex
+    NSArray *listZipCodes = @[_zipcodePOB, _currentZipcode];
+    for (UITextField *zipcode in listZipCodes) {
+        if(zipcode.text.length > 0){
+            if (![self validateField:zipcode withRegex:REGEX_ZIPCODE]) {
+                [self showMessage:[NSString stringWithFormat:@"Zip codes are not valid! Format xxxxx in numbers!"]];
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
+}
+
+
+- (BOOL)validateField:(UITextField*)field withRegex:(NSString*)regex {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isValid = [predicate evaluateWithObject:field.text];
+    if (!isValid) {
+        invalidField = field;
+        return NO;
+    }
+    return YES;
+}
+
+- (void)showMessage:(NSString*)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    alert.tag = 11;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 11) {
+        [invalidField becomeFirstResponder];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

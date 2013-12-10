@@ -11,6 +11,12 @@
 #import "ChangeClinicViewController.h"
 
 @interface CreateNewViewController : UIViewController <UIActionSheetDelegate, UITextFieldDelegate>
+{
+    __weak UITextField *invalidField;
+}
+
+
+
 - (IBAction)logoutAction:(id)sender;
 
 //Brian October 23, 2013

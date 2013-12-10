@@ -100,9 +100,7 @@ NSString *kPostURL;
             
             NSLog(@"Username has been created successfully."); // For debugging
            
-        } // End if-else
-        
-        
+        } // End if-else        
         
     }// End if-else
     
@@ -130,13 +128,15 @@ NSString *kPostURL;
     
     for (UITextField *username in listRegexUsernames) {
         if (![self validateField:username withRegex:REGEX_USERNAME]) {
-            [self showMessage:[NSString stringWithFormat:@"Field are not valid! Letters & Numbers only!"]];
+            [self showMessage:[NSString stringWithFormat:@"Username is not valid! \nLetters & Numbers only!"]];
             return NO;
         }
     }
     
     return YES;
 }
+
+
 
 - (BOOL)validateField:(UITextField*)field withRegex:(NSString*)regex {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
@@ -148,6 +148,8 @@ NSString *kPostURL;
     return YES;
 }
 
+
+
 - (void)showMessage:(NSString*)message {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message
@@ -157,8 +159,6 @@ NSString *kPostURL;
     alert.tag = 11;
     [alert show];
 }
-
-
 
 
 
