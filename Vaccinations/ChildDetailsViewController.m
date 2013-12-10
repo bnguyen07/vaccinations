@@ -459,6 +459,7 @@ NSString *kGetPatientDetails;
 #pragma mark - Validation
 
 #define REGEX_NAME @"^[A-Za-z'\\s]*$"
+#define REGEX_ADDRESS @"^[A-Za-z0-9'/#-\\s]*$"
 #define REGEX_ZIPCODE @"^\\d{5}$"
 #define REGEX_PHONE @"^\\d{3}-\\d{3}-\\d{4}$"
 #define REGEX_PHONE_2 @"^\\d{10}$"
@@ -470,21 +471,26 @@ NSString *kGetPatientDetails;
 
 -(BOOL)validateFields {
     
+    // Name Regex
     NSArray *listRegexName = @[_lastNameTF, _middleName, _FirstNameTextField, _MotherMaidenName, _MotherName, _FatherName, _BirthCity, _CurrentCity];
-    
-    for (UITextField *field in listRegexName) {
-        if ([field isEqual:_middleName]) {
-            if (_middleName.text.length > 0) {
-                if (![self validateField:field withRegex:REGEX_NAME]) {
-                    [self showMessage:[NSString stringWithFormat:@"Fields are not valid! Letters, Space, and/or Single Quote only!"]];
+    for (UITextField *name in listRegexName) {
+        if (![self validateField:name withRegex:REGEX_NAME]) {
+            [self showMessage:[NSString stringWithFormat:@"Fields are not valid! Letters, Space, and/or Single Quote only!"]];
                     return NO;
-                }
-            }
-        } else if (![self validateField:field withRegex:REGEX_NAME]) {
-            [self showMessage:[NSString stringWithFormat:@"Field is not valid! Letters & Space only!"]];
-            return NO;
         }
     }
+    
+    
+    // Address Regex
+    NSArray *listRegexAddress = @[_BirthStreetNumber, _BirthStreetName, _CurrentStreetNumber, _CurrentStreetName];
+    for (UITextField *address in listRegexAddress) {
+        if (![self validateField:address withRegex:REGEX_ADDRESS]) {
+            [self showMessage:[NSString stringWithFormat:@"Fields are not valid! Letters, Space, and/or Single Quote only!"]];
+                    return NO;
+        }
+    }
+    
+    
     
     NSArray *listRegexDigit = @[_BirthStreetNumber,_CurrentStreetNumber];
     for (UITextField *field in listRegexDigit) {
