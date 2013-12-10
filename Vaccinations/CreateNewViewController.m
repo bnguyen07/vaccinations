@@ -9,62 +9,37 @@
 #import "CreateNewViewController.h"
 #import "AppDelegate.h"
 
-//Brian : create new record function
-// October 23, 2013
-//Change localhost to your IP address in order to using Ipad
-//#define kPostURL @"http://192.168.1.72/postNewRecord.php"
 NSString *kPostURL;
 
 #define kpatient_id @"patient_id"
-
 #define kfirst_name @"first_name"
-
 #define klast_name @"last_name"
-
 #define kmiddle_name @"middle_name"
-
 #define kbirthdate @"birthdate"
-
 #define kgender  @"gender"
-
 #define kmother_maiden_name @"mothers_maiden_name"
-
 #define kmother_name  @"mothers_name"
-
 #define kfather_name @"fathers_name"
-
 #define kPOB_street_number @"POB_street_number"
-
 #define kPOB_street_name @"POB_street_name"
-
 #define kPOB_city @"POB_city"
-
 #define kPOB_state @"POB_state"
-
 #define kPOB_zipcode  @"POB_zipcode"
-
 #define kPOB_country  @"POB_country"
-
 #define kcurrent_street_number  @"current_street_number"
-
 #define kcurrent_street_name @"current_street_name"
-
 #define kcurrent_city @"current_city"
-
 #define kcurrent_state @"current_state"
-
 #define kcurrent_zipcode  @"current_zipcode"
-
 #define kcurrent_country  @"current_country"
-
 #define kuser_id @"user_id"
 
 @interface CreateNewViewController ()
 
 @end
 
-@implementation CreateNewViewController
 
+@implementation CreateNewViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -76,17 +51,18 @@ NSString *kPostURL;
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     self.title = @"Create New";
-   kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewRecord.php", gServerIp];
-   NSLog(@"kPostURL: %@", kPostURL);
-   NSLog(@"Physician got from Login page: %@", _physician_id);
-    
-    
+    kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewRecord.php", gServerIp];
+    NSLog(@"kPostURL: %@", kPostURL); //For Debugging
+    NSLog(@"Physician got from Login page: %@", _physician_id); // For Debugging
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -102,8 +78,8 @@ NSString *kPostURL;
 - (IBAction)createNewRecord:(id)sender {
     
     if ([_recordID.text  isEqual: @""] || [_lastName.text  isEqual: @""] || [_firstName.text  isEqual: @""] || [_motherMaidenName.text  isEqual: @""]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please fill in required fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        UIAlertView *requiredFieldsNotFilledAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please fill in required fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [requiredFieldsNotFilledAlert show];
         return;
     } else {
         
@@ -167,15 +143,12 @@ NSString *kPostURL;
         
     }
     
-    
-    NSLog(@"Call the post method");
-    
-    
+    NSLog(@"Call the post method"); //For Debugging
 }
 
 
 
-//Brian: To dismisss keyboard
+    //Brian: To dismisss keyboard
 - (IBAction)dimissKeyboard:(id)sender {
     [_recordID resignFirstResponder];
     [_lastName resignFirstResponder];
@@ -194,7 +167,6 @@ NSString *kPostURL;
     [_currentCity resignFirstResponder];
     [_currentState resignFirstResponder];
     [_currentZipcode resignFirstResponder];
-    
 }
 
 
@@ -215,6 +187,9 @@ NSString *kPostURL;
                                   otherButtonTitles:other1, other2, other3, nil];
     [actionSheet showInView:self.view];
 }
+
+
+
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -241,6 +216,9 @@ NSString *kPostURL;
 }
 
 
+
+
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if ((textField == _currentStreetNumber) ||  (textField == _currentStreetName) ||  (textField == _currentCity) ||  (textField == _currentState) ||  (textField == _currentZipcode)) {
         CGRect frame = self.view.frame;
@@ -248,6 +226,9 @@ NSString *kPostURL;
         self.view.frame = frame;
     }
 }
+
+
+
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {

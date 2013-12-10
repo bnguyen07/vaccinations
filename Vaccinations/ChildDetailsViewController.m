@@ -12,10 +12,6 @@
 #import "PatientsHistoryListVC.h"
 #import "AppDelegate.h"
 
-
-//Change localhost to your IP address in order to using Ipad
-//Brian Nov 09, 2013
-//#define kChangePatientInfo @"http://192.168.1.72/changePatientInfo.php"
 NSString *kChangePatientInfo;
 
 NSString *kGetPatientDetails;
@@ -47,6 +43,7 @@ NSString *kGetPatientDetails;
 @end
 
 @implementation ChildDetailsViewController
+
 @synthesize childDict;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,6 +55,9 @@ NSString *kGetPatientDetails;
     return self;
 }
 
+
+
+
 - (void)viewDidLoad
 {
     
@@ -65,8 +65,9 @@ NSString *kGetPatientDetails;
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
     kChangePatientInfo = [[NSString alloc] initWithFormat:@"http://%@/changePatientInfo.php", gServerIp];
-    NSLog(@"kChangePatientInfo: %@", kChangePatientInfo);
-    NSLog(@"ChildDetails Record ID: %@", [self recordID]);
+    
+    NSLog(@"kChangePatientInfo: %@", kChangePatientInfo); // For debugging
+    NSLog(@"ChildDetails Record ID: %@", [self recordID]); // For debugging
     
     
     //Nov 24, 2013 : Refresh the patient details from database
@@ -160,16 +161,26 @@ NSString *kGetPatientDetails;
     
 }
 
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
+
+
 - (IBAction)viewChildRecordsAction:(id)sender {
     
     [self performSegueWithIdentifier:@"CD2CRTVC" sender:self];
 }
+
+
+
+
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
    //subash
@@ -199,6 +210,9 @@ NSString *kGetPatientDetails;
        [patHis setPhysician_id:_physician_id];
    }
 }
+
+
+
 
 
 - (IBAction)EditAction:(id)sender {

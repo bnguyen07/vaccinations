@@ -180,9 +180,9 @@ NSString *kGetUrlForLogin;
     
     [_Username setText:@""];
     [_Password setText:@""];
-    
-
 }
+
+
 
 -(IBAction)saveSettings:(UIStoryboardSegue*)segue{
    NSLog(@"serverIp = %@", gServerIp);
@@ -196,9 +196,13 @@ NSString *kGetUrlForLogin;
    NSLog(@"kGetUrlForLogin = %@", kGetUrlForLogin);
 }
 
+
+
 -(IBAction)cancel:(UIStoryboardSegue*)sender{
    
 }
+
+
 
 
 - (IBAction)dismissKeyboard:(id)sender {
@@ -207,8 +211,18 @@ NSString *kGetUrlForLogin;
     
 }
 
+
+
+
+
 - (IBAction)systemPreferenceBtn:(id)sender {
 }
+
+
+
+
+
+
 - (IBAction)registerBtnAction:(id)sender {
     //[self performSegueWithIdentifier:@"login2register" sender:self];
 }
