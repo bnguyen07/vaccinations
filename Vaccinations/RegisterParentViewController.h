@@ -14,11 +14,11 @@
 }
 
 
-@property (weak, nonatomic) IBOutlet UITextField *ParentUsername;
-@property (weak, nonatomic) IBOutlet UITextField *ParentPassword;
-@property (weak, nonatomic) IBOutlet UITextField *ParentReenterPassword;
+@property (weak, nonatomic) IBOutlet UITextField *UsernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *PasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *ReenterPasswordTextField;
 - (IBAction)createPatientUser:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *ParentEmail;
+@property (weak, nonatomic) IBOutlet UITextField *EmailTextField;
 
 @property (strong, nonatomic)NSURLConnection *postNewPatientUser;
 @property (strong, nonatomic) UIPopoverController *popoverController;

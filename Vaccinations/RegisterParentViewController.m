@@ -34,8 +34,8 @@ NSString *kPostURL;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _ParentPassword.secureTextEntry = YES;
-    _ParentReenterPassword.secureTextEntry = YES;
+    _PasswordTextField.secureTextEntry = YES;
+    _ReenterPasswordTextField.secureTextEntry = YES;
    kPostURL = [[NSString alloc] initWithFormat:@"http://%@/postNewPatientUser.php", gServerIp];
    NSLog(@"kPostURL: %@", kPostURL);
 }
@@ -48,12 +48,12 @@ NSString *kPostURL;
 
 - (IBAction)createPatientUser:(id)sender {
     
-    if([[_ParentUsername text] isEqualToString:@"" ] ||[[_ParentPassword text] isEqualToString:@""] || [[_ParentEmail text] isEqualToString:@""]){
+    if([[_UsernameTextField text] isEqualToString:@"" ] ||[[_PasswordTextField text] isEqualToString:@""] || [[_EmailTextField text] isEqualToString:@""]){
         UIAlertView *requiredFieldsMissingAlert = [[UIAlertView alloc] initWithTitle:@"Required fields missing" message:@"Please fill in all the required fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [requiredFieldsMissingAlert show];
         return;
     
-    } else if (![[_ParentPassword text] isEqualToString: [_ParentReenterPassword text]]) {
+    } else if (![[_PasswordTextField text] isEqualToString: [_ReenterPasswordTextField text]]) {
         UIAlertView *passwordsNotMatch = [[UIAlertView alloc] initWithTitle:@"Passwords Not Match" message:@"These passwords don't match." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [passwordsNotMatch show];
         return;
@@ -70,10 +70,10 @@ NSString *kPostURL;
         //Create Register Patient User post string
         
         NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
-        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kuser_id, [_ParentUsername text]]];
+        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kuser_id, [_UsernameTextField text]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kpassword, [_ParentPassword text]]];
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kemail, [_ParentEmail text]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kpassword, [_PasswordTextField text]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kemail, [_EmailTextField text]]];
         
         NSLog(@"%@",postString); // For debugging
         
@@ -124,7 +124,7 @@ NSString *kPostURL;
  */
 - (BOOL)validateFields {
     
-    NSArray *listRegexUsernames = @[_ParentUsername];
+    NSArray *listRegexUsernames = @[_UsernameTextField];
     
     for (UITextField *username in listRegexUsernames) {
         if (![self validateField:username withRegex:REGEX_USERNAME]) {

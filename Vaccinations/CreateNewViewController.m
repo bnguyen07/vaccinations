@@ -77,7 +77,7 @@ NSString *kPostURL;
 //Brian: call the URL to post the data
 - (IBAction)createNewRecord:(id)sender {
     
-    if ([_lastName.text  isEqual: @""] || [_firstName.text  isEqual: @""] || [_motherMaidenName.text  isEqual: @""]) {
+    if ([_LastNameTextField.text  isEqual: @""] || [_FirstNameTextField.text  isEqual: @""] || [_MotherMaidenNameTextField.text  isEqual: @""]) {
         UIAlertView *requiredFieldsNotFilledAlert = [[UIAlertView alloc] initWithTitle:@"Required fields missing." message:@"Please fill in all the required fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [requiredFieldsNotFilledAlert show];
         return;
@@ -89,16 +89,16 @@ NSString *kPostURL;
 
         
         NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
-        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [_firstName.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [_FirstNameTextField.text capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, [_lastName.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, [_LastNameTextField.text capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmiddle_name, [_middleName.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmiddle_name, [_MiddleNameTextField.text capitalizedString]]];
         
         //Convert date to string
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
-        NSString *birthDate = [dateFormat stringFromDate:[_dateOfBirth date]];
+        NSString *birthDate = [dateFormat stringFromDate:[_DateOfBirthDatePicker date]];
         
         
         NSDate *now = [NSDate date]; // Get the current date
@@ -107,7 +107,7 @@ NSString *kPostURL;
         NSInteger currentYear=[dateComponents year];
 
         // Checking year is not in the future
-        NSDateComponents *dateCompFromDatePicker = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[_dateOfBirth date]];
+        NSDateComponents *dateCompFromDatePicker = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[_DateOfBirthDatePicker date]];
         NSInteger yearFromDatePicker=[dateCompFromDatePicker year];
         if (yearFromDatePicker > currentYear) {
             UIAlertView *dateAlert = [[UIAlertView alloc] initWithTitle:@"Date Error" message:@"Birth year is in the future!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -142,13 +142,13 @@ NSString *kPostURL;
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
         
         
-         _genderString = [[NSString alloc] initWithString:[_gender titleForSegmentAtIndex:[_gender selectedSegmentIndex]]];
+         _genderString = [[NSString alloc] initWithString:[_GenderSegmentedButton titleForSegmentAtIndex:[_GenderSegmentedButton selectedSegmentIndex]]];
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [[_genderString substringToIndex:1] capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, [_motherName.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, [_MotherNameTextField.text capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, [_motherMaidenName.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, [_MotherMaidenNameTextField.text capitalizedString]]];
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, [_fatherName.text capitalizedString]]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_number, _streetNumberPOB.text]];
@@ -193,12 +193,11 @@ NSString *kPostURL;
 
     //Brian: To dismisss keyboard
 - (IBAction)dimissKeyboard:(id)sender {
-    [_recordID resignFirstResponder];
-    [_lastName resignFirstResponder];
-    [_firstName resignFirstResponder];
-    [_middleName resignFirstResponder];
-    [_motherName resignFirstResponder];
-    [_motherMaidenName resignFirstResponder];
+    [_LastNameTextField resignFirstResponder];
+    [_FirstNameTextField resignFirstResponder];
+    [_MiddleNameTextField resignFirstResponder];
+    [_MotherNameTextField resignFirstResponder];
+    [_MotherMaidenNameTextField resignFirstResponder];
     [_fatherName resignFirstResponder];
     [_streetNumberPOB resignFirstResponder];
     [_streetNamePOB resignFirstResponder];
@@ -302,7 +301,7 @@ NSString *kPostURL;
 -(BOOL)validateFields {
     
     // Name Regex
-    NSArray *listRegexName = @[_lastName, _middleName, _firstName, _motherMaidenName, _motherName, _fatherName];
+    NSArray *listRegexName = @[_LastNameTextField, _MiddleNameTextField, _FirstNameTextField, _MotherMaidenNameTextField, _MotherNameTextField, _fatherName];
     for (UITextField *name in listRegexName) {
         if (![self validateField:name withRegex:REGEX_NAME]) {
             [self showMessage:[NSString stringWithFormat:@"Names are not valid! \nLetters, Space, and/or Single Quote only!"]];

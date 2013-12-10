@@ -111,7 +111,7 @@ NSString *kSearchPatients;
 
 - (IBAction)searchAction:(id)sender {
     
-    if ([[_firstName text] isEqualToString:@""] || [[_lastName text] isEqualToString:@""] || [[_motherMaidenName text] isEqualToString:@""]) {
+    if ([[_FirstNameTextField text] isEqualToString:@""] || [[_LastNameTextField text] isEqualToString:@""] || [[_MotherMaidenNameTextField text] isEqualToString:@""]) {
         UIAlertView *requiredFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Required Fields!" message:@"Please fill all the required fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [requiredFieldsAlert  show];
     } else {
@@ -120,11 +120,11 @@ NSString *kSearchPatients;
         //Create Search Patients post string
         NSMutableString *postString = [NSMutableString stringWithString:kSearchPatients];
         
-         [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [[_firstName text] capitalizedString]]];
+         [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [[_FirstNameTextField text] capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, [[_lastName text] capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, [[_LastNameTextField text] capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, [[_motherMaidenName text] capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, [[_MotherMaidenNameTextField text] capitalizedString]]];
         
         [postString setString:[postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -153,8 +153,8 @@ NSString *kSearchPatients;
 
 
 - (IBAction)dismissKeyboard:(id)sender {
-    [_lastName resignFirstResponder];
-    [_firstName resignFirstResponder];
-    [_motherMaidenName resignFirstResponder];
+    [_LastNameTextField resignFirstResponder];
+    [_FirstNameTextField resignFirstResponder];
+    [_MotherMaidenNameTextField resignFirstResponder];
 }
 @end

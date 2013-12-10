@@ -20,14 +20,14 @@
 - (IBAction)logoutAction:(id)sender;
 
 //Brian October 23, 2013
-@property (weak, nonatomic) IBOutlet UITextField *recordID;
-@property (weak, nonatomic) IBOutlet UITextField *lastName;
-@property (weak, nonatomic) IBOutlet UITextField *middleName;
-@property (weak, nonatomic) IBOutlet UITextField *firstName;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *gender;
-@property (weak, nonatomic) IBOutlet UIDatePicker *dateOfBirth;
-@property (weak, nonatomic) IBOutlet UITextField *motherMaidenName;
-@property (weak, nonatomic) IBOutlet UITextField *motherName;
+
+@property (weak, nonatomic) IBOutlet UITextField *LastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *MiddleNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *FirstNameTextField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *GenderSegmentedButton;
+@property (weak, nonatomic) IBOutlet UIDatePicker *DateOfBirthDatePicker;
+@property (weak, nonatomic) IBOutlet UITextField *MotherMaidenNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *MotherNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *fatherName;
 @property (weak, nonatomic) IBOutlet UITextField *streetNumberPOB;
 @property (weak, nonatomic) IBOutlet UITextField *streetNamePOB;

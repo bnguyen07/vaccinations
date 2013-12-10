@@ -57,10 +57,10 @@
                     <navigationItem key="navigationItem" id="WN1-63-49N"/>
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="600"/>
                     <connections>
-                        <outlet property="ParentEmail" destination="9ir-If-sjb" id="J0y-PO-ynw"/>
-                        <outlet property="ParentPassword" destination="jPP-5l-73d" id="n3z-Rd-RUM"/>
-                        <outlet property="ParentReenterPassword" destination="WL7-1t-0A4" id="WPw-If-uHx"/>
-                        <outlet property="ParentUsername" destination="05a-Ts-D08" id="NAF-pY-22B"/>
+                        <outlet property="EmailTextField" destination="9ir-If-sjb" id="r4o-LR-3bs"/>
+                        <outlet property="PasswordTextField" destination="jPP-5l-73d" id="Xcc-qq-WGA"/>
+                        <outlet property="ReenterPasswordTextField" destination="WL7-1t-0A4" id="fJ9-z2-NdG"/>
+                        <outlet property="UsernameTextField" destination="05a-Ts-D08" id="NaE-Gn-uYZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHP-9Y-9e5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -510,9 +510,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="firstName" destination="2uB-Xb-S3e" id="HFe-Os-58g"/>
-                        <outlet property="lastName" destination="uvY-re-QNo" id="cD7-i3-Xat"/>
-                        <outlet property="motherMaidenName" destination="XaW-QG-wiT" id="lQ1-0Z-nT9"/>
+                        <outlet property="FirstNameTextField" destination="2uB-Xb-S3e" id="kgA-73-gK0"/>
+                        <outlet property="LastNameTextField" destination="uvY-re-QNo" id="T0X-dP-aFo"/>
+                        <outlet property="MotherMaidenNameTextField" destination="XaW-QG-wiT" id="7oh-4X-8QY"/>
                         <segue destination="s3E-LJ-rg5" kind="popover" identifier="Search2ChildListVC" popoverAnchorView="w0Z-eg-bsN" id="Ylc-o4-kyU">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -1475,20 +1475,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="DateOfBirthDatePicker" destination="ljz-Vf-bZE" id="74K-0v-cxR"/>
+                        <outlet property="FirstNameTextField" destination="Fuy-Q4-3UU" id="Ejx-0p-TBH"/>
+                        <outlet property="GenderSegmentedButton" destination="8sP-oE-TCG" id="SFn-vW-vKi"/>
+                        <outlet property="LastNameTextField" destination="N3x-Ad-3XT" id="5Lc-bx-SfD"/>
+                        <outlet property="MiddleNameTextField" destination="uOz-kT-ZV6" id="q8r-6f-n3C"/>
+                        <outlet property="MotherMaidenNameTextField" destination="8nT-iu-bwg" id="x6d-cj-dIZ"/>
+                        <outlet property="MotherNameTextField" destination="7ik-oH-IW8" id="y1S-ob-vgh"/>
                         <outlet property="cityPOB" destination="QVF-xr-boH" id="BGe-x4-Mhc"/>
                         <outlet property="currentCity" destination="db7-CI-JRu" id="BPf-gp-vM8"/>
                         <outlet property="currentState" destination="nvJ-F1-Lm2" id="k7Y-UD-t86"/>
                         <outlet property="currentStreetName" destination="AxZ-4e-UGW" id="2OC-K3-mVa"/>
                         <outlet property="currentStreetNumber" destination="UeG-d5-lcy" id="mvP-aD-Nwd"/>
                         <outlet property="currentZipcode" destination="Hq6-Cr-lxO" id="2xg-w2-c1Y"/>
-                        <outlet property="dateOfBirth" destination="ljz-Vf-bZE" id="ASM-pi-kRA"/>
                         <outlet property="fatherName" destination="iuk-Wu-tNx" id="Vch-ia-o3h"/>
-                        <outlet property="firstName" destination="Fuy-Q4-3UU" id="Wa8-Gr-5MR"/>
-                        <outlet property="gender" destination="8sP-oE-TCG" id="PBm-FI-dxq"/>
-                        <outlet property="lastName" destination="N3x-Ad-3XT" id="OiN-ke-xwr"/>
-                        <outlet property="middleName" destination="uOz-kT-ZV6" id="YFx-dS-Syi"/>
-                        <outlet property="motherMaidenName" destination="8nT-iu-bwg" id="KlR-LK-oPr"/>
-                        <outlet property="motherName" destination="7ik-oH-IW8" id="uOu-sy-nlm"/>
                         <outlet property="statePOB" destination="lxe-jb-Q1g" id="FwM-BX-T8b"/>
                         <outlet property="streetNamePOB" destination="xmh-Bn-D0m" id="mNc-Df-5A6"/>
                         <outlet property="streetNumberPOB" destination="3FH-4j-NFX" id="wwb-kV-yvr"/>

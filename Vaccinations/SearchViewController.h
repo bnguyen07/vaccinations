@@ -15,9 +15,9 @@
 @property (nonatomic, strong) NSMutableArray *users;
 - (IBAction)searchAction:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UITextField *lastName;
-@property (weak, nonatomic) IBOutlet UITextField *firstName;
-@property (weak, nonatomic) IBOutlet UITextField *motherMaidenName;
+@property (weak, nonatomic) IBOutlet UITextField *LastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *FirstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *MotherMaidenNameTextField;
 @property (nonatomic, retain) ChangePasswordViewController * changePwdVC;
 @property (nonatomic, retain) ChangeClinicViewController * changeClinicVC;
 
