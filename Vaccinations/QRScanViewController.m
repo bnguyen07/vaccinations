@@ -67,16 +67,20 @@ NSString *kSearchPatientByID;
 - (void)viewWillAppear:(BOOL)animated {
    [super viewWillAppear:animated];
    
-   self.capture = [[ZXCapture alloc] init];
-   self.capture.delegate = self;
-   self.capture.rotation = 90.0f;
+    if (self.capture == nil) {
+        self.capture = [[ZXCapture alloc] init];
+        self.capture.delegate = self;
+        self.capture.rotation = 90.0f;
+        
+        // Use the back camera
+        self.capture.camera = self.capture.back;
+        
+        self.capture.layer.frame = _imageView.bounds;
+        [_imageView.layer addSublayer:self.capture.layer];
+    }
    
-   // Use the back camera
-   self.capture.camera = self.capture.back;
-   
-   self.capture.layer.frame = _imageView.bounds;
-   [_imageView.layer addSublayer:self.capture.layer];
    //   [self.view bringSubviewToFront:self.resultLabel];
+    
 }
 
 - (void)didReceiveMemoryWarning
