@@ -152,4 +152,9 @@ NSString *kSearchPatients;
 }
 
 
+- (IBAction)dismissKeyboard:(id)sender {
+    [_lastName resignFirstResponder];
+    [_firstName resignFirstResponder];
+    [_motherMaidenName resignFirstResponder];
+}
 @end

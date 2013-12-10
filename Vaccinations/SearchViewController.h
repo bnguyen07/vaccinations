@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSMutableArray *patients;
 @property(strong, nonatomic) NSMutableArray *selectedPatient;
 
+- (IBAction)dismissKeyboard:(id)sender;
 
 
 
