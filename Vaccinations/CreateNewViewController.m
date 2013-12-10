@@ -95,7 +95,47 @@ NSString *kPostURL;
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
         NSString *birthDate = [dateFormat stringFromDate:[_dateOfBirth date]];
         
+        
+        NSDate *now = [NSDate date]; // Get the current date
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *dateComponents = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
+        NSInteger currentYear=[dateComponents year];
+
+        // Checking year is not in the future
+        NSDateComponents *dateCompFromDatePicker = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[_dateOfBirth date]];
+        NSInteger yearFromDatePicker=[dateCompFromDatePicker year];
+        if (yearFromDatePicker > currentYear) {
+            UIAlertView *dateAlert = [[UIAlertView alloc] initWithTitle:@"Date Error" message:@"Birth year is in the future!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [dateAlert show];
+            return;
+        }
+        
+        // Check month is not in future
+        NSInteger currentMonth=[dateComponents month];
+        NSInteger monthFromDatePicker=[dateCompFromDatePicker month];
+        if (monthFromDatePicker > currentMonth) {
+            UIAlertView *dateAlert = [[UIAlertView alloc] initWithTitle:@"Date Error" message:@"Birth month is in the future!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [dateAlert show];
+            return;
+        } else if (monthFromDatePicker == currentMonth){
+            // Check day is not in future
+            NSInteger dayFromDatePicker=[dateCompFromDatePicker day];
+            NSInteger currentDay=[dateComponents day];
+            if (dayFromDatePicker > currentDay) {
+                UIAlertView *dateAlert = [[UIAlertView alloc] initWithTitle:@"Date Error" message:@"Birth day is in the future!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [dateAlert show];
+                return;
+            }
+        }
+
+        
+        
+        
+        
+        
+        
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
+        
         
          _genderString = [[NSString alloc] initWithString:[_gender titleForSegmentAtIndex:[_gender selectedSegmentIndex]]];
         
