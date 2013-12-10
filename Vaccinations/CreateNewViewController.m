@@ -84,11 +84,11 @@ NSString *kPostURL;
     } else {
         
         NSMutableString *postString = [NSMutableString stringWithString:kPostURL];
-        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, _firstName.text]];
+        [postString appendString:[NSString stringWithFormat:@"?%@=%@", kfirst_name, [_firstName.text capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, _lastName.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", klast_name, [_lastName.text capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmiddle_name, _middleName.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmiddle_name, [_middleName.text capitalizedString]]];
         
         //Convert date to string
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -101,21 +101,21 @@ NSString *kPostURL;
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [[_genderString substringToIndex:1] capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _motherName.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, [_motherName.text capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _motherMaidenName.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, [_motherMaidenName.text capitalizedString]]];
         
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, _fatherName.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfather_name, [_fatherName.text capitalizedString]]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_number, _streetNumberPOB.text]];
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_name, _streetNamePOB.text]];
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_city, _cityPOB.text]];
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_state, _statePOB.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_street_name, [_streetNamePOB.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_city, [_cityPOB.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_state, [_statePOB.text uppercaseString]]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kPOB_zipcode, _zipcodePOB.text]];
         
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_number, _currentStreetNumber.text]];
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, _currentStreetName.text]];
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, _currentCity.text]];
-        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, _currentState.text]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_street_name, [_currentStreetName.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_city, [_currentCity.text capitalizedString]]];
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_state, [_currentState.text uppercaseString]]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kcurrent_zipcode, _currentZipcode.text]];
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", kuser_id, _user_id.text]];
         
