@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChildDetailsViewController : UIViewController
+@interface ChildDetailsViewController : UIViewController <UIAlertViewDelegate>
+{
+    __weak UITextField *invalidField;
+}
+
 
 
 @property (nonatomic, strong) NSString *recordID;
