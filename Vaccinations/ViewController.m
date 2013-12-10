@@ -18,15 +18,16 @@
 #import "ForgotViewController.h"
 #import "RegisterParentViewController.h"
 
-//Change localhost to your IP address in order to using Ipad
-//#define kGetUrlForLogin @"http://192.168.1.72/login.php"
+
 NSString *kGetUrlForLogin;
+
 #define kuser_id @"user_id"
 #define kpassword @"password"
 
 @interface ViewController ()
 
 @end
+
 
 @implementation ViewController
 
@@ -38,17 +39,18 @@ NSString *kGetUrlForLogin;
     kGetUrlForLogin = [[NSString alloc] initWithFormat:@"http://%@/login.php", gServerIp];
 }
 
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
+
 -(void) getUsernameAndPassword {
-    
-    //Brian: Nov 06, 2013
-    //Make the login work
-    //Retrieve patients or physician depend on the user and password
+     //Retrieve patients or physician depend on the user and password
     //Also return a user type
     
     NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForLogin];
