@@ -99,8 +99,8 @@ NSString *kGetPatientDetails;
     
    
     _lastNameTF.enabled = NO;
-    _firstNameTF.enabled = NO;
-    _recordNumber.enabled = NO;
+    _FirstNameTextField.enabled = NO;
+    _RecordNumberTextField.enabled = NO;
     _MotherMaidenName.enabled = NO;
     _MotherName.enabled = NO;
     _FatherName.enabled = NO;
@@ -114,7 +114,7 @@ NSString *kGetPatientDetails;
     _CurrentCity.enabled = NO;
     _CurrentState.enabled = NO;
     _CurrentZipcode.enabled = NO;
-    _Gender.enabled = NO;
+    _GenderSegmentedButton.enabled = NO;
     _DateOfBirth.enabled = NO;
    
    if (!superUser) {
@@ -125,7 +125,7 @@ NSString *kGetPatientDetails;
 
         _patient_id.text = [_childDetails objectForKey:@"patient_id"];
       _lastNameTF.text = [_childDetails objectForKey:@"last_name"];
-      _firstNameTF.text = [_childDetails objectForKey:@"first_name"];
+      _FirstNameTextField.text = [_childDetails objectForKey:@"first_name"];
         _middleName.text = [_childDetails objectForKey:@"middle_name"];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -134,9 +134,9 @@ NSString *kGetPatientDetails;
         [_DateOfBirth setDate:dateOfBirth];
         
         if ([[_childDetails objectForKey:@"gender"] isEqualToString:@"M"]) {
-            [_Gender setSelectedSegmentIndex:0];
+            [_GenderSegmentedButton setSelectedSegmentIndex:0];
         } else {
-            [_Gender setSelectedSegmentIndex:1];
+            [_GenderSegmentedButton setSelectedSegmentIndex:1];
         }        
         
       _MotherMaidenName.text = [_childDetails objectForKey:@"mothers_maiden_name"];
@@ -219,8 +219,8 @@ NSString *kGetPatientDetails;
     if ([_EditButton.titleLabel.text isEqualToString:@"Edit"]) {
         
         _lastNameTF.enabled = YES;
-        _firstNameTF.enabled = YES;
-        _recordNumber.enabled = YES;
+        _FirstNameTextField.enabled = YES;
+        _RecordNumberTextField.enabled = YES;
         _MotherMaidenName.enabled = YES;
         _MotherName.enabled = YES;
         _FatherName.enabled = YES;
@@ -234,14 +234,14 @@ NSString *kGetPatientDetails;
         _CurrentCity.enabled = YES;
         _CurrentState.enabled = YES;
         _CurrentZipcode.enabled = YES;
-        _Gender.enabled = YES;
+        _GenderSegmentedButton.enabled = YES;
         _DateOfBirth.enabled = YES;
         
         [_EditButton setTitle:@"Save" forState:UIControlStateNormal];
         
     }else if([_EditButton.titleLabel.text isEqualToString:@"Save"]) {
     
-        if ([[_firstNameTF text] isEqualToString:@""] || [[_lastNameTF text] isEqualToString:@""] || [[_MotherMaidenName text] isEqualToString:@""]) {
+        if ([[_FirstNameTextField text] isEqualToString:@""] || [[_lastNameTF text] isEqualToString:@""] || [[_MotherMaidenName text] isEqualToString:@""]) {
             UIAlertView *requiredFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Required Fields!" message:@"Please fill all the required fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [requiredFieldsAlert  show];
         } else {
@@ -251,7 +251,7 @@ NSString *kGetPatientDetails;
             NSMutableString *postString = [NSMutableString stringWithString:kChangePatientInfo];
             [postString appendString:[NSString stringWithFormat:@"?%@=%@", kpatient_id, [_patient_id.text capitalizedString]]];
             
-            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfirstName, [_firstNameTF.text capitalizedString]]];
+            [postString appendString:[NSString stringWithFormat:@"&%@=%@", kfirstName, [_FirstNameTextField.text capitalizedString]]];
             
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", klastName, [_lastNameTF.text capitalizedString]]];
             
@@ -295,7 +295,7 @@ NSString *kGetPatientDetails;
            
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kbirthdate, birthDate]];
             
-            NSString *gender = [[NSString alloc] initWithString:[_Gender titleForSegmentAtIndex:[_Gender selectedSegmentIndex]]];
+            NSString *gender = [[NSString alloc] initWithString:[_GenderSegmentedButton titleForSegmentAtIndex:[_GenderSegmentedButton selectedSegmentIndex]]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kgender, [[gender substringToIndex:1] capitalizedString]]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_name, _MotherName.text]];
             [postString appendString:[NSString stringWithFormat:@"&%@=%@", kmother_maiden_name, _MotherMaidenName.text]];
@@ -399,8 +399,8 @@ NSString *kGetPatientDetails;
             
             
             _lastNameTF.enabled = NO;
-            _firstNameTF.enabled = NO;
-            _recordNumber.enabled = NO;
+            _FirstNameTextField.enabled = NO;
+            _RecordNumberTextField.enabled = NO;
             _MotherMaidenName.enabled = NO;
             _MotherName.enabled = NO;
             _FatherName.enabled = NO;
@@ -414,7 +414,7 @@ NSString *kGetPatientDetails;
             _CurrentCity.enabled = NO;
             _CurrentState.enabled = NO;
             _CurrentZipcode.enabled = NO;
-            _Gender.enabled = NO;
+            _GenderSegmentedButton.enabled = NO;
             _DateOfBirth.enabled = NO;
             
             [_EditButton setTitle:@"Edit" forState:UIControlStateNormal];
