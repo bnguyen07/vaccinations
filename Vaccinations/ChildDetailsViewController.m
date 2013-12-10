@@ -435,6 +435,26 @@ NSString *kGetPatientDetails;
     
 }// End Edit Patient Info
 
+- (IBAction)dismissKeyboard:(id)sender {
+    [_patient_id resignFirstResponder];
+    [_FirstNameTextField resignFirstResponder];
+    [_lastNameTF resignFirstResponder];
+    [_middleName resignFirstResponder];
+    [_MotherMaidenName resignFirstResponder];
+    [_MotherName resignFirstResponder];
+    [_FatherName resignFirstResponder];
+    [_BirthStreetNumber resignFirstResponder];
+    [_BirthStreetName resignFirstResponder];
+    [_BirthCity resignFirstResponder];
+    [_BirthState resignFirstResponder];
+    [_BirthZipcode resignFirstResponder];
+    [_CurrentStreetNumber resignFirstResponder];
+    [_CurrentStreetName resignFirstResponder];
+    [_CurrentCity resignFirstResponder];
+    [_CurrentState resignFirstResponder];
+    [_CurrentZipcode resignFirstResponder];
+}
+
 
 #pragma mark - Validation
 
@@ -456,7 +476,7 @@ NSString *kGetPatientDetails;
         if ([field isEqual:_middleName]) {
             if (_middleName.text.length > 0) {
                 if (![self validateField:field withRegex:REGEX_NAME]) {
-                    [self showMessage:[NSString stringWithFormat:@"Field is not valid! Letters & Space only!"]];
+                    [self showMessage:[NSString stringWithFormat:@"Fields are not valid! Letters, Space, and/or Single Quote only!"]];
                     return NO;
                 }
             }

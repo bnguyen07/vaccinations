@@ -50,5 +50,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *EditButton;
 - (IBAction)EditAction:(id)sender;
+- (IBAction)dismissKeyboard:(id)sender;
 
 @end
