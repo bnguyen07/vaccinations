@@ -10,11 +10,6 @@
 #import "AppDelegate.h"
 
 
-
-//Brian
-//Nov 08, 2013
-//#define kGetUrlForVaccinesNotTaken @"http://192.168.1.72/list_vaccine_not_taken.php"
-//#define kGetUrlForCreateNewVaccination @"http://192.168.1.72/postNewVaccination.php"
 NSString *kGetUrlForVaccinesNotTaken;
 NSString *kGetUrlForCreateNewVaccination;
 
