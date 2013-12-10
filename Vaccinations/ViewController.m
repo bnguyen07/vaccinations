@@ -35,7 +35,7 @@ NSString *kGetUrlForLogin;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _users = [[NSMutableArray alloc] initWithObjects: nil];
+    _usersRetrievedFromDatabase = [[NSMutableArray alloc] initWithObjects: nil];
     kGetUrlForLogin = [[NSString alloc] initWithFormat:@"http://%@/login.php", gServerIp];
 }
 
@@ -49,13 +49,13 @@ NSString *kGetUrlForLogin;
 
 
 
--(void) getUsernameAndPassword {
+-(void) retrieveUserData {
      //Retrieve patients or physician depend on the user and password
     //Also return a user type
     
     NSMutableString *getString = [NSMutableString stringWithString:kGetUrlForLogin];
-    [getString appendString:[NSString stringWithFormat:@"?%@=%@", kuser_id, [_Username text]]];
-    [getString appendString:[NSString stringWithFormat:@"&%@=%@", kpassword, [_Password text]]];
+    [getString appendString:[NSString stringWithFormat:@"?%@=%@", kuser_id, [_UsernameTextField text]]];
+    [getString appendString:[NSString stringWithFormat:@"&%@=%@", kpassword, [_PasswordTextField text]]];
     NSLog(@"This is the GET string for the Login function: %@", getString);
     [getString setString:[getString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 
@@ -65,8 +65,8 @@ NSString *kGetUrlForLogin;
     NSData *data = [NSData dataWithContentsOfURL:url];
     NSError *error;
     if (data) {
-        _users = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        NSLog(@"%@", _users);
+        _usersRetrievedFromDatabase = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        NSLog(@"%@", _usersRetrievedFromDatabase);
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"data is nil. Check the connection. Turn off firewall." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
@@ -77,24 +77,24 @@ NSString *kGetUrlForLogin;
 
 
 - (IBAction)Login:(id)sender {
-    [_Username resignFirstResponder];
-    [_Password resignFirstResponder];
+    [_UsernameTextField resignFirstResponder];
+    [_PasswordTextField resignFirstResponder];
     
     //If user type is 1 => Login to Child List Controller
     //If user type is 0 => Login to Search View Controller
     
-    if ([_Username.text  isEqual: @""] || [_Password.text  isEqual: @""]) {
+    if ([_UsernameTextField.text  isEqual: @""] || [_PasswordTextField.text  isEqual: @""]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:@"Please fill in all the fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
 
     
-    [self getUsernameAndPassword]; // Connect to the database
+    [self retrieveUserData]; // Connect to the database
     
     
     // For Debug purpose
-    NSString *userType = [[_users lastObject] objectForKey:@"user_type"];
+    NSString *userType = [[_usersRetrievedFromDatabase lastObject] objectForKey:@"user_type"];
    NSLog(@"User type: %@",userType);
    if ([userType isEqualToString:@"0"]) {
       //superUser = YES;
@@ -105,10 +105,10 @@ NSString *kGetUrlForLogin;
     
     
  
-    if ([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"1"]) {
+    if ([[[_usersRetrievedFromDatabase lastObject] objectForKey:@"user_type"] isEqualToString:@"1"]) {
         superUser = NO;
         [self performSegueWithIdentifier:@"login2ChildListController" sender:self];
-    } else if([[[_users lastObject] objectForKey:@"user_type"] isEqualToString:@"0"]) {
+    } else if([[[_usersRetrievedFromDatabase lastObject] objectForKey:@"user_type"] isEqualToString:@"0"]) {
         superUser = YES;
         [self performSegueWithIdentifier:@"login2childsearchtab" sender:self];
     } else {
@@ -128,7 +128,7 @@ NSString *kGetUrlForLogin;
     // Send physician to Physician view
     if ([segue.identifier isEqualToString:@"login2childsearchtab"]) {
         ChildSearchTabBar* tabBarView = segue.destinationViewController;
-        [tabBarView setPhysician:_users];
+        [tabBarView setPhysician:_usersRetrievedFromDatabase];
         
         //This is how to prepareForSegue for TabBarController. It's diffenent to a normal segue
         UITabBarController* childSearchTabBar =  segue.destinationViewController;
@@ -143,9 +143,9 @@ NSString *kGetUrlForLogin;
         CreateNewViewController* CreateController = (CreateNewViewController*)[CreateNewTab.viewControllers objectAtIndex:0];
         ScanViewController* ScanController = (ScanViewController*)[ScanViewTab.viewControllers objectAtIndex:0];
         
-        NSString* physician_id = [[NSString alloc] initWithString:[[_users firstObject] objectForKey:@"physician_id"]];
-        NSString* user_id = [[NSString alloc] initWithString:[[_users lastObject] objectForKey:@"user_id"]];
-        clinicName = [[NSString alloc] initWithString:[[_users firstObject] objectForKey:@"clinic"]];
+        NSString* physician_id = [[NSString alloc] initWithString:[[_usersRetrievedFromDatabase firstObject] objectForKey:@"physician_id"]];
+        NSString* user_id = [[NSString alloc] initWithString:[[_usersRetrievedFromDatabase lastObject] objectForKey:@"user_id"]];
+        clinicName = [[NSString alloc] initWithString:[[_usersRetrievedFromDatabase firstObject] objectForKey:@"clinic"]];
         
         NSLog(@"Physician from Login: %@", physician_id);
         [QRScanController setPhysician_id:physician_id];
@@ -164,26 +164,26 @@ NSString *kGetUrlForLogin;
         
         UINavigationController* nav =  segue.destinationViewController;
         ChildListViewController* childList = (ChildListViewController *)[nav.viewControllers objectAtIndex:0];
-        NSMutableArray *patients = [[NSMutableArray alloc] initWithArray:_users];
+        NSMutableArray *patients = [[NSMutableArray alloc] initWithArray:_usersRetrievedFromDatabase];
          NSLog(@"Users are type: %@", patients.class);
         [patients removeLastObject];
         NSLog(@"Users are: %@", patients);
         [childList setArrayList:patients];
     }
     else if([segue.identifier isEqualToString:@"login2forgotpassword"]) {
-        _popoverControllerForgotPwd = [(UIStoryboardPopoverSegue *)segue popoverController];
+        _ForgotPasswordPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
         ForgotViewController* forgotVC = segue.destinationViewController;
-        forgotVC.popoverController = _popoverControllerForgotPwd;
+        forgotVC.popoverController = _ForgotPasswordPopover;
         
     }
     else if([segue.identifier isEqualToString:@"login2register"]) {
-        _popoverControllerRegister = [(UIStoryboardPopoverSegue *)segue popoverController];
+        _RegisterParentPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
         RegisterParentViewController* registerVC = segue.destinationViewController;
-        registerVC.popoverController = _popoverControllerRegister;
+        registerVC.popoverController = _RegisterParentPopover;
     }
     
-    [_Username setText:@""];
-    [_Password setText:@""];
+    [_UsernameTextField setText:@""];
+    [_PasswordTextField setText:@""];
 }
 
 
@@ -210,12 +210,10 @@ NSString *kGetUrlForLogin;
 
 
 - (IBAction)dismissKeyboard:(id)sender {
-    [_Username resignFirstResponder];
-    [_Password resignFirstResponder] ;
+    [_UsernameTextField resignFirstResponder];
+    [_PasswordTextField resignFirstResponder] ;
     
 }
-
-
 
 
 
@@ -224,10 +222,4 @@ NSString *kGetUrlForLogin;
 
 
 
-
-
-
-- (IBAction)registerBtnAction:(id)sender {
-    //[self performSegueWithIdentifier:@"login2register" sender:self];
-}
 @end

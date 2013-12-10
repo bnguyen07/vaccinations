@@ -266,9 +266,9 @@
                     <navigationItem key="navigationItem" id="hjT-4h-VXU"/>
                     <connections>
                         <outlet property="ForgotPassword" destination="eyB-IF-JbX" id="VnS-S2-VwS"/>
-                        <outlet property="Password" destination="HbI-oU-O9h" id="vnu-g7-IrL"/>
+                        <outlet property="PasswordTextField" destination="HbI-oU-O9h" id="my9-N8-UUG"/>
                         <outlet property="RegisterParent" destination="xOV-GP-lLb" id="pWM-70-GfZ"/>
-                        <outlet property="Username" destination="ZBh-jE-knM" id="GIU-Iw-PPZ"/>
+                        <outlet property="UsernameTextField" destination="ZBh-jE-knM" id="yN5-sP-4fu"/>
                         <segue destination="2Dd-xa-RX9" kind="modal" identifier="login2childsearchtab" id="Wis-bP-pWx"/>
                         <segue destination="s3E-LJ-rg5" kind="popover" identifier="login2ChildListController" popoverAnchorView="xOV-GP-lLb" id="7Z2-bb-3vE">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -532,7 +532,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="oGV-Iu-NFL">
-                                <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oGV-Iu-NFL" id="RF6-bV-VDr">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
